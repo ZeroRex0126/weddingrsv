@@ -2,6 +2,7 @@ import Head from "next/head";
 import Layout from "../components/layout.jsx";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import { getWebSettingData } from "../libs/web-util";
 import "../styles/globals.css";
 import "../styles/index.scss";
 // ..Loading Function
@@ -38,30 +39,16 @@ import "../styles/index.scss";
 //   );
 // }
 
-const connectionString = `mongodb+srv://sa:FOnND72kohjKqpKm@cluster0.fsqssdi.mongodb.net/Wedding?retryWrites=true&w=majority`;
-let client;
-
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(true);
   const [webSiteSetting, setWebSiteSetting] = useState({});
 
   async function getWebData() {
-    const response = await fetch("/api/webdata", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.message || "Something went wrong!");
-    }
-
-    setWebSiteSetting(data[0]);
+    let webSettings = await getWebSettingData();
+    setWebSiteSetting(webSettings[0]);
     setLoading(false);
   }
+
   useEffect(() => {
     getWebData();
   }, []);
