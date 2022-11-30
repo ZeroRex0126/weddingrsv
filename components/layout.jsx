@@ -1,10 +1,6 @@
 import { Fragment } from "react";
 
 function Layout(props) {
-  function LogData() {
-    console.log(props);
-  }
-
   return (
     <Fragment>
       {/* navigateion */}
