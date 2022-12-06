@@ -16,7 +16,7 @@ export async function getWebSettingData() {
 }
 
 export function getRemainingDate(data) {
-  if (!data && data !== {}) {
+  if (data && data !== {}) {
     let currentDate = new Date();
     let wedDate = new Date(data.year, data.month, data.day);
     let remaining = new Date(wedDate.getTime() - currentDate.getTime());
@@ -33,8 +33,6 @@ export function getRemainingDate(data) {
     minutes = minutes - dayscal * 24 * 60 - hours * 60;
     seconds = seconds - dayscal * 24 * 60 * 60 - hours * 60 * 60 - minutes * 60;
 
-    alert(
-      `remaining time = ${years} years, ${months} month, days ${days}, ${hours} hours, ${minutes} min, seconds ${seconds}`
-    );
+    console.log(`remaining time = ${years} years, ${months} month, days ${days}, ${hours} hours, ${minutes} min, seconds ${seconds}`)
   }
 }

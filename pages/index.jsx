@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
 import { getRemainingDate } from "../libs/web-util";
-// import { MongoClient } from "mongodb";
 
 export default function Home(props) {
   function LogData() {
