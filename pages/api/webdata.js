@@ -4,31 +4,36 @@ const connectionString = `mongodb+srv://sa:FOnND72kohjKqpKm@cluster0.fsqssdi.mon
 let client;
 
 async function handler(req, res) {
-  if (req.method === "GET") {
-    try {
-      client = await MongoClient.connect(connectionString);
-    } catch (error) {
-      res.status(500).json({ message: "Could not connect to database." });
-      return;
-    }
-
-    const db = client.db();
-
-    try {
-      const result = await db.collection("wedsettings").find({}).toArray();
-      console.log(result);
-      if (result) {
-        res.json(result);
-      } else {
-        res.status(500).json({ message: "Storing message failed!" });
+  switch (req.method) {
+    case "GET":
+      try {
+        client = await MongoClient.connect(connectionString);
+      } catch (error) {
+        res.status(500).json({ message: "Could not connect to database." });
         return;
       }
-    } catch (error) {
-      res.status(500).json({ message: "Storing message failed!" });
-      return;
-    } finally {
-      client.close();
-    }
+
+      const db = client.db();
+
+      try {
+        const result = await db.collection("wedsettings").find({}).toArray();
+        console.log(result);
+        if (result) {
+          res.json(result);
+        } else {
+          res.status(500).json({ message: "Storing message failed!" });
+          return;
+        }
+      } catch (error) {
+        res.status(500).json({ message: "Storing message failed!" });
+        return;
+      } finally {
+        client.close();
+      }
+      break;
+
+    default:
+      break;
   }
 }
 

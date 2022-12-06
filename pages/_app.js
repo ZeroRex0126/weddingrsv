@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Layout from "../components/layout.jsx";
-import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { getWebSettingData } from "../libs/web-util";
 import "../styles/globals.css";
@@ -50,7 +49,7 @@ function MyApp({ Component, pageProps }) {
   }
 
   useEffect(() => {
-    getWebData();
+      getWebData();
   }, []);
 
   return !loading ? (

@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { getRemainingDate } from "../libs/web-util";
 // import { MongoClient } from "mongodb";
 
@@ -23,6 +24,7 @@ export default function Home(props) {
         }}
       >
         <div>
+        <Link href="/settings">to settings</Link>
           <button onClick={LogData}>Log Data</button>
         </div>
       </main>

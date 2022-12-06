@@ -12,7 +12,7 @@ function Layout(props) {
       {/* footer */}
       <footer className="footer">
         <a target="_blank" rel="noopener noreferrer">
-          All Right Reserve to Wundrful Sites
+          All Right Reserved to WedSites
         </a>
       </footer>
     </Fragment>
