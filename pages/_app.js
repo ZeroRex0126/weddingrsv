@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Layout from "../components/layout.jsx";
 import { useState, useEffect } from "react";
-import { getWebSettingData } from "../libs/web-util";
+import { getRemainingDate, getWebSettingData } from "../libs/web-util";
 import "../styles/globals.css";
 import "../styles/index.scss";
 // ..Loading Function
@@ -41,15 +41,25 @@ import "../styles/index.scss";
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(true);
   const [webSiteSetting, setWebSiteSetting] = useState({});
+  const [remainingTime, setRemainingTime] = useState({});
 
   async function getWebData() {
     let webSettings = await getWebSettingData();
     setWebSiteSetting(webSettings[0]);
+    let date = getRemainingDate(webSettings[0]);
+    setRemainingTime(date);
     setLoading(false);
   }
 
+  function calRemaining() {
+    if (webSiteSetting && webSiteSetting != {}) {
+      let date = getRemainingDate(webSiteSetting);
+      setRemainingTime(date);
+    }
+  }
+
   useEffect(() => {
-      getWebData();
+    getWebData();
   }, []);
 
   return !loading ? (
@@ -60,7 +70,12 @@ function MyApp({ Component, pageProps }) {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
 
-        <Component {...pageProps} webSiteSetting={webSiteSetting} />
+        <Component
+          {...pageProps}
+          webSiteSetting={webSiteSetting}
+          remainingTime={remainingTime}
+          calRemaining={calRemaining}
+        />
       </Layout>
     </>
   ) : (

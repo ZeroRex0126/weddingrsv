@@ -4,7 +4,7 @@ function Layout(props) {
   return (
     <Fragment>
       {/* navigateion */}
-      <header>
+      <header className="navContainer">
         <div>test header</div>
       </header>
       {/* main app */}
@@ -12,7 +12,7 @@ function Layout(props) {
       {/* footer */}
       <footer className="footer">
         <a target="_blank" rel="noopener noreferrer">
-          All Right Reserved to WedSites
+          All Right Reserved to KSites
         </a>
       </footer>
     </Fragment>

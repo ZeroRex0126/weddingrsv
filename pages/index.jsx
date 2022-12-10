@@ -1,28 +1,13 @@
 import Head from "next/head";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
-import { getRemainingDate } from "../libs/web-util";
+import { useEffect } from "react";
+import { TimerCard } from "../components";
+
 
 export default function Home(props) {
-  const [time, setTime] = useState(1 * 24 * 3600 + 1 * 3600 + 1 * 60 + 1);
-
-  const remainTime = useMemo(() => {
-    const days = Math.floor(time / 24 / 3600);
-    const hours = Math.floor((time - days * 24 * 3600) / 3600);
-    const minutes = Math.floor((time - days * 24 * 3600 - hours * 3600) / 60);
-    const seconds = (time - days * 24 * 3600 - hours * 3600) % 60;
-
-    return {
-      days,
-      hours,
-      minutes,
-      seconds,
-    };
-  }, [time]);
-
   useEffect(() => {
     const interval = setInterval(() => {
-      setTime((time) => (time !== 0 ? time - 1 : 0));
+      props.calRemaining();
     }, 1000);
 
     return () => clearInterval(interval);
@@ -30,7 +15,6 @@ export default function Home(props) {
 
   function LogData() {
     console.log(props);
-    getRemainingDate(props.webSiteSetting);
   }
 
   return (
@@ -41,7 +25,7 @@ export default function Home(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main
+      <div
         className="main"
         style={{
           backgroundImage: `url(data:image/jpeg;base64,${props.webSiteSetting.heroimg})`,
@@ -50,12 +34,16 @@ export default function Home(props) {
         <div>
           <Link href="/settings">to settings</Link>
           <button onClick={LogData}>Log Data</button>
-          <p>
-            {remainTime.days} {remainTime.hours} {remainTime.minutes}{" "}
-            {remainTime.seconds}{" "}
-          </p>
         </div>
-      </main>
+        <div className="timer">
+          <TimerCard title='years' time={props.remainingTime.years}/>
+          <TimerCard title='months' time={props.remainingTime.months}/>
+          <TimerCard title='days' time={props.remainingTime.days}/>
+          <TimerCard title='hours' time={props.remainingTime.hours}/>
+          <TimerCard title='minutes' time={props.remainingTime.minutes}/>
+          <TimerCard title='seconds' time={props.remainingTime.seconds}/>
+        </div>
+      </div>
     </div>
   );
 }

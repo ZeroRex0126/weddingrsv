@@ -25,14 +25,14 @@ export function getRemainingDate(data) {
     var minutes = Math.floor(seconds / 60);
     var hours = Math.floor(minutes / 60);
     var dayscal = Math.floor(hours / 24);
-    var days = remaining.getUTCDate() - 1;
-    var years = remaining.getUTCFullYear() - 1970; // Gives difference as year
-    var months = remaining.getUTCMonth(); // Gives month count of difference
+    var days = remaining.getDate() - 1;
+    var years = remaining.getFullYear() - 1970; // Gives difference as year
+    var months = remaining.getMonth(); // Gives month count of difference
 
     hours = hours - dayscal * 24;
     minutes = minutes - dayscal * 24 * 60 - hours * 60;
     seconds = seconds - dayscal * 24 * 60 * 60 - hours * 60 * 60 - minutes * 60;
-
-    console.log(`remaining time = ${years} years, ${months} month, days ${days}, ${hours} hours, ${minutes} min, seconds ${seconds}`)
+    
+    return { years, months, days, hours, minutes, seconds };
   }
 }
