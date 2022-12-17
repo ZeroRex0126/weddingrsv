@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "mongodb": "^4.12.1",
+    "include-media": "^1.4.10",
     "next": "13.0.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
