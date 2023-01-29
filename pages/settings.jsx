@@ -4,7 +4,7 @@ import { Input } from "../components";
 
 const settings = () => {
   function LogData() {
-    console.log('hahaha');
+    console.log("hahaha");
   }
   return (
     <div>
@@ -14,13 +14,12 @@ const settings = () => {
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
       <div className="settingContainer">
-        Enter
         <Link href="/">Back to home</Link>
         <button onClick={LogData}>click</button>
         <br />
-        <Input title='name'></Input>
+        <Input title="name"></Input>
         <br />
-        <Input title='surname'></Input>
+        <Input title="surname"></Input>
       </div>
     </div>
   );
