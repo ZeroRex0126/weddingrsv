@@ -13,7 +13,7 @@ export default function Home({ calRemaining, webSiteSetting, remainingTime }) {
   }, []);
 
   function LogData() {
-    console.log();
+    console.log("hh");
   }
 
   return (
