@@ -1,10 +1,14 @@
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import Home from ".";
 import { Input } from "../components";
 
-const settings = ({ webSiteSetting }) => {
-  const [date, setDate] = useState(`${webSiteSetting.year}-${webSiteSetting.month}-${webSiteSetting.day}`);
+const settings = ({ calRemaining, webSiteSetting, remainingTime }) => {
+  const [date, setDate] = useState(
+    `${webSiteSetting.year}-${webSiteSetting.month}-${webSiteSetting.day}`
+  );
 
   function LogData() {
     console.log(date);
@@ -29,7 +33,11 @@ const settings = ({ webSiteSetting }) => {
             type="password"
           ></Input>
           <span>Location</span>
-          <Input title="Venue" value={webSiteSetting.location.venue} type="text"></Input>
+          <Input
+            title="Venue"
+            value={webSiteSetting.location.venue}
+            type="text"
+          ></Input>
           <Input
             title="Street"
             value={webSiteSetting.location.street}
@@ -50,13 +58,30 @@ const settings = ({ webSiteSetting }) => {
             value={webSiteSetting.location.province}
             type="text"
           ></Input>
-          <Input title="Postal/Zip Code" value={webSiteSetting.location.zip} type="text"></Input>
-          
+          <Input
+            title="Postal/Zip Code"
+            value={webSiteSetting.location.zip}
+            type="text"
+          ></Input>
+          <Link href="/">Back to home</Link>
+          <button onClick={LogData}>click</button>
         </div>
 
         <div className="previewContainer">
-          <Link href="/">Back to home</Link>
-          <button onClick={LogData}>click</button>
+          {/* <Image
+            src={`data:image/jpeg;base64,${webSiteSetting.heroimg}`}
+            alt="Picture of the author"
+            width={800}
+            height={500}
+          /> */}
+          <Home
+            calRemaining={calRemaining}
+            webSiteSetting={webSiteSetting}
+            remainingTime={remainingTime}
+            style={{
+              width:'800px',
+            }}
+          />
         </div>
       </div>
     </div>
