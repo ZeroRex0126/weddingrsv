@@ -24,7 +24,7 @@
     line-height: 9px;
     text-align: center;
     letter-spacing: 3px;
-    color: #8385A9;
+    color: #8385a9;
     margin-top: 9px;
 
     @include media(">tablet") {
@@ -35,25 +35,25 @@
     }
   }
 
-  .counts{
+  .counts {
     position: relative;
-      font-weight: bold;
-      font-size: 36px;
-      line-height: 67px;
-      text-align: center;
-      letter-spacing: -1px;
-      color: #FB5E84;
-      z-index: 1;
-      margin-bottom: 4px;
-      overflow: hidden;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 67px;
+    text-align: center;
+    letter-spacing: -1px;
+    color: #fb5e84;
+    z-index: 1;
+    margin-bottom: 4px;
+    overflow: hidden;
 
     @include media(">tablet") {
-        font-weight: bold;
-        font-size: 80px;
-        letter-spacing: -2.4px;
-        line-height: 120px;
-        margin-bottom: 10px;
-        border-radius: 8px;
-      }
+      font-weight: bold;
+      font-size: 80px;
+      letter-spacing: -2.4px;
+      line-height: 120px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+    }
   }
 }

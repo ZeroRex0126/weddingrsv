@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { getRemainingDate, getWebSettingData } from "../libs/web-util";
 import "../styles/globals.css";
 import "../styles/index.scss";
+import "../styles/settings.scss";
 // ..Loading Function
 // function Loading() {
 //   const router = useRouter();

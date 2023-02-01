@@ -19,7 +19,7 @@ export default function Home({ calRemaining, webSiteSetting, remainingTime }) {
   return (
     <div className="container">
       <Head>
-        <title>Wedding RSV - Home</title>
+        <title>{webSiteSetting.title} - Home</title>
         <meta name="description" content="Home page" />
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
