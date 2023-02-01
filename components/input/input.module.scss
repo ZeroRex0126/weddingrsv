@@ -1,18 +1,18 @@
 .inputbox {
   position: relative;
-  width: 250px;
   padding: 10px 0;
 }
 
 .inputbox input {
   width: 100%;
   padding: 10px;
-  border: 1px solid black;
+  border: 1px solid grey;
   //   background: #1d2b3a;
   border-radius: 5px;
   outline: none;
   //   color: white;
   font-size: 1em;
+  transition: 0.5s;
 }
 
 .inputbox span {
@@ -24,6 +24,13 @@
   color: black;
   text-transform: uppercase;
   transition: 0.5s;
+}
+
+.inputbox .eyeIcon {
+  position: absolute;
+  right: 7px;
+  top: 23px;
+  cursor: pointer;
 }
 
 .inputbox input:not(:placeholder-shown) ~ span,

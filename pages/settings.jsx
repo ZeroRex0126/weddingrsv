@@ -1,9 +1,13 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useState } from "react";
 import { Input } from "../components";
 
 const settings = ({ webSiteSetting }) => {
+  const [date, setDate] = useState(`${webSiteSetting.year}-${webSiteSetting.month}-${webSiteSetting.day}`);
+
   function LogData() {
+    console.log(date);
     console.log(webSiteSetting);
   }
   return (
@@ -14,11 +18,10 @@ const settings = ({ webSiteSetting }) => {
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
       <div className="settingContainer">
-        <Link href="/">Back to home</Link>
-        <button onClick={LogData}>click</button>
         <div className="inputContainer">
           <span>Web Settings</span>
           <Input title="Title" value={webSiteSetting.title} type="text"></Input>
+          <Input title="Date" value={date} type="date"></Input>
           <span>image input here</span>
           <Input
             title="Invitation Pin"
@@ -26,7 +29,7 @@ const settings = ({ webSiteSetting }) => {
             type="password"
           ></Input>
           <span>Location</span>
-          {/* <Input title="Venue" value={webSiteSetting.title} type="text"></Input> */}
+          <Input title="Venue" value={webSiteSetting.location.venue} type="text"></Input>
           <Input
             title="Street"
             value={webSiteSetting.location.street}
@@ -43,18 +46,17 @@ const settings = ({ webSiteSetting }) => {
             type="text"
           ></Input>
           <Input
-            title="Providence"
-            value={webSiteSetting.location.providence}
+            title="Province"
+            value={webSiteSetting.location.province}
             type="text"
           ></Input>
-          <span>Date</span>
-          <Input title="Day" value={webSiteSetting.day} type="number"></Input>
-          <Input
-            title="Month"
-            value={webSiteSetting.month}
-            type="number"
-          ></Input>
-          <Input title="Year" value={webSiteSetting.year} type="number"></Input>
+          <Input title="Postal/Zip Code" value={webSiteSetting.location.zip} type="text"></Input>
+          
+        </div>
+
+        <div className="previewContainer">
+          <Link href="/">Back to home</Link>
+          <button onClick={LogData}>click</button>
         </div>
       </div>
     </div>

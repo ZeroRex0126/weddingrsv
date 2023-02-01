@@ -1,4 +1,29 @@
+@import "styles/utils";
+
 .settingContainer {
-  .inputContainer {
+  max-width: 100vw;
+  padding: 50px 100px;
+  display: grid;
+  gap: 1rem;
+
+  @include media(">tablet") {
+    grid-template-columns: repeat(3, 1fr);
+
+    .inputContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      grid-column-start: 1;
+      grid-column-end: 2;
+    }
+    .previewContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      grid-column-start: 2;
+      grid-column-end: 4;
+    }
   }
 }
