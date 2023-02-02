@@ -74,12 +74,13 @@ const settings = ({ calRemaining, webSiteSetting, remainingTime }) => {
             width={800}
             height={500}
           /> */}
+          <div className="overlay"></div>
           <Home
             calRemaining={calRemaining}
             webSiteSetting={webSiteSetting}
             remainingTime={remainingTime}
             style={{
-              width:'800px',
+              width: "800px",
             }}
           />
         </div>
