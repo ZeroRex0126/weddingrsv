@@ -54,6 +54,29 @@
   }
 
   @include media("<1060px") {
+    .previewContainer {
+      height: 300px !important;
+      .container {
+        width: 400px !important;
+        .main {
+          min-height: auto;
+          width: 100%;
+          .timer {
+            // display: none;
+            .timerCard_cardConttainer__UBFvA {
+              width: 40px;
+              .timerCard_label__e0BZY {
+                font-size: 4px;
+              }
+              .timerCard_counts__j2y1s {
+                font-size: 20px;
+                line-height: 15px;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 
   @include media(">tablet") {
@@ -74,9 +97,9 @@
     }
 
     .previewContainer {
-      height: 400px;
+      height: 500px;
       .container {
-        width: 600px;
+        width: 700px;
       }
     }
   }
