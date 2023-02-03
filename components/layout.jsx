@@ -1,11 +1,12 @@
 import { Fragment } from "react";
+import TopNav from "./topNav/topNav";
 
 function Layout(props) {
   return (
     <Fragment>
       {/* navigateion */}
       <header className="navContainer">
-        <div>test header</div>
+        <TopNav />
       </header>
       {/* main app */}
       <main>{props.children}</main>

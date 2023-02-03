@@ -28,7 +28,7 @@
 
   @include media("<1177px") {
     .previewContainer {
-      .container {
+      .mainContainer {
         width: 1000px !important;
       }
     }
@@ -36,7 +36,7 @@
 
   @include media(">1180px") {
     .previewContainer {
-      .container {
+      .mainContainer {
         width: 1350px !important;
       }
     }
@@ -61,7 +61,7 @@
 
     .previewContainer {
       height: 100%;
-      .container {
+      .mainContainer {
         position: relative;
         height: 100%;
         scale: 0.6;

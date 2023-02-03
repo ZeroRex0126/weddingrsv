@@ -17,7 +17,7 @@ export default function Home({ calRemaining, webSiteSetting, remainingTime }) {
   }
 
   return (
-    <div className="container">
+    <div className="mainContainer">
       <Head>
         <title>{webSiteSetting.title} - Home</title>
         <meta name="description" content="Home page" />

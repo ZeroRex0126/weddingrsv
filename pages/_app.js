@@ -5,6 +5,8 @@ import { getRemainingDate, getWebSettingData } from "../libs/web-util";
 import "../styles/globals.css";
 import "../styles/index.scss";
 import "../styles/settings.scss";
+import "bootstrap/dist/css/bootstrap.css";
+// const OwlCarousel = dynamic(import("react-owl-carousel"), { ssr: false });
 // ..Loading Function
 // function Loading() {
 //   const router = useRouter();
