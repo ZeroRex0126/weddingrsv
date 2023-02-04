@@ -1,7 +1,16 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useEffect } from "react";
-import { TimerCard } from "../components";
+import {
+  AboutComponent,
+  Contact,
+  EventsComp,
+  Family,
+  Gallery,
+  RSVP,
+  StoryComponent,
+  TimerCard,
+} from "../components";
 
 export default function Home({ calRemaining, webSiteSetting, remainingTime }) {
   useEffect(() => {
@@ -29,6 +38,7 @@ export default function Home({ calRemaining, webSiteSetting, remainingTime }) {
         style={{
           backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
         }}
+        id="home"
       >
         <div>
           <Link href="/settings">to settings</Link>
@@ -47,6 +57,13 @@ export default function Home({ calRemaining, webSiteSetting, remainingTime }) {
           <TimerCard title="seconds" time={remainingTime.seconds} />
         </div>
       </div>
+      <AboutComponent webSiteSetting={webSiteSetting} />
+      <StoryComponent />
+      <Gallery />
+      <Family />
+      <EventsComp />
+      <RSVP />
+      <Contact />
     </div>
   );
 }
