@@ -7,38 +7,156 @@ const Story = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media (min-width: 768px) {
+    .storyPicCon {
+      align-items: center;
+      justify-content: center;
+      display: flex;
+    }
+
+    .storyPic {
+      height: 300px;
+      width: 600px;
+      background-size: cover;
+    }
+    .timeline::after {
+      position: absolute;
+      content: "";
+      width: 2px;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -1px;
+      background: rgb(252, 230, 213);
+    }
+
+    .timeline .row::before {
+      content: "";
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      margin-top: 8%;
+      left: calc(50% - 15px);
+      background: white;
+      border: 2px solid rgb(252, 230, 213);
+      transform: rotate(45deg);
+      z-index: 1;
+    }
+
+    .timeline .row::after {
+      content: "♥";
+      // font-family: "Font Awesome 5 Free";
+      font-weight: 400;
+      position: absolute;
+      margin-top: 8.2%;
+      left: calc(50% - 8px);
+      color: rgb(252, 230, 213);
+      z-index: 2;
+    }
+  }
 `;
 
-const StoryComponent = () => {
+const StoryComponent = ({ webSiteSetting }) => {
   return (
     <Story id="story">
-      <h1>Story of the Weds</h1>
-      <div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Neque gravida in
-        fermentum et sollicitudin ac orci. Dignissim cras tincidunt lobortis
-        feugiat vivamus at augue. Convallis convallis tellus id interdum velit.
-        Amet nisl suscipit adipiscing bibendum est. Lectus quam id leo in vitae
-        turpis massa sed elementum. Egestas pretium aenean pharetra magna ac
-        placerat vestibulum lectus. Pellentesque elit eget gravida cum sociis
-        natoque penatibus. Aliquet enim tortor at auctor. At tempor commodo
-        ullamcorper a lacus vestibulum sed arcu non. Ut faucibus pulvinar
-        elementum integer enim neque volutpat. Ut faucibus pulvinar elementum
-        integer enim neque volutpat ac. Viverra justo nec ultrices dui. Diam ut
-        venenatis tellus in metus vulputate eu scelerisque. Amet est placerat in
-        egestas erat imperdiet sed euismod nisi. Id aliquet risus feugiat in
-        ante metus dictum. Odio eu feugiat pretium nibh ipsum consequat nisl.
-        Orci ac auctor augue mauris augue neque gravida. At varius vel pharetra
-        vel turpis nunc eget lorem. Fermentum leo vel orci porta. Vitae proin
-        sagittis nisl rhoncus mattis. Enim ut tellus elementum sagittis vitae
-        et. Hac habitasse platea dictumst quisque sagittis purus sit amet.
-        Volutpat ac tincidunt vitae semper quis lectus nulla at volutpat. Eget
-        lorem dolor sed viverra ipsum nunc aliquet bibendum. Consectetur purus
-        ut faucibus pulvinar elementum integer enim neque volutpat. Vitae tempus
-        quam pellentesque nec nam aliquam. Velit egestas dui id ornare. Massa id
-        neque aliquam vestibulum. Arcu felis bibendum ut tristique et egestas
-        quis. Volutpat maecenas volutpat blandit aliquam etiam erat velit
-        scelerisque.
+      <div class="container-fluid py-5" id="story">
+        <div class="container pt-5 pb-3">
+          <div class="section-title position-relative text-center">
+            <h1 class="font-secondary display-4">Our Love Story</h1>
+            <i class="far fa-heart text-dark"></i>
+          </div>
+          <div class="container timeline position-relative p-0">
+            <div class="row">
+              <div class="col-md-6 text-center text-md-right storyPicCon">
+                <div
+                  className="img-fluid mr-md-3 storyPic"
+                  style={{
+                    backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
+                  }}
+                ></div>
+              </div>
+              <div class="col-md-6 text-center text-md-left">
+                <div class="h-100 d-flex flex-column justify-content-center p-4 ml-md-3">
+                  <h4 class="mb-2">First Meet</h4>
+                  <p class="text-uppercase mb-2">01 Jan 2050</p>
+                  <p class="m-0">
+                    Lorem elitr magna stet rebum dolores sed. Est stet labore
+                    est lorem lorem at amet sea, eos tempor rebum, labore amet
+                    ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd
+                    stet amet est dolor elitr.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-center text-md-right">
+                <div class="h-100 d-flex flex-column justify-content-center p-4 mr-md-3">
+                  <h4 class="mb-2">First Date</h4>
+                  <p class="text-uppercase mb-2">01 Jan 2050</p>
+                  <p class="m-0">
+                    Lorem elitr magna stet rebum dolores sed. Est stet labore
+                    est lorem lorem at amet sea, eos tempor rebum, labore amet
+                    ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd
+                    stet amet est dolor elitr.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6 text-center text-md-left storyPicCon">
+                <div
+                  className="col-md-6 p-0 storyPic"
+                  style={{
+                    backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
+                  }}
+                ></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-center text-md-right storyPicCon">
+                <div
+                  className="col-md-6 p-0 storyPic"
+                  style={{
+                    backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
+                  }}
+                ></div>
+              </div>
+              <div class="col-md-6 text-center text-md-left">
+                <div class="h-100 d-flex flex-column justify-content-center p-4 ml-md-3">
+                  <h4 class="mb-2">Proposal</h4>
+                  <p class="text-uppercase mb-2">01 Jan 2050</p>
+                  <p class="m-0">
+                    Lorem elitr magna stet rebum dolores sed. Est stet labore
+                    est lorem lorem at amet sea, eos tempor rebum, labore amet
+                    ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd
+                    stet amet est dolor elitr.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-center text-md-right">
+                <div class="h-100 d-flex flex-column justify-content-center p-4 mr-md-3">
+                  <h4 class="mb-2">Enagagement</h4>
+                  <p class="text-uppercase mb-2">01 Jan 2050</p>
+                  <p class="m-0">
+                    Lorem elitr magna stet rebum dolores sed. Est stet labore
+                    est lorem lorem at amet sea, eos tempor rebum, labore amet
+                    ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd
+                    stet amet est dolor elitr.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6 text-center text-md-left storyPicCon">
+                <div
+                  className="col-md-6 p-0 storyPic"
+                  style={{
+                    backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
+                  }}
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </Story>
   );

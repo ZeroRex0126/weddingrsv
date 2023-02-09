@@ -13,12 +13,14 @@ const TopNav = () => {
 
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
-    if (currentScrollY > lastScrollY.current) {
-      setFixed(false);
-    } else {
-      setFixed(true);
+    if (window.innerWidth > 991) {
+      if (currentScrollY > lastScrollY.current) {
+        setFixed(false);
+      } else {
+        setFixed(true);
+      }
+      lastScrollY.current = currentScrollY;
     }
-    lastScrollY.current = currentScrollY;
   };
 
   useEffect(() => {

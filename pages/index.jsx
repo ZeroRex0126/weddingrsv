@@ -58,12 +58,12 @@ export default function Home({ calRemaining, webSiteSetting, remainingTime }) {
         </div>
       </div>
       <AboutComponent webSiteSetting={webSiteSetting} />
-      <StoryComponent />
-      <Gallery />
-      <Family />
-      <EventsComp />
-      <RSVP />
-      <Contact />
+      <StoryComponent webSiteSetting={webSiteSetting} />
+      <Gallery webSiteSetting={webSiteSetting} />
+      <Family webSiteSetting={webSiteSetting} />
+      <EventsComp webSiteSetting={webSiteSetting} />
+      <RSVP webSiteSetting={webSiteSetting} />
+      <Contact webSiteSetting={webSiteSetting} />
     </div>
   );
 }
