@@ -41,8 +41,9 @@ export default function Home({ calRemaining, webSiteSetting, remainingTime }) {
         id="home"
       >
         <div>
-          <Link href="/settings">to settings</Link>
-          <button onClick={LogData}>Log Data</button>
+          <h1>{webSiteSetting.title}</h1>
+          {/* <Link href="/settings">to settings</Link> */}
+          {/* <button onClick={LogData}>Log Data</button> */}
         </div>
         <div className="timer">
           {remainingTime.years > 0 ? (

@@ -16,23 +16,23 @@ const FamilyComp = styled.div`
 const Family = ({ webSiteSetting }) => {
   return (
     <FamilyComp id="family">
-      <div class="container-fluid py-5" id="family">
-        <div class="container pt-5 pb-3">
-          <div class="section-title position-relative text-center">
-            <h1 class="font-secondary display-4">Groomsmen & Bridesmaid</h1>
-            <i class="far fa-heart text-dark"></i>
+      <div className="container-fluid py-5" id="family">
+        <div className="container pt-5 pb-3">
+          <div className="section-title position-relative text-center">
+            <h1 className="font-secondary display-4">Groomsmen & Bridesmaid</h1>
+            <i className="far fa-heart text-dark"></i>
           </div>
-          <div class="row">
-            <div class="col-12 text-center mb-2">
-              <ul class="list-inline mb-4" id="portfolio-flters">
+          <div className="row">
+            <div className="col-12 text-center mb-2">
+              <ul className="list-inline mb-4" id="portfolio-flters">
                 <li
-                  class="btn btn-outline-primary font-weight-bold m-1 py-2 px-4"
+                  className="btn btn-outline-primary font-weight-bold m-1 py-2 px-4"
                   data-filter=".first"
                 >
                   Groomsmen
                 </li>
                 <li
-                  class="btn btn-outline-primary font-weight-bold m-1 py-2 px-4"
+                  className="btn btn-outline-primary font-weight-bold m-1 py-2 px-4"
                   data-filter=".second"
                 >
                   Bridesmaid
@@ -40,170 +40,170 @@ const Family = ({ webSiteSetting }) => {
               </ul>
             </div>
           </div>
-          <div class="row portfolio-container">
-            <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
-              <div class="position-relative mb-2">
+          <div className="row portfolio-container">
+            <div className="col-lg-4 col-md-6 mb-4 portfolio-item first">
+              <div className="position-relative mb-2">
                 <div
                   className="img-fluid mr-md-3 w-100 pic"
                   style={{
                     backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
                   }}
                 ></div>
-                <div class="bg-secondary text-center p-4">
-                  <h4 class="mb-3">Full Name</h4>
-                  <p class="text-uppercase">Best Friend</p>
-                  <div class="d-inline-block">
-                    <a class="mx-2" href="#">
-                      <i class="fab fa-twitter"></i>
+                <div className="bg-secondary text-center p-4">
+                  <h4 className="mb-3">Full Name</h4>
+                  <p className="text-uppercase">Best Friend</p>
+                  <div className="d-inline-block">
+                    <a className="mx-2" href="#">
+                      <i className="fab fa-twitter"></i>
                     </a>
-                    <a class="mx-2" href="#">
-                      <i class="fab fa-facebook-f"></i>
+                    <a className="mx-2" href="#">
+                      <i className="fab fa-facebook-f"></i>
                     </a>
-                    <a class="mx-2" href="#">
-                      <i class="fab fa-linkedin-in"></i>
+                    <a className="mx-2" href="#">
+                      <i className="fab fa-linkedin-in"></i>
                     </a>
-                    <a class="mx-2" href="#">
-                      <i class="fab fa-instagram"></i>
+                    <a className="mx-2" href="#">
+                      <i className="fab fa-instagram"></i>
                     </a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
-              <div class="position-relative mb-2">
+            <div className="col-lg-4 col-md-6 mb-4 portfolio-item second">
+              <div className="position-relative mb-2">
                 <div
                   className="img-fluid mr-md-3 w-100 pic"
                   style={{
                     backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
                   }}
                 ></div>
-                <div class="bg-secondary text-center p-4">
-                  <h4 class="mb-3">Full Name</h4>
-                  <p class="text-uppercase">Best Friend</p>
-                  <div class="d-inline-block">
-                    <a class="mx-2" href="#">
-                      <i class="fab fa-twitter"></i>
+                <div className="bg-secondary text-center p-4">
+                  <h4 className="mb-3">Full Name</h4>
+                  <p className="text-uppercase">Best Friend</p>
+                  <div className="d-inline-block">
+                    <a className="mx-2" href="#">
+                      <i className="fab fa-twitter"></i>
                     </a>
-                    <a class="mx-2" href="#">
-                      <i class="fab fa-facebook-f"></i>
+                    <a className="mx-2" href="#">
+                      <i className="fab fa-facebook-f"></i>
                     </a>
-                    <a class="mx-2" href="#">
-                      <i class="fab fa-linkedin-in"></i>
+                    <a className="mx-2" href="#">
+                      <i className="fab fa-linkedin-in"></i>
                     </a>
-                    <a class="mx-2" href="#">
-                      <i class="fab fa-instagram"></i>
+                    <a className="mx-2" href="#">
+                      <i className="fab fa-instagram"></i>
                     </a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
-              <div class="position-relative mb-2">
+            <div className="col-lg-4 col-md-6 mb-4 portfolio-item first">
+              <div className="position-relative mb-2">
                 <div
                   className="img-fluid mr-md-3 w-100 pic"
                   style={{
                     backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
                   }}
                 ></div>
-                <div class="bg-secondary text-center p-4">
-                  <h4 class="mb-3">Full Name</h4>
-                  <p class="text-uppercase">Best Friend</p>
-                  <div class="d-inline-block">
-                    <a class="mx-2" href="#">
-                      <i class="fab fa-twitter"></i>
+                <div className="bg-secondary text-center p-4">
+                  <h4 className="mb-3">Full Name</h4>
+                  <p className="text-uppercase">Best Friend</p>
+                  <div className="d-inline-block">
+                    <a className="mx-2" href="#">
+                      <i className="fab fa-twitter"></i>
                     </a>
-                    <a class="mx-2" href="#">
-                      <i class="fab fa-facebook-f"></i>
+                    <a className="mx-2" href="#">
+                      <i className="fab fa-facebook-f"></i>
                     </a>
-                    <a class="mx-2" href="#">
-                      <i class="fab fa-linkedin-in"></i>
+                    <a className="mx-2" href="#">
+                      <i className="fab fa-linkedin-in"></i>
                     </a>
-                    <a class="mx-2" href="#">
-                      <i class="fab fa-instagram"></i>
+                    <a className="mx-2" href="#">
+                      <i className="fab fa-instagram"></i>
                     </a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
-              <div class="position-relative mb-2">
+            <div className="col-lg-4 col-md-6 mb-4 portfolio-item second">
+              <div className="position-relative mb-2">
                 <div
                   className="img-fluid mr-md-3 w-100 pic"
                   style={{
                     backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
                   }}
                 ></div>
-                <div class="bg-secondary text-center p-4">
-                  <h4 class="mb-3">Full Name</h4>
-                  <p class="text-uppercase">Best Friend</p>
-                  <div class="d-inline-block">
-                    <a class="mx-2" href="#">
-                      <i class="fab fa-twitter"></i>
+                <div className="bg-secondary text-center p-4">
+                  <h4 className="mb-3">Full Name</h4>
+                  <p className="text-uppercase">Best Friend</p>
+                  <div className="d-inline-block">
+                    <a className="mx-2" href="#">
+                      <i className="fab fa-twitter"></i>
                     </a>
-                    <a class="mx-2" href="#">
-                      <i class="fab fa-facebook-f"></i>
+                    <a className="mx-2" href="#">
+                      <i className="fab fa-facebook-f"></i>
                     </a>
-                    <a class="mx-2" href="#">
-                      <i class="fab fa-linkedin-in"></i>
+                    <a className="mx-2" href="#">
+                      <i className="fab fa-linkedin-in"></i>
                     </a>
-                    <a class="mx-2" href="#">
-                      <i class="fab fa-instagram"></i>
+                    <a className="mx-2" href="#">
+                      <i className="fab fa-instagram"></i>
                     </a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
-              <div class="position-relative mb-2">
+            <div className="col-lg-4 col-md-6 mb-4 portfolio-item first">
+              <div className="position-relative mb-2">
                 <div
                   className="img-fluid mr-md-3 w-100 pic"
                   style={{
                     backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
                   }}
                 ></div>
-                <div class="bg-secondary text-center p-4">
-                  <h4 class="mb-3">Full Name</h4>
-                  <p class="text-uppercase">Best Friend</p>
-                  <div class="d-inline-block">
-                    <a class="mx-2" href="#">
-                      <i class="fab fa-twitter"></i>
+                <div className="bg-secondary text-center p-4">
+                  <h4 className="mb-3">Full Name</h4>
+                  <p className="text-uppercase">Best Friend</p>
+                  <div className="d-inline-block">
+                    <a className="mx-2" href="#">
+                      <i className="fab fa-twitter"></i>
                     </a>
-                    <a class="mx-2" href="#">
-                      <i class="fab fa-facebook-f"></i>
+                    <a className="mx-2" href="#">
+                      <i className="fab fa-facebook-f"></i>
                     </a>
-                    <a class="mx-2" href="#">
-                      <i class="fab fa-linkedin-in"></i>
+                    <a className="mx-2" href="#">
+                      <i className="fab fa-linkedin-in"></i>
                     </a>
-                    <a class="mx-2" href="#">
-                      <i class="fab fa-instagram"></i>
+                    <a className="mx-2" href="#">
+                      <i className="fab fa-instagram"></i>
                     </a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
-              <div class="position-relative mb-2">
+            <div className="col-lg-4 col-md-6 mb-4 portfolio-item second">
+              <div className="position-relative mb-2">
                 <div
                   className="img-fluid mr-md-3 w-100 pic"
                   style={{
                     backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
                   }}
                 ></div>
-                <div class="bg-secondary text-center p-4">
-                  <h4 class="mb-3">Full Name</h4>
-                  <p class="text-uppercase">Best Friend</p>
-                  <div class="d-inline-block">
-                    <a class="mx-2" href="#">
-                      <i class="fab fa-twitter"></i>
+                <div className="bg-secondary text-center p-4">
+                  <h4 className="mb-3">Full Name</h4>
+                  <p className="text-uppercase">Best Friend</p>
+                  <div className="d-inline-block">
+                    <a className="mx-2" href="#">
+                      <i className="fab fa-twitter"></i>
                     </a>
-                    <a class="mx-2" href="#">
-                      <i class="fab fa-facebook-f"></i>
+                    <a className="mx-2" href="#">
+                      <i className="fab fa-facebook-f"></i>
                     </a>
-                    <a class="mx-2" href="#">
-                      <i class="fab fa-linkedin-in"></i>
+                    <a className="mx-2" href="#">
+                      <i className="fab fa-linkedin-in"></i>
                     </a>
-                    <a class="mx-2" href="#">
-                      <i class="fab fa-instagram"></i>
+                    <a className="mx-2" href="#">
+                      <i className="fab fa-instagram"></i>
                     </a>
                   </div>
                 </div>

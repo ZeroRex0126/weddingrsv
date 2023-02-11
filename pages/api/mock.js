@@ -1,7 +1,7 @@
 let mockData = [
   {
     _id: "637f7224e3981e7244b04862",
-    title: "Wick & Sam Wedding RSVP",
+    title: "Wick & Sam Wedding",
     pin: "1234",
     location: {
       street: "demo street",

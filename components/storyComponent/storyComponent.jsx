@@ -53,6 +53,7 @@ const Story = styled.div`
       left: calc(50% - 8px);
       color: rgb(252, 230, 213);
       z-index: 2;
+      transform:translate(25%,0);
     }
   }
 `;
@@ -60,15 +61,15 @@ const Story = styled.div`
 const StoryComponent = ({ webSiteSetting }) => {
   return (
     <Story id="story">
-      <div class="container-fluid py-5" id="story">
-        <div class="container pt-5 pb-3">
-          <div class="section-title position-relative text-center">
-            <h1 class="font-secondary display-4">Our Love Story</h1>
-            <i class="far fa-heart text-dark"></i>
+      <div className="container-fluid py-5" id="story">
+        <div className="container pt-5 pb-3">
+          <div className="section-title position-relative text-center">
+            <h1 className="font-secondary display-4">Our Love Story</h1>
+            <i className="far fa-heart text-dark"></i>
           </div>
-          <div class="container timeline position-relative p-0">
-            <div class="row">
-              <div class="col-md-6 text-center text-md-right storyPicCon">
+          <div className="container timeline position-relative p-0">
+            <div className="row">
+              <div className="col-md-6 text-center text-md-right storyPicCon">
                 <div
                   className="img-fluid mr-md-3 storyPic"
                   style={{
@@ -76,11 +77,11 @@ const StoryComponent = ({ webSiteSetting }) => {
                   }}
                 ></div>
               </div>
-              <div class="col-md-6 text-center text-md-left">
-                <div class="h-100 d-flex flex-column justify-content-center p-4 ml-md-3">
-                  <h4 class="mb-2">First Meet</h4>
-                  <p class="text-uppercase mb-2">01 Jan 2050</p>
-                  <p class="m-0">
+              <div className="col-md-6 text-center text-md-left">
+                <div className="h-100 d-flex flex-column justify-content-center p-4 ml-md-3">
+                  <h4 className="mb-2">First Meet</h4>
+                  <p className="text-uppercase mb-2">01 Jan 2050</p>
+                  <p className="m-0">
                     Lorem elitr magna stet rebum dolores sed. Est stet labore
                     est lorem lorem at amet sea, eos tempor rebum, labore amet
                     ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd
@@ -89,12 +90,12 @@ const StoryComponent = ({ webSiteSetting }) => {
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-6 text-center text-md-right">
-                <div class="h-100 d-flex flex-column justify-content-center p-4 mr-md-3">
-                  <h4 class="mb-2">First Date</h4>
-                  <p class="text-uppercase mb-2">01 Jan 2050</p>
-                  <p class="m-0">
+            <div className="row">
+              <div className="col-md-6 text-center text-md-right">
+                <div className="h-100 d-flex flex-column justify-content-center p-4 mr-md-3">
+                  <h4 className="mb-2">First Date</h4>
+                  <p className="text-uppercase mb-2">01 Jan 2050</p>
+                  <p className="m-0">
                     Lorem elitr magna stet rebum dolores sed. Est stet labore
                     est lorem lorem at amet sea, eos tempor rebum, labore amet
                     ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd
@@ -102,29 +103,29 @@ const StoryComponent = ({ webSiteSetting }) => {
                   </p>
                 </div>
               </div>
-              <div class="col-md-6 text-center text-md-left storyPicCon">
+              <div className="col-md-6 text-center text-md-left storyPicCon">
                 <div
-                  className="col-md-6 p-0 storyPic"
+                  className="img-fluid mr-md-3 storyPic"
                   style={{
                     backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
                   }}
                 ></div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-6 text-center text-md-right storyPicCon">
+            <div className="row">
+              <div className="col-md-6 text-center text-md-right storyPicCon">
                 <div
-                  className="col-md-6 p-0 storyPic"
+                  className="img-fluid mr-md-3 storyPic"
                   style={{
                     backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
                   }}
                 ></div>
               </div>
-              <div class="col-md-6 text-center text-md-left">
-                <div class="h-100 d-flex flex-column justify-content-center p-4 ml-md-3">
-                  <h4 class="mb-2">Proposal</h4>
-                  <p class="text-uppercase mb-2">01 Jan 2050</p>
-                  <p class="m-0">
+              <div className="col-md-6 text-center text-md-left">
+                <div className="h-100 d-flex flex-column justify-content-center p-4 ml-md-3">
+                  <h4 className="mb-2">Proposal</h4>
+                  <p className="text-uppercase mb-2">01 Jan 2050</p>
+                  <p className="m-0">
                     Lorem elitr magna stet rebum dolores sed. Est stet labore
                     est lorem lorem at amet sea, eos tempor rebum, labore amet
                     ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd
@@ -133,12 +134,12 @@ const StoryComponent = ({ webSiteSetting }) => {
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-6 text-center text-md-right">
-                <div class="h-100 d-flex flex-column justify-content-center p-4 mr-md-3">
-                  <h4 class="mb-2">Enagagement</h4>
-                  <p class="text-uppercase mb-2">01 Jan 2050</p>
-                  <p class="m-0">
+            <div className="row">
+              <div className="col-md-6 text-center text-md-right">
+                <div className="h-100 d-flex flex-column justify-content-center p-4 mr-md-3">
+                  <h4 className="mb-2">Enagagement</h4>
+                  <p className="text-uppercase mb-2">01 Jan 2050</p>
+                  <p className="m-0">
                     Lorem elitr magna stet rebum dolores sed. Est stet labore
                     est lorem lorem at amet sea, eos tempor rebum, labore amet
                     ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd
@@ -146,9 +147,9 @@ const StoryComponent = ({ webSiteSetting }) => {
                   </p>
                 </div>
               </div>
-              <div class="col-md-6 text-center text-md-left storyPicCon">
+              <div className="col-md-6 text-center text-md-left storyPicCon">
                 <div
-                  className="col-md-6 p-0 storyPic"
+                  className="img-fluid mr-md-3 storyPic"
                   style={{
                     backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
                   }}
