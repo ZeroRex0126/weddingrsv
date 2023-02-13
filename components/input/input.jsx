@@ -35,7 +35,7 @@ const Input = ({ name, title, value, type, width, options }) => {
           }}
         >
           <select>
-            <option key={0} value="" disabled defaultValue hidden>--Select a option</option>
+            <option key={0} value="" >--Select a option</option>
             {options.map((option, index) => (
               <option key={index} value={option}>
                 {option}
