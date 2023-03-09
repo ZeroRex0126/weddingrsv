@@ -50,10 +50,10 @@ const Story = styled.div`
       font-weight: 400;
       position: absolute;
       margin-top: 8.2%;
-      left: calc(50% - 8px);
+      left: calc(50% - 11px);
       color: rgb(252, 230, 213);
       z-index: 2;
-      transform:translate(25%,0);
+      transform: translate(25%, 0);
     }
   }
 `;
