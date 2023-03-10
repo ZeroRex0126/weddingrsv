@@ -9,13 +9,13 @@ const GalleryComp = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  ////should not be here
-  --slide-spacing: 1rem;
-  --slide-size: 10%;
-  --slide-height: 19rem;
-  padding: 1.6rem;
-
-  .embla {
+  .embla{
+    --slide-spacing: 1rem;
+    --slide-size: 10%;
+    --slide-height: 19rem;
+    padding: 1.6rem;
+  
+  .embla__viewport {
     width: 100vw
     overflow: hidden;
   }
@@ -30,7 +30,7 @@ const GalleryComp = styled.div`
   min-width: 0;
   padding-left: var(--slide-spacing);
   position: relative;
-  }
+  }}
 `;
 
 const Gallery = (props) => {
@@ -40,56 +40,58 @@ const Gallery = (props) => {
   return (
     <GalleryComp id="gallery">
       <h1>this is gallery</h1>
-      <div className="embla" ref={emblaRef}>
-        <div className="embla__container">
-          <div className="embla__slide">Slide 1</div>
-          <div className="embla__slide">Slide 2</div>
-          <div className="embla__slide">Slide 3</div>
-          <div className="embla__slide">Slide 1</div>
-          <div className="embla__slide">Slide 2</div>
-          <div className="embla__slide">Slide 3</div>
-          <div className="embla__slide">Slide 1</div>
-          <div className="embla__slide">Slide 2</div>
-          <div className="embla__slide">Slide 3</div>
-          <div className="embla__slide">Slide 1</div>
-          <div className="embla__slide">Slide 2</div>
-          <div className="embla__slide">Slide 3</div>
-          <div className="embla__slide">Slide 1</div>
-          <div className="embla__slide">Slide 2</div>
-          <div className="embla__slide">Slide 3</div>
-          <div className="embla__slide">Slide 1</div>
-          <div className="embla__slide">Slide 2</div>
-          <div className="embla__slide">Slide 3</div>
-          <div className="embla__slide">Slide 1</div>
-          <div className="embla__slide">Slide 2</div>
-          <div className="embla__slide">Slide 3</div>
-          <div className="embla__slide">Slide 1</div>
-          <div className="embla__slide">Slide 2</div>
-          <div className="embla__slide">Slide 3</div>
-          <div className="embla__slide">Slide 1</div>
-          <div className="embla__slide">Slide 2</div>
-          <div className="embla__slide">Slide 3</div>
-          <div className="embla__slide">Slide 1</div>
-          <div className="embla__slide">Slide 2</div>
-          <div className="embla__slide">Slide 3</div>
-          <div className="embla__slide">Slide 1</div>
-          <div className="embla__slide">Slide 2</div>
-          <div className="embla__slide">Slide 3</div>
-          <div className="embla__slide">Slide 1</div>
-          <div className="embla__slide">Slide 2</div>
-          <div className="embla__slide">Slide 3</div>
-          <div className="embla__slide">Slide 1</div>
-          <div className="embla__slide">Slide 2</div>
-          <div className="embla__slide">Slide 3</div>
-          <div className="embla__slide">Slide 1</div>
-          <div className="embla__slide">Slide 2</div>
-          <div className="embla__slide">Slide 3</div>
-          <div className="embla__slide">Slide 1</div>
-          <div className="embla__slide">Slide 2</div>
-          <div className="embla__slide">Slide 3</div>
-          <div className="embla__slide">Slide 1</div>
-          <div className="embla__slide">Slide 2</div>
-          <div className="embla__slide">Slide 3</div>
+      <div className="embla">
+        <div className="embla__viewport" ref={emblaRef}>
+          <div className="embla__container">
+            <div className="embla__slide">Slide 1</div>
+            <div className="embla__slide">Slide 2</div>
+            <div className="embla__slide">Slide 3</div>
+            <div className="embla__slide">Slide 1</div>
+            <div className="embla__slide">Slide 2</div>
+            <div className="embla__slide">Slide 3</div>
+            <div className="embla__slide">Slide 1</div>
+            <div className="embla__slide">Slide 2</div>
+            <div className="embla__slide">Slide 3</div>
+            <div className="embla__slide">Slide 1</div>
+            <div className="embla__slide">Slide 2</div>
+            <div className="embla__slide">Slide 3</div>
+            <div className="embla__slide">Slide 1</div>
+            <div className="embla__slide">Slide 2</div>
+            <div className="embla__slide">Slide 3</div>
+            <div className="embla__slide">Slide 1</div>
+            <div className="embla__slide">Slide 2</div>
+            <div className="embla__slide">Slide 3</div>
+            <div className="embla__slide">Slide 1</div>
+            <div className="embla__slide">Slide 2</div>
+            <div className="embla__slide">Slide 3</div>
+            <div className="embla__slide">Slide 1</div>
+            <div className="embla__slide">Slide 2</div>
+            <div className="embla__slide">Slide 3</div>
+            <div className="embla__slide">Slide 1</div>
+            <div className="embla__slide">Slide 2</div>
+            <div className="embla__slide">Slide 3</div>
+            <div className="embla__slide">Slide 1</div>
+            <div className="embla__slide">Slide 2</div>
+            <div className="embla__slide">Slide 3</div>
+            <div className="embla__slide">Slide 1</div>
+            <div className="embla__slide">Slide 2</div>
+            <div className="embla__slide">Slide 3</div>
+            <div className="embla__slide">Slide 1</div>
+            <div className="embla__slide">Slide 2</div>
+            <div className="embla__slide">Slide 3</div>
+            <div className="embla__slide">Slide 1</div>
+            <div className="embla__slide">Slide 2</div>
+            <div className="embla__slide">Slide 3</div>
+            <div className="embla__slide">Slide 1</div>
+            <div className="embla__slide">Slide 2</div>
+            <div className="embla__slide">Slide 3</div>
+            <div className="embla__slide">Slide 1</div>
+            <div className="embla__slide">Slide 2</div>
+            <div className="embla__slide">Slide 3</div>
+            <div className="embla__slide">Slide 1</div>
+            <div className="embla__slide">Slide 2</div>
+            <div className="embla__slide">Slide 3</div>
+          </div>
         </div>
       </div>
     </GalleryComp>
