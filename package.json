@@ -13,6 +13,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "bootstrap": "^5.2.3",
+    "embla-carousel-react": "^7.1.0",
     "include-media": "^1.4.10",
     "mongodb": "^4.12.1",
     "next": "13.0.4",
