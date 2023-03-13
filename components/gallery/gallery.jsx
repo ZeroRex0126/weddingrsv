@@ -21,15 +21,22 @@ const GalleryComp = styled.div`
   }
   .embla__container {
     display: flex;
-  flex-direction: row;
-  height: auto;
-  margin-left: calc(var(--slide-spacing) * -1);
+    flex-direction: row;
+    height: auto;
+    margin-left: calc(var(--slide-spacing) * -1);
   }
   .embla__slide {
+    height: 260px;
+    width: 250px;
     flex: 0 0 var(--slide-size);
-  min-width: 0;
-  padding-left: var(--slide-spacing);
-  position: relative;
+    min-width: 0;
+    // padding-left: var(--slide-spacing);
+    position: relative;
+    .slideImg{
+      background-size: cover;
+      height:100%;
+      width:100%;
+    }
   }}
 `;
 
@@ -43,54 +50,134 @@ const Gallery = (props) => {
       <div className="embla">
         <div className="embla__viewport" ref={emblaRef}>
           <div className="embla__container">
-            <div className="embla__slide">Slide 1</div>
-            <div className="embla__slide">Slide 2</div>
-            <div className="embla__slide">Slide 3</div>
-            <div className="embla__slide">Slide 1</div>
-            <div className="embla__slide">Slide 2</div>
-            <div className="embla__slide">Slide 3</div>
-            <div className="embla__slide">Slide 1</div>
-            <div className="embla__slide">Slide 2</div>
-            <div className="embla__slide">Slide 3</div>
-            <div className="embla__slide">Slide 1</div>
-            <div className="embla__slide">Slide 2</div>
-            <div className="embla__slide">Slide 3</div>
-            <div className="embla__slide">Slide 1</div>
-            <div className="embla__slide">Slide 2</div>
-            <div className="embla__slide">Slide 3</div>
-            <div className="embla__slide">Slide 1</div>
-            <div className="embla__slide">Slide 2</div>
-            <div className="embla__slide">Slide 3</div>
-            <div className="embla__slide">Slide 1</div>
-            <div className="embla__slide">Slide 2</div>
-            <div className="embla__slide">Slide 3</div>
-            <div className="embla__slide">Slide 1</div>
-            <div className="embla__slide">Slide 2</div>
-            <div className="embla__slide">Slide 3</div>
-            <div className="embla__slide">Slide 1</div>
-            <div className="embla__slide">Slide 2</div>
-            <div className="embla__slide">Slide 3</div>
-            <div className="embla__slide">Slide 1</div>
-            <div className="embla__slide">Slide 2</div>
-            <div className="embla__slide">Slide 3</div>
-            <div className="embla__slide">Slide 1</div>
-            <div className="embla__slide">Slide 2</div>
-            <div className="embla__slide">Slide 3</div>
-            <div className="embla__slide">Slide 1</div>
-            <div className="embla__slide">Slide 2</div>
-            <div className="embla__slide">Slide 3</div>
-            <div className="embla__slide">Slide 1</div>
-            <div className="embla__slide">Slide 2</div>
-            <div className="embla__slide">Slide 3</div>
-            <div className="embla__slide">Slide 1</div>
-            <div className="embla__slide">Slide 2</div>
-            <div className="embla__slide">Slide 3</div>
-            <div className="embla__slide">Slide 1</div>
-            <div className="embla__slide">Slide 2</div>
-            <div className="embla__slide">Slide 3</div>
-            <div className="embla__slide">Slide 1</div>
-            <div className="embla__slide">Slide 2</div>
-            <div className="embla__slide">Slide 3</div>
+            <div className="embla__slide">
+              <div
+                className="img-fluid mr-md-3 slideImg"
+                style={{
+                  backgroundImage: `url(data:image/jpeg;base64,${props.webSiteSetting.heroimg})`,
+                }}
+              ></div>
+            </div>
+            <div className="embla__slide">
+              <div
+                className="img-fluid mr-md-3 slideImg"
+                style={{
+                  backgroundImage: `url(data:image/jpeg;base64,${props.webSiteSetting.heroimg})`,
+                }}
+              ></div>
+            </div>
+            <div className="embla__slide">
+              <div
+                className="img-fluid mr-md-3 slideImg"
+                style={{
+                  backgroundImage: `url(data:image/jpeg;base64,${props.webSiteSetting.heroimg})`,
+                }}
+              ></div>
+            </div>
+            <div className="embla__slide">
+              <div
+                className="img-fluid mr-md-3 slideImg"
+                style={{
+                  backgroundImage: `url(data:image/jpeg;base64,${props.webSiteSetting.heroimg})`,
+                }}
+              ></div>
+            </div>
+            <div className="embla__slide">
+              <div
+                className="img-fluid mr-md-3 slideImg"
+                style={{
+                  backgroundImage: `url(data:image/jpeg;base64,${props.webSiteSetting.heroimg})`,
+                }}
+              ></div>
+            </div>
+            <div className="embla__slide">
+              <div
+                className="img-fluid mr-md-3 slideImg"
+                style={{
+                  backgroundImage: `url(data:image/jpeg;base64,${props.webSiteSetting.heroimg})`,
+                }}
+              ></div>
+            </div>
+            <div className="embla__slide">
+              <div
+                className="img-fluid mr-md-3 slideImg"
+                style={{
+                  backgroundImage: `url(data:image/jpeg;base64,${props.webSiteSetting.heroimg})`,
+                }}
+              ></div>
+            </div>
+            <div className="embla__slide">
+              <div
+                className="img-fluid mr-md-3 slideImg"
+                style={{
+                  backgroundImage: `url(data:image/jpeg;base64,${props.webSiteSetting.heroimg})`,
+                }}
+              ></div>
+            </div>
+            <div className="embla__slide">
+              <div
+                className="img-fluid mr-md-3 slideImg"
+                style={{
+                  backgroundImage: `url(data:image/jpeg;base64,${props.webSiteSetting.heroimg})`,
+                }}
+              ></div>
+            </div>
+            <div className="embla__slide">
+              <div
+                className="img-fluid mr-md-3 slideImg"
+                style={{
+                  backgroundImage: `url(data:image/jpeg;base64,${props.webSiteSetting.heroimg})`,
+                }}
+              ></div>
+            </div>
+            <div className="embla__slide">
+              <div
+                className="img-fluid mr-md-3 slideImg"
+                style={{
+                  backgroundImage: `url(data:image/jpeg;base64,${props.webSiteSetting.heroimg})`,
+                }}
+              ></div>
+            </div>
+            <div className="embla__slide">
+              <div
+                className="img-fluid mr-md-3 slideImg"
+                style={{
+                  backgroundImage: `url(data:image/jpeg;base64,${props.webSiteSetting.heroimg})`,
+                }}
+              ></div>
+            </div>
+            <div className="embla__slide">
+              <div
+                className="img-fluid mr-md-3 slideImg"
+                style={{
+                  backgroundImage: `url(data:image/jpeg;base64,${props.webSiteSetting.heroimg})`,
+                }}
+              ></div>
+            </div>
+            <div className="embla__slide">
+              <div
+                className="img-fluid mr-md-3 slideImg"
+                style={{
+                  backgroundImage: `url(data:image/jpeg;base64,${props.webSiteSetting.heroimg})`,
+                }}
+              ></div>
+            </div>
+            <div className="embla__slide">
+              <div
+                className="img-fluid mr-md-3 slideImg"
+                style={{
+                  backgroundImage: `url(data:image/jpeg;base64,${props.webSiteSetting.heroimg})`,
+                }}
+              ></div>
+            </div>
+            <div className="embla__slide">
+              <div
+                className="img-fluid mr-md-3 slideImg"
+                style={{
+                  backgroundImage: `url(data:image/jpeg;base64,${props.webSiteSetting.heroimg})`,
+                }}
+              ></div>
+            </div>
           </div>
         </div>
       </div>
