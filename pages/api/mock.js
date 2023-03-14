@@ -11,7 +11,7 @@ let mockData = [
       zip: "0001",
       venue: "venue input",
     },
-    day: "05",
+    day: "13",
     month: "05",
     year: "2023",
     heroimg:
