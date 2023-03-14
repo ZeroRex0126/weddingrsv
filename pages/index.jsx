@@ -60,8 +60,8 @@ export default function Home({ calRemaining, webSiteSetting, remainingTime }) {
       </div>
       <AboutComponent webSiteSetting={webSiteSetting} />
       <StoryComponent webSiteSetting={webSiteSetting} />
-      <Gallery webSiteSetting={webSiteSetting} />
-      <Family webSiteSetting={webSiteSetting} />
+      {/* <Gallery webSiteSetting={webSiteSetting} /> */}
+      {/* <Family webSiteSetting={webSiteSetting} /> */}
       <EventsComp webSiteSetting={webSiteSetting} />
       <RSVP webSiteSetting={webSiteSetting} />
       <Contact webSiteSetting={webSiteSetting} />

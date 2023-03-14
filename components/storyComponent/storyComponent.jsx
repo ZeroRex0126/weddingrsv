@@ -9,7 +9,7 @@ const Story = styled.div`
   align-items: center;
 
   @media (min-width: 768px) {
-    .storyPicCon {
+    .storyDate {
       align-items: center;
       justify-content: center;
       display: flex;
@@ -69,13 +69,8 @@ const StoryComponent = ({ webSiteSetting }) => {
           </div>
           <div className="container timeline position-relative p-0">
             <div className="row">
-              <div className="col-md-6 text-center text-md-right storyPicCon">
-                <div
-                  className="img-fluid mr-md-3 storyPic"
-                  style={{
-                    backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
-                  }}
-                ></div>
+              <div className="col-md-6 text-center text-md-right storyDate">
+                <h1>Date</h1>
               </div>
               <div className="col-md-6 text-center text-md-left">
                 <div className="h-100 d-flex flex-column justify-content-center p-4 ml-md-3">
@@ -103,23 +98,13 @@ const StoryComponent = ({ webSiteSetting }) => {
                   </p>
                 </div>
               </div>
-              <div className="col-md-6 text-center text-md-left storyPicCon">
-                <div
-                  className="img-fluid mr-md-3 storyPic"
-                  style={{
-                    backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
-                  }}
-                ></div>
+              <div className="col-md-6 text-center text-md-left storyDate">
+                <h1>Date</h1>
               </div>
             </div>
             <div className="row">
-              <div className="col-md-6 text-center text-md-right storyPicCon">
-                <div
-                  className="img-fluid mr-md-3 storyPic"
-                  style={{
-                    backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
-                  }}
-                ></div>
+              <div className="col-md-6 text-center text-md-right storyDate">
+                <h1>Date</h1>
               </div>
               <div className="col-md-6 text-center text-md-left">
                 <div className="h-100 d-flex flex-column justify-content-center p-4 ml-md-3">
@@ -147,13 +132,8 @@ const StoryComponent = ({ webSiteSetting }) => {
                   </p>
                 </div>
               </div>
-              <div className="col-md-6 text-center text-md-left storyPicCon">
-                <div
-                  className="img-fluid mr-md-3 storyPic"
-                  style={{
-                    backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
-                  }}
-                ></div>
+              <div className="col-md-6 text-center text-md-left storyDate">
+                <h1>Date</h1>
               </div>
             </div>
           </div>

@@ -10,35 +10,33 @@ const GalleryComp = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  .embla{
+  .embla {
     --slide-spacing: 1rem;
-    --slide-size: 10%;
+    --slide-size: 50%;
     --slide-height: 19rem;
-    padding: 1.6rem;
-  
-  .embla__viewport {
-    width: 100vw
-    overflow: hidden;
-  }
-  .embla__container {
-    display: flex;
-    flex-direction: row;
-    height: auto;
-    margin-left: calc(var(--slide-spacing) * -1);
-  }
-  .embla__slide {
-    height: 260px;
-    width: 310px;
-    flex: 0 0 var(--slide-size);
-    min-width: 0;
-    // padding-left: var(--slide-spacing);
-    position: relative;
-    .slideImg{
-      background-size: cover;
-      height:100%;
-      width:100%;
+
+    .embla__viewport {
+      width: 100vw;
+      overflow: hidden;
     }
-  }}
+    .embla__container {
+      display: flex;
+      flex-direction: row;
+      height: auto;
+      margin-left: calc(var(--slide-spacing) * -1);
+    }
+    .embla__slide {
+      height: 200px;
+      flex: 0 0 var(--slide-size);
+      min-width: 0;
+      position: relative;
+      .slideImg {
+        background-size: cover;
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
 `;
 const TWEEN_FACTOR = 4.2;
 
@@ -94,7 +92,7 @@ const Gallery = (props) => {
           <div className="embla__container">
             {array.map((i) => {
               return (
-                <div className="embla__slide" key={i}>
+                <div className="embla__slide">
                   <div
                     className="img-fluid mr-md-3 slideImg"
                     style={{

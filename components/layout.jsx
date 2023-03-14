@@ -5,9 +5,9 @@ function Layout(props) {
   return (
     <Fragment>
       {/* navigateion */}
-      <header className="navContainer">
+      <div className="navContainer">
         <TopNav />
-      </header>
+      </div>
       {/* main app */}
       <main>{props.children}</main>
       {/* footer */}

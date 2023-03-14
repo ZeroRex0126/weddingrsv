@@ -1,8 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
+// const NavBarComp = styled.nav`
+//   display: ${(props) =>
+//     window.innerWidth > 991 ? (props.fixed ? "flex" : "none") : "flex"};
+// `;
+
 const NavBarComp = styled.nav`
-  display: ${(props) => (props.fixed ? "flex" : "none")};
+  // position: absolute;
+  //  position:fixed;
+  //  top:0;
+  // bottom: 0;
 `;
 
 const TopNav = () => {
@@ -76,7 +84,7 @@ const TopNav = () => {
           >
             Story
           </a>
-          <a
+          {/* <a
             href="#gallery"
             className="nav-item nav-link"
             onClick={() => {
@@ -84,13 +92,13 @@ const TopNav = () => {
             }}
           >
             Gallery
-          </a>
+          </a> */}
         </div>
         <a href="#home" className="navbar-brand mx-5 d-none d-lg-block">
           <h1 className="font-secondary text-white mb-n2">Wick & Sam</h1>
         </a>
         <div className="navbar-nav mr-auto py-0">
-          <a
+          {/* <a
             href="#family"
             className="nav-item nav-link"
             onClick={() => {
@@ -98,7 +106,7 @@ const TopNav = () => {
             }}
           >
             Family
-          </a>
+          </a> */}
           <a
             href="#events"
             className="nav-item nav-link"
