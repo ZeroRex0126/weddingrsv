@@ -7,7 +7,7 @@
   z-index: 3;
 
   .navbar {
-    background-color: gray;
+    background-color: white;
   }
 
   .navbar .navbar-nav .nav-link {
@@ -16,7 +16,7 @@
     text-transform: uppercase;
     font-weight: 600;
     outline: none;
-    color: white;
+    color: black;
   }
 
   @include media(">tablet") {
@@ -33,10 +33,10 @@
 .mainContainer {
   // padding: 0 2rem;
   .timer {
-    position: absolute;
-    left: 50%;
-    bottom: 10%;
-    translate: -50% 0;
+    // position: absolute;
+    // left: 50%;
+    // bottom: 10%;
+    // translate: -50% 0;
     display: flex;
   }
 }
