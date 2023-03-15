@@ -7,9 +7,6 @@ const EventsComp = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  .border-right {
-    border-right: 2px solid red !important;
-  }
 
   .pic {
     position: relative;
@@ -38,6 +35,12 @@ const EventsComp = styled.div`
     bottom: 11px;
     left: calc(50% - 80px);
     background: #e47a2e;
+  }
+
+  @media (min-width: 768px) {
+    .border-right {
+      border-right: 2px solid red !important;
+    }
   }
 `;
 

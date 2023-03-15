@@ -69,11 +69,8 @@ const Contact = () => {
             </p>
           </div>
           <p className="m-0">
-            &copy;{" "}
-            <a className="text-primary" href="#">
-              Domain Name
-            </a>
-            . Designed by <a className="text-primary">HTML Codex</a>
+            &copy; <a className="text-primary">Domain Name</a>. Designed by{" "}
+            <a className="text-primary">KSites</a>
           </p>
         </div>
       </div>

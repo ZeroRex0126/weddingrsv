@@ -7,6 +7,9 @@ const Story = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  .yearDis {
+    display: none;
+  }
 
   @media (min-width: 768px) {
     .storyDate {
@@ -15,10 +18,8 @@ const Story = styled.div`
       display: flex;
     }
 
-    .storyPic {
-      height: 300px;
-      width: 600px;
-      background-size: cover;
+    .yearDis {
+      display: flex;
     }
     .timeline::after {
       position: absolute;
@@ -70,7 +71,7 @@ const StoryComponent = ({ webSiteSetting }) => {
           <div className="container timeline position-relative p-0">
             <div className="row">
               <div className="col-md-6 text-center text-md-right storyDate">
-                <h1>2019</h1>
+                <h1 className="yearDis">2019</h1>
               </div>
               <div className="col-md-6 text-center text-md-left">
                 <div className="h-100 d-flex flex-column justify-content-center p-4 ml-md-3">
@@ -99,12 +100,12 @@ const StoryComponent = ({ webSiteSetting }) => {
                 </div>
               </div>
               <div className="col-md-6 text-center text-md-left storyDate">
-                <h1>2021</h1>
+                <h1 className="yearDis">2021</h1>
               </div>
             </div>
             <div className="row">
               <div className="col-md-6 text-center text-md-right storyDate">
-                <h1>2022</h1>
+                <h1 className="yearDis">2022</h1>
               </div>
               <div className="col-md-6 text-center text-md-left">
                 <div className="h-100 d-flex flex-column justify-content-center p-4 ml-md-3">
@@ -133,7 +134,7 @@ const StoryComponent = ({ webSiteSetting }) => {
                 </div>
               </div>
               <div className="col-md-6 text-center text-md-left storyDate">
-                <h1>2023</h1>
+                <h1 className="yearDis">2023</h1>
               </div>
             </div>
           </div>
