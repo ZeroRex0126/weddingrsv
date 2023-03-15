@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import Input from "../input/input";
 
@@ -15,6 +16,24 @@ const RsvpComp = styled.div`
 `;
 
 const RSVP = () => {
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [amount, setAmount] = useState("");
+  const [contactNo, setContactNo] = useState("");
+  const [email, setEmail] = useState("");
+  const [attendance, setAttendance] = useState("");
+  const [message, setMessage] = useState("");
+
+  function logData() {
+    console.log(name);
+    console.log(surname);
+    console.log(amount);
+    console.log(contactNo);
+    console.log(email);
+    console.log(attendance);
+    console.log(message);
+  }
+
   return (
     <RsvpComp id="rsvp">
       <h1>RSVP</h1>
@@ -22,49 +41,95 @@ const RSVP = () => {
         <div className="row m-0 mb-4 mb-md-0 pb-2 pb-md-0">
           <div className="col-md-6 p-0">
             <div className="h-100 d-flex flex-column align-items-center ">
-              <Input title="Name" value="" type="text" />
+              <Input
+                title="Name"
+                type="text"
+                value={name}
+                onValueChange={(e) => {
+                  setName(e.target.value);
+                }}
+              />
             </div>
           </div>
           <div className="col-md-6 p-0">
             <div className="h-100 d-flex flex-column align-items-center ">
-              <Input title="Surname" value="" type="text" />
+              <Input
+                title="Surname"
+                value={surname}
+                type="text"
+                onValueChange={(e) => {
+                  setSurname(e.target.value);
+                }}
+              />
             </div>
           </div>
           <div className="col-md-6 p-0">
             <div className="h-100 d-flex flex-column align-items-center ">
-              <Input title="Amount" value="" type="number" />
+              <Input
+                title="Amount"
+                value={amount}
+                type="number"
+                onValueChange={(e) => {
+                  setAmount(e.target.value);
+                }}
+              />
             </div>
           </div>
           <div className="col-md-6 p-0">
             <div className="h-100 d-flex flex-column align-items-center ">
-              <Input title="Contact Number" value="" type="text" />
+              <Input
+                title="Contact Number"
+                value={contactNo}
+                type="text"
+                onValueChange={(e) => {
+                  setContactNo(e.target.value);
+                }}
+              />
             </div>
           </div>
           <div className="col-md-6 p-0">
             <div className="h-100 d-flex flex-column align-items-center ">
-              <Input title="Email" value="" type="text" />
+              <Input
+                title="Email"
+                value={email}
+                type="text"
+                onValueChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              />
             </div>
           </div>
           <div className="col-md-6 p-0">
             <div className="h-100 d-flex flex-column align-items-center ">
               <Input
                 title="Attendance"
-                value=""
+                value={attendance}
                 type="select"
                 options={["Yes!!!", "No :("]}
+                onValueChange={(e) => {
+                  setAttendance(e.target.value);
+                }}
               />
             </div>
           </div>
           <div className="col-md-12 p-0">
             <div className="h-100 d-flex flex-column align-items-center ">
-              <Input title="Comment" value="" type="textarea" width={"86%"} />
+              <Input
+                title="Message"
+                value={message}
+                type="textarea"
+                width={"86%"}
+                onValueChange={(e) => {
+                  setMessage(e.target.value);
+                }}
+              />
             </div>
           </div>
         </div>
       </div>
       <div>
         <button>Clear</button>
-        <button>RSVP</button>
+        <button onClick={logData}>RSVP</button>
       </div>
     </RsvpComp>
   );

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
-const Input = ({ name, title, value, type, width, options }) => {
+const Input = ({ name, title, value, type, width, options, onValueChange }) => {
   const [showPassword, setShowPassword] = useState(false);
   function showPasswordFunc() {
     setShowPassword(!showPassword);
@@ -22,6 +22,9 @@ const Input = ({ name, title, value, type, width, options }) => {
             value={value ? value : ""}
             cols="30"
             rows="10"
+            onChange={(v) => {
+              onValueChange(v);
+            }}
           />
           <span>{title}</span>
         </div>
@@ -34,8 +37,14 @@ const Input = ({ name, title, value, type, width, options }) => {
             width: width ? width : "250px",
           }}
         >
-          <select>
-            <option key={0} value="" >--Select a option</option>
+          <select
+            onChange={(v) => {
+              onValueChange(v);
+            }}
+          >
+            <option key={0} value="">
+              --Select a option
+            </option>
             {options.map((option, index) => (
               <option key={index} value={option}>
                 {option}
@@ -60,6 +69,9 @@ const Input = ({ name, title, value, type, width, options }) => {
             }
             placeholder=" "
             value={value ? value : ""}
+            onChange={(v) => {
+              onValueChange(v);
+            }}
           />
           <span>{title}</span>
           <FontAwesomeIcon
