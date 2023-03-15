@@ -10,8 +10,15 @@ const RsvpComp = styled.div`
   justify-content: center;
   align-items: center;
 
-  .rsvp {
+  .hide {
+    display: none;
+  }
+
+  .show {
     display: flex;
+  }
+
+  .rsvp {
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -22,7 +29,7 @@ const RsvpComp = styled.div`
   }
 `;
 
-const RSVP = () => {
+const RSVP = ({ hasPin, setHasPin }) => {
   const [pin, setPin] = useState("");
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
@@ -45,7 +52,7 @@ const RSVP = () => {
   return (
     <RsvpComp id="rsvp">
       <h1>RSVP</h1>
-      <div className="rsvp">
+      <div className={`rsvp ${hasPin ? "hide" : "show"}`}>
         <Input
           title="Pin"
           type="text"
@@ -54,9 +61,15 @@ const RSVP = () => {
             setPin(e.target.value);
           }}
         />
-        <button>Ok</button>
+        <button
+          onClick={() => {
+            setHasPin(pin);
+          }}
+        >
+          Ok
+        </button>
       </div>
-      <div className="rsvp">
+      <div className={`rsvp ${hasPin ? "show" : "hide"}`}>
         <div className="container">
           <div className="row m-0 mb-4 mb-md-0 pb-2 pb-md-0">
             <div className="col-md-6 p-0">

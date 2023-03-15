@@ -13,7 +13,13 @@ import {
   TimerCard,
 } from "../components";
 
-export default function Home({ calRemaining, webSiteSetting, remainingTime }) {
+export default function Home({
+  calRemaining,
+  webSiteSetting,
+  remainingTime,
+  hasPin,
+  setHasPin,
+}) {
   useEffect(() => {
     const interval = setInterval(() => {
       calRemaining();
@@ -36,7 +42,11 @@ export default function Home({ calRemaining, webSiteSetting, remainingTime }) {
       {/* <Gallery webSiteSetting={webSiteSetting} /> */}
       {/* <Family webSiteSetting={webSiteSetting} /> */}
       <EventsComp webSiteSetting={webSiteSetting} />
-      <RSVP webSiteSetting={webSiteSetting} />
+      <RSVP
+        webSiteSetting={webSiteSetting}
+        hasPin={hasPin}
+        setHasPin={setHasPin}
+      />
       {/* <Contact webSiteSetting={webSiteSetting} /> */}
     </div>
   );
