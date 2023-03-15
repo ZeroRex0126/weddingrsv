@@ -29,6 +29,16 @@ const HomeComp = ({ webSiteSetting, remainingTime }) => {
       >
         <div>
           <h1>{webSiteSetting.title}</h1>
+          <h2>
+            {/* {
+              new Date(
+                webSiteSetting.year,
+                webSiteSetting.month,
+                webSiteSetting.day
+              )
+            } */}
+            date here
+          </h2>
         </div>
         <div className="timer">
           {remainingTime.years > 0 ? (

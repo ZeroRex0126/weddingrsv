@@ -37,7 +37,7 @@ export default function Home({ calRemaining, webSiteSetting, remainingTime }) {
       {/* <Family webSiteSetting={webSiteSetting} /> */}
       <EventsComp webSiteSetting={webSiteSetting} />
       <RSVP webSiteSetting={webSiteSetting} />
-      <Contact webSiteSetting={webSiteSetting} />
+      {/* <Contact webSiteSetting={webSiteSetting} /> */}
     </div>
   );
 }

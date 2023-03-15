@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import Contact from "./contact/contact";
 import TopNav from "./topNav/topNav";
 
 function Layout(props) {
@@ -12,9 +13,7 @@ function Layout(props) {
       <main>{props.children}</main>
       {/* footer */}
       <footer className="footer">
-        <a target="_blank" rel="noopener noreferrer">
-          All Right Reserved to KSites
-        </a>
+        <Contact webSiteSetting={props.webSiteSetting} />
       </footer>
     </Fragment>
   );

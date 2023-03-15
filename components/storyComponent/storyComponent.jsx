@@ -70,7 +70,7 @@ const StoryComponent = ({ webSiteSetting }) => {
           <div className="container timeline position-relative p-0">
             <div className="row">
               <div className="col-md-6 text-center text-md-right storyDate">
-                <h1>Date</h1>
+                <h1>2019</h1>
               </div>
               <div className="col-md-6 text-center text-md-left">
                 <div className="h-100 d-flex flex-column justify-content-center p-4 ml-md-3">
@@ -99,12 +99,12 @@ const StoryComponent = ({ webSiteSetting }) => {
                 </div>
               </div>
               <div className="col-md-6 text-center text-md-left storyDate">
-                <h1>Date</h1>
+                <h1>2021</h1>
               </div>
             </div>
             <div className="row">
               <div className="col-md-6 text-center text-md-right storyDate">
-                <h1>Date</h1>
+                <h1>2022</h1>
               </div>
               <div className="col-md-6 text-center text-md-left">
                 <div className="h-100 d-flex flex-column justify-content-center p-4 ml-md-3">
@@ -133,7 +133,7 @@ const StoryComponent = ({ webSiteSetting }) => {
                 </div>
               </div>
               <div className="col-md-6 text-center text-md-left storyDate">
-                <h1>Date</h1>
+                <h1>2023</h1>
               </div>
             </div>
           </div>
