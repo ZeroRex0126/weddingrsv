@@ -7,13 +7,13 @@ function Layout(props) {
     <Fragment>
       {/* navigateion */}
       <div className="navContainer">
-        <TopNav />
+        {/* <TopNav /> */}
       </div>
       {/* main app */}
       <main>{props.children}</main>
       {/* footer */}
       <footer className="footer">
-        <Contact webSiteSetting={props.webSiteSetting} />
+        {/* <Contact webSiteSetting={props.webSiteSetting} /> */}
       </footer>
     </Fragment>
   );

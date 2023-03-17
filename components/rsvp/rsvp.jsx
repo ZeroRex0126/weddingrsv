@@ -69,6 +69,11 @@ const RSVP = ({ hasPin, setHasPin }) => {
             title="Pin"
             type="text"
             value={pin}
+            onKeyPress={(e) => {
+              if (e.key.toUpperCase() === "ENTER") {
+                setHasPin(pin);
+              }
+            }}
             onValueChange={(e) => {
               setPin(e.target.value);
             }}

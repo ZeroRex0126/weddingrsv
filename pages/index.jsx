@@ -11,6 +11,7 @@ import {
   RSVP,
   StoryComponent,
   TimerCard,
+  TopNav,
 } from "../components";
 
 export default function Home({
@@ -35,7 +36,9 @@ export default function Home({
         <meta name="description" content="Home page" />
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
-
+      <div className="navContainer">
+        <TopNav />
+      </div>
       <HomeComp webSiteSetting={webSiteSetting} remainingTime={remainingTime} />
       <AboutComponent webSiteSetting={webSiteSetting} />
       <StoryComponent webSiteSetting={webSiteSetting} />
@@ -47,7 +50,7 @@ export default function Home({
         hasPin={hasPin}
         setHasPin={setHasPin}
       />
-      {/* <Contact webSiteSetting={webSiteSetting} /> */}
+      <Contact webSiteSetting={webSiteSetting} />
     </div>
   );
 }

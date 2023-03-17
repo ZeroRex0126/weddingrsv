@@ -5,7 +5,7 @@ import { useState } from "react";
 import Home from ".";
 import { Input } from "../components";
 
-const settings = ({ calRemaining, webSiteSetting, remainingTime }) => {
+const portal = ({ calRemaining, webSiteSetting, remainingTime }) => {
   const [date, setDate] = useState(
     `${webSiteSetting.year}-${webSiteSetting.month}-${webSiteSetting.day}`
   );
@@ -17,7 +17,7 @@ const settings = ({ calRemaining, webSiteSetting, remainingTime }) => {
   return (
     <div>
       <Head>
-        <title>{webSiteSetting.title} - Settings</title>
+        <title>{webSiteSetting.title} - Portal</title>
         <meta name="description" content="Setting Page for the Site" />
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
@@ -67,13 +67,13 @@ const settings = ({ calRemaining, webSiteSetting, remainingTime }) => {
           <button onClick={LogData}>click</button>
         </div>
 
-        <div className="previewContainer">
-          {/* <Image
+        {/* <div className="previewContainer">
+          <Image
             src={`data:image/jpeg;base64,${webSiteSetting.heroimg}`}
             alt="Picture of the author"
             width={800}
             height={500}
-          /> */}
+          />
           <div className="overlay"></div>
           <Home
             calRemaining={calRemaining}
@@ -83,10 +83,10 @@ const settings = ({ calRemaining, webSiteSetting, remainingTime }) => {
               width: "800px",
             }}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );
 };
 
-export default settings;
+export default portal;

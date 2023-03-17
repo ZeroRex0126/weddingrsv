@@ -10,10 +10,19 @@ const HomeCom = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 
     .timer {
       max-width: 100vw;
       display: flex;
+    }
+    
+    @media (min-width: 768px) {
+      .homeContent{
+        position:absolute;
+        left: 0;
+        
+      }
     }
   }
 `;
@@ -27,30 +36,32 @@ const HomeComp = ({ webSiteSetting, remainingTime }) => {
         }}
         id="home"
       >
-        <div>
-          <h1>{webSiteSetting.title}</h1>
-          <h2>
-            {/* {
+        <div className="homeContent">
+          <div>
+            <h1>{webSiteSetting.title}</h1>
+            <h2>
+              {/* {
               new Date(
                 webSiteSetting.year,
                 webSiteSetting.month,
                 webSiteSetting.day
               )
             } */}
-            date here
-          </h2>
-        </div>
-        <div className="timer">
-          {remainingTime.years > 0 ? (
-            <TimerCard title="years" time={remainingTime.years} />
-          ) : (
-            <></>
-          )}
-          <TimerCard title="months" time={remainingTime.months} />
-          <TimerCard title="days" time={remainingTime.days} />
-          <TimerCard title="hours" time={remainingTime.hours} />
-          <TimerCard title="minutes" time={remainingTime.minutes} />
-          <TimerCard title="seconds" time={remainingTime.seconds} />
+              date here
+            </h2>
+          </div>
+          <div className="timer">
+            {remainingTime.years > 0 ? (
+              <TimerCard title="years" time={remainingTime.years} />
+            ) : (
+              <></>
+            )}
+            <TimerCard title="months" time={remainingTime.months} />
+            <TimerCard title="days" time={remainingTime.days} />
+            <TimerCard title="hours" time={remainingTime.hours} />
+            <TimerCard title="minutes" time={remainingTime.minutes} />
+            <TimerCard title="seconds" time={remainingTime.seconds} />
+          </div>
         </div>
       </div>
     </HomeCom>

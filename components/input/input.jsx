@@ -3,7 +3,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
-const Input = ({ name, title, value, type, width, options, onValueChange }) => {
+const Input = ({
+  name,
+  title,
+  value,
+  type,
+  width,
+  options,
+  onValueChange,
+  onKeyPress,
+}) => {
   const [showPassword, setShowPassword] = useState(false);
   function showPasswordFunc() {
     setShowPassword(!showPassword);
@@ -22,6 +31,13 @@ const Input = ({ name, title, value, type, width, options, onValueChange }) => {
             value={value ? value : ""}
             cols="30"
             rows="10"
+            onKeyDown={
+              onKeyPress
+                ? (e) => {
+                    onKeyPress(e);
+                  }
+                : ""
+            }
             onChange={(v) => {
               onValueChange(v);
             }}
@@ -69,6 +85,13 @@ const Input = ({ name, title, value, type, width, options, onValueChange }) => {
             }
             placeholder=" "
             value={value ? value : ""}
+            onKeyDown={
+              onKeyPress
+                ? (e) => {
+                    onKeyPress(e);
+                  }
+                : ""
+            }
             onChange={(v) => {
               onValueChange(v);
             }}
