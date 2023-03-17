@@ -13,12 +13,17 @@ const RsvpComp = styled.div`
   justify-content: center;
   align-items: center;
 
+  h1 {
+  }
+
   .hide {
+    height: 0px;
     visibility: hidden;
     opacity: 0;
   }
 
   .show {
+    height: auto;
     visibility: visible;
     opacity: 1;
   }
@@ -28,7 +33,7 @@ const RsvpComp = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: 0.5s ease;
+    transition: 1.5s ease;
   }
 
   .container {
