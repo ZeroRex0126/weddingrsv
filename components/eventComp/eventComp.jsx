@@ -1,6 +1,8 @@
 import styled from "styled-components";
+import { Fade } from "react-awesome-reveal";
 
 const EventsComp = styled.div`
+  overflow: hidden;
   background-size: cover;
   min-height: 100vh;
   display: flex;
@@ -64,30 +66,34 @@ const Events = ({ webSiteSetting }) => {
         </div>
         <div className="row">
           <div className="col-md-6 border-right border-primary">
-            <div className="text-center text-md-right mr-md-3 mb-4 mb-md-0">
-              <div
-                className="col-md-6 p-0 pic"
-                style={{
-                  backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
-                }}
-              />
-              <h2 className="mb-3">The Reception</h2>
-              <p className="mb-2">123 Street, New York, USA</p>
-              <p className="mb-0">12:00AM - 13:00PM</p>
-            </div>
+            <Fade direction="up" duration={2000} triggerOnce={true}>
+              <div className="text-center text-md-right mr-md-3 mb-4 mb-md-0">
+                <div
+                  className="col-md-6 p-0 pic"
+                  style={{
+                    backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
+                  }}
+                />
+                <h2 className="mb-3">The Reception</h2>
+                <p className="mb-2">123 Street, New York, USA</p>
+                <p className="mb-0">12:00AM - 13:00PM</p>
+              </div>
+            </Fade>
           </div>
           <div className="col-md-6">
-            <div className="text-center text-md-left ml-md-3">
-              <div
-                className="col-md-6 p-0 pic"
-                style={{
-                  backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
-                }}
-              />
-              <h2 className="mb-3">Wedding Party</h2>
-              <p className="mb-2">123 Street, New York, USA</p>
-              <p className="mb-0">12:00AM - 13:00PM</p>
-            </div>
+            <Fade direction="up" duration={2000} triggerOnce={true}>
+              <div className="text-center text-md-left ml-md-3">
+                <div
+                  className="col-md-6 p-0 pic"
+                  style={{
+                    backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
+                  }}
+                />
+                <h2 className="mb-3">Wedding Party</h2>
+                <p className="mb-2">123 Street, New York, USA</p>
+                <p className="mb-0">12:00AM - 13:00PM</p>
+              </div>
+            </Fade>
           </div>
         </div>
       </div>
