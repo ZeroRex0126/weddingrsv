@@ -1,5 +1,7 @@
 import Head from "next/head";
 import styled from "styled-components";
+import { BsInstagram } from "react-icons/bs";
+import { FaFacebookF, FaTwitter } from "react-icons/fa";
 
 const About = styled.div`
   background-size: cover;
@@ -11,7 +13,9 @@ const About = styled.div`
 
   .container {
     .aboutPic {
-      height: 40vh;
+      border-radius: 50%;
+      height: 20rem;
+      width: 20rem;
       background-size: cover;
     }
 
@@ -50,10 +54,6 @@ const About = styled.div`
           margin-right: 5px;
           text-align: center;
         }
-
-        div {
-          width: 100%;
-        }
       }
     }
   }
@@ -68,7 +68,7 @@ const AboutComponent = ({ webSiteSetting }) => {
           <i className="far fa-heart text-dark"></i>
         </div>
         <div className="row m-0">
-          <div className="col-md-6 p-0">
+          <div className="col-md-6 p-4">
             <div
               className="aboutPic"
               style={{
@@ -92,28 +92,28 @@ const AboutComponent = ({ webSiteSetting }) => {
                     className="btn btn-outline-primary btn-square mr-1"
                     href="#"
                   >
-                    <i className="fab fa-twitter"></i>
+                    <FaTwitter />
                   </a>
                   <a
                     className="btn btn-outline-primary btn-square mr-1"
                     href="#"
                   >
-                    <i className="fab fa-facebook-f"></i>
+                    <FaFacebookF />
                   </a>
-                  <a
+                  {/* <a
                     className="btn btn-outline-primary btn-square mr-1"
                     href="#"
                   >
                     <i className="fab fa-linkedin-in"></i>
-                  </a>
+                  </a> */}
                   <a className="btn btn-outline-primary btn-square" href="#">
-                    <i className="fab fa-instagram"></i>
+                    <BsInstagram />
                   </a>
                 </div>
               </div>
             </div>
           </div>
-          <div className="col-md-6 p-0">
+          <div className="col-md-6 p-4">
             <div
               className="aboutPic"
               style={{
@@ -137,22 +137,22 @@ const AboutComponent = ({ webSiteSetting }) => {
                     className="btn btn-outline-primary btn-square mr-1"
                     href="#"
                   >
-                    <i className="fab fa-instagram"></i>
+                    <FaTwitter />
                   </a>
                   <a
                     className="btn btn-outline-primary btn-square mr-1"
                     href="#"
                   >
-                    <i className="fab fa-facebook-f"></i>
+                    <FaFacebookF />
                   </a>
-                  <a
+                  {/* <a
                     className="btn btn-outline-primary btn-square mr-1"
                     href="#"
                   >
                     <i className="fab fa-linkedin-in"></i>
-                  </a>
+                  </a> */}
                   <a className="btn btn-outline-primary btn-square" href="#">
-                    <i className="fab fa-instagram"></i>
+                    <BsInstagram />
                   </a>
                 </div>
               </div>

@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { BsInstagram } from "react-icons/bs";
+import { FaFacebookF } from "react-icons/fa";
 
 const ContactComp = styled.div`
   background-size: cover;
@@ -37,26 +39,26 @@ const Contact = () => {
             <i>♥</i>
           </div>
           <div className="d-flex justify-content-center mb-4">
-            <a
+            {/* <a
               className="btn btn-lg btn-outline-light btn-lg-square mr-2"
               href="#"
             >
               <i className="fab fa-twitter"></i>
-            </a>
+            </a> */}
             <a
               className="btn btn-lg btn-outline-light btn-lg-square mr-2"
               href="#"
             >
-              <i className="fab fa-facebook-f"></i>
+              <FaFacebookF />
             </a>
-            <a
+            {/* <a
               className="btn btn-lg btn-outline-light btn-lg-square mr-2"
               href="#"
             >
               <i className="fab fa-linkedin-in"></i>
-            </a>
+            </a> */}
             <a className="btn btn-lg btn-outline-light btn-lg-square" href="#">
-              <i className="fab fa-instagram"></i>
+              <BsInstagram />
             </a>
           </div>
           <div className="d-flex justify-content-center py-2">
