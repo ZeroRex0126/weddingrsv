@@ -73,12 +73,12 @@ const StoryComponent = ({ webSiteSetting }) => {
           <div className="container timeline position-relative p-0">
             <div className="row">
               <div className="col-md-6 text-center text-md-right storyDate">
-                <Fade direction="left" duration={1500} triggerOnce={true}>
+                <Fade direction="left" duration={2000} triggerOnce={true}>
                   <h1 className="yearDis">2019</h1>
                 </Fade>
               </div>
               <div className="col-md-6 text-center text-md-left">
-                <Fade direction="right" duration={1500} triggerOnce={true}>
+                <Fade direction="right" duration={2000} triggerOnce={true}>
                   <div className="h-100 d-flex flex-column justify-content-center p-4 ml-md-3">
                     <h4 className="mb-2">First Meet</h4>
                     <p className="text-uppercase mb-2">01 Jan 2050</p>
@@ -94,7 +94,7 @@ const StoryComponent = ({ webSiteSetting }) => {
             </div>
             <div className="row">
               <div className="col-md-6 text-center text-md-right">
-                <Fade direction="left" duration={1500} triggerOnce={true}>
+                <Fade direction="left" duration={2000} triggerOnce={true}>
                   <div className="h-100 d-flex flex-column justify-content-center p-4 mr-md-3">
                     <h4 className="mb-2">First Date</h4>
                     <p className="text-uppercase mb-2">01 Jan 2050</p>
@@ -108,19 +108,19 @@ const StoryComponent = ({ webSiteSetting }) => {
                 </Fade>
               </div>
               <div className="col-md-6 text-center text-md-left storyDate">
-                <Fade direction="right" duration={1500} triggerOnce={true}>
+                <Fade direction="right" duration={2000} triggerOnce={true}>
                   <h1 className="yearDis">2021</h1>
                 </Fade>
               </div>
             </div>
             <div className="row">
               <div className="col-md-6 text-center text-md-right storyDate">
-                <Fade direction="left" duration={1500} triggerOnce={true}>
+                <Fade direction="left" duration={2000} triggerOnce={true}>
                   <h1 className="yearDis">2022</h1>
                 </Fade>
               </div>
               <div className="col-md-6 text-center text-md-left">
-                <Fade direction="right" duration={1500} triggerOnce={true}>
+                <Fade direction="right" duration={2000} triggerOnce={true}>
                   <div className="h-100 d-flex flex-column justify-content-center p-4 ml-md-3">
                     <h4 className="mb-2">Proposal</h4>
                     <p className="text-uppercase mb-2">01 Jan 2050</p>
@@ -136,7 +136,7 @@ const StoryComponent = ({ webSiteSetting }) => {
             </div>
             <div className="row">
               <div className="col-md-6 text-center text-md-right">
-                <Fade direction="left" duration={1500} triggerOnce={true}>
+                <Fade direction="left" duration={2000} triggerOnce={true}>
                   <div className="h-100 d-flex flex-column justify-content-center p-4 mr-md-3">
                     <h4 className="mb-2">Enagagement</h4>
                     <p className="text-uppercase mb-2">01 Jan 2050</p>
@@ -150,7 +150,7 @@ const StoryComponent = ({ webSiteSetting }) => {
                 </Fade>
               </div>
               <div className="col-md-6 text-center text-md-left storyDate">
-                <Fade direction="right" duration={1500} triggerOnce={true}>
+                <Fade direction="right" duration={2000} triggerOnce={true}>
                   <h1 className="yearDis">2023</h1>
                 </Fade>
               </div>

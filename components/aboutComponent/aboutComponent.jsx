@@ -71,7 +71,7 @@ const AboutComponent = ({ webSiteSetting }) => {
         </div>
         <div className="row m-0">
           <div className="col-md-6 p-4">
-            <Fade direction="left" duration={1500} triggerOnce={true}>
+            <Fade direction="left" duration={2000} triggerOnce={true}>
               <div
                 className="aboutPic"
                 style={{
@@ -118,7 +118,7 @@ const AboutComponent = ({ webSiteSetting }) => {
             </Fade>
           </div>
           <div className="col-md-6 p-4">
-            <Fade direction="right" duration={1500} triggerOnce={true}>
+            <Fade direction="right" duration={2000} triggerOnce={true}>
               <div
                 className="aboutPic"
                 style={{

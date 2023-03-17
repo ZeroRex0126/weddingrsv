@@ -9,3 +9,4 @@ export { default as Family } from "./family/family";
 export { default as RSVP } from "./rsvp/rsvp";
 export { default as Contact } from "./contact/contact";
 export { default as HomeComp } from "./homeComp/homeComp";
+export { default as CusButton } from "./cusButton/cusButton";
