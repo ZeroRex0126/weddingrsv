@@ -22,12 +22,6 @@ const SideNavbar = styled.div`
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   }
 
-  .navbar-btn {
-    box-shadow: none;
-    outline: none !important;
-    border: none;
-  }
-
   .line {
     width: 100%;
     height: 1px;
@@ -123,8 +117,20 @@ const SideNavbar = styled.div`
     #sidebar.active {
       margin-left: 0;
     }
-    #sidebarCollapse span {
-      display: none;
+    #sidebarCollapse {
+      width: 35px;
+      height: 35px;
+      position: fixed;
+      display: flex;
+      top: 10px;
+      left: 10px;
+      background-color: transparent;
+      border-color: transparent;
+      z-index: 10;
+      transition: all 0.3s;
+    }
+    #sidebarCollapse.active {
+      left: 210px;
     }
   }
 `;
@@ -134,11 +140,11 @@ const SideNav = () => {
   return (
     <SideNavbar>
       <nav id="sidebar" className={active ? "active" : ""}>
-        <div class="sidebar-header">
+        <div className="sidebar-header">
           <h3>Bootstrap Sidebar</h3>
         </div>
 
-        <ul class="list-unstyled components">
+        <ul className="list-unstyled components">
           <p>Dummy Heading</p>
           <li>
             <a href="#">Home</a>
@@ -154,17 +160,16 @@ const SideNav = () => {
           </li>
         </ul>
       </nav>
-      {/* <button
+      <button
         type="button"
         id="sidebarCollapse"
-        class="btn btn-info"
+        className={`btn btn-info ${active ? "active" : ""}`}
         onClick={() => {
           setActive(!active);
         }}
       >
-        <i class="fas fa-align-left"></i>
-        <span>Toggle Sidebar</span>
-      </button> */}
+        <span>X</span>
+      </button>
     </SideNavbar>
   );
 };
