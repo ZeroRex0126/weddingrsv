@@ -1,4 +1,5 @@
 import TimerCard from "../timerCard/timerCard";
+
 import styled from "styled-components";
 
 const HomeCom = styled.div`
@@ -49,6 +50,7 @@ const HomeComp = ({ webSiteSetting, remainingTime }) => {
             } */}
               date here
             </h2>
+            
           </div>
           <div className="timer">
             {remainingTime.years > 0 ? (

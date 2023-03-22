@@ -14,6 +14,7 @@ const RsvpComp = styled.div`
   align-items: center;
 
   h1 {
+    height 10vh;
   }
 
   .hide {
@@ -23,7 +24,8 @@ const RsvpComp = styled.div`
   }
 
   .show {
-    height: auto;
+    height:auto;
+    min-height: 70vh;
     visibility: visible;
     opacity: 1;
   }
@@ -33,7 +35,7 @@ const RsvpComp = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: 1.5s ease;
+    transition: 0.5s ease;
   }
 
   .container {

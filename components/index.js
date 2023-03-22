@@ -10,3 +10,4 @@ export { default as RSVP } from "./rsvp/rsvp";
 export { default as Contact } from "./contact/contact";
 export { default as HomeComp } from "./homeComp/homeComp";
 export { default as CusButton } from "./cusButton/cusButton";
+export { default as MusicWave } from "./musicWave/musicWave";

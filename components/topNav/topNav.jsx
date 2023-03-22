@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import MusicWave from "../musicWave/musicWave";
 
 // const NavBarComp = styled.nav`
 //   display: ${(props) =>
@@ -11,6 +12,13 @@ const NavBarComp = styled.nav`
   //  position:fixed;
   //  top:0;
   // bottom: 0;
+  @media (min-width: 991px) {
+    .music-item {
+      position: fixed;
+      right: 10px;
+      top: 10px;
+    }
+  }
 `;
 
 const TopNav = () => {
@@ -133,6 +141,9 @@ const TopNav = () => {
             }}
           >
             Contact
+          </a>
+          <a className="nav-item music-item">
+            <MusicWave />
           </a>
         </div>
       </div>
