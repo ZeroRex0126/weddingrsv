@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import Home from ".";
-import { Input } from "../components";
+import { Input, SideNav } from "../components";
 
 const portal = ({ calRemaining, webSiteSetting, remainingTime }) => {
   const [date, setDate] = useState(
@@ -21,6 +21,7 @@ const portal = ({ calRemaining, webSiteSetting, remainingTime }) => {
         <meta name="description" content="Setting Page for the Site" />
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
+      <SideNav />
       <div className="settingContainer">
         <div className="inputContainer">
           <span>Web Settings</span>
