@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 
 const MusieWave = styled.div`
@@ -7,6 +8,11 @@ const MusieWave = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
+
+  iframe {
+    display: none;
+  }
+
   .music {
     width: 50px;
     height: 30px;
@@ -74,8 +80,23 @@ const MusieWave = styled.div`
 `;
 
 const MusicWave = () => {
+  // var audio = new Audio("music.mp3");
+  // const Playit = () => {
+  //   audio.volume = 0.5;
+  //   audio.play();
+  // };
+  // useEffect(() => {
+  //   setTimeout(() => Playit(), 2000);
+  // }, []);
+
   return (
     <MusieWave>
+      {/* <audio
+        id="musicPlayer"
+        src="music.mp3"
+        autoPlay={true}
+        loop={true}
+      ></audio> */}
       <div className="music">
         <div className="bar"></div>
         <div className="bar"></div>

@@ -36,7 +36,7 @@ const Input = ({
                 ? (e) => {
                     onKeyPress(e);
                   }
-                : ""
+                : () => {}
             }
             onChange={(v) => {
               onValueChange(v);
@@ -90,7 +90,7 @@ const Input = ({
                 ? (e) => {
                     onKeyPress(e);
                   }
-                : ""
+                : () => {}
             }
             onChange={(v) => {
               onValueChange(v);
