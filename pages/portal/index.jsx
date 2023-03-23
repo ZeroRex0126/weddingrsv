@@ -1,22 +1,31 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { Component, useState } from "react";
+import { Component, useEffect, useState } from "react";
 import Home from "../index";
 import PortalHome from "./home";
 import SideNav from "./portalComp/sideNav/sideNav";
 
-const portal = ({
-  calRemaining,
-  webSiteSetting,
-  remainingTime,
-  pageProps,
-  Component,
-}) => {
-  const [page, setPage] = useState("home");
+function useLocalStorageForPageKey(key, fallbackValue) {
+  const [value, setValue] = useState(fallbackValue);
+  useEffect(() => {
+    const stored = localStorage.getItem(key);
+    setValue(stored ? stored : fallbackValue);
+  }, [fallbackValue, key]);
+
+  return [value, setValue];
+}
+
+const portal = ({ webSiteSetting }) => {
+  const [page, setPage] = useLocalStorageForPageKey("page", "home");
   function LogData() {
     console.log(date);
     console.log(webSiteSetting);
+  }
+
+  function setPageStore(key, value) {
+    localStorage.setItem(key, value);
+    setPage(value);
   }
 
   function show() {
@@ -37,7 +46,7 @@ const portal = ({
         <meta name="description" content="Setting Page for the Site" />
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
-      <SideNav setPage={setPage} page={page} />
+      <SideNav page={page} setPageStore={setPageStore} />
       <div className="settingContainer">{show()}</div>
     </div>
   );

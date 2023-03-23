@@ -78,10 +78,11 @@ const SideNavbar = styled.div`
     background: #fff;
   }
 
-  #sidebar ul li.active > a,
-  a[aria-expanded="true"] {
-    color: #fff;
-    background: #6d7fcc;
+  #sidebar ul li.active > a {
+    color: #7386d5;
+    background: #fff;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
   }
 
   a[data-toggle="collapse"] {
@@ -139,7 +140,7 @@ const SideNavbar = styled.div`
   }
 `;
 
-const SideNav = ({ setPage, page }) => {
+const SideNav = ({ page, setPageStore }) => {
   const [active, setActive] = useState(false);
   return (
     <SideNavbar>
@@ -150,17 +151,17 @@ const SideNav = ({ setPage, page }) => {
 
         <ul className="list-unstyled components">
           <p>Dummy Heading</p>
-          <li>
-            <a onClick={() => setPage("home")}>Home</a>
+          <li className={`${page.toLowerCase() === "home" ? "active" : ""}`}>
+            <a onClick={() => setPageStore("page", "home")}>Home</a>
           </li>
-          <li>
-            <a onClick={() => setPage("break")}>About</a>
+          <li className={`${page.toLowerCase() === "break" ? "active" : ""}`}>
+            <a onClick={() => setPageStore("page", "break")}>About</a>
           </li>
-          <li>
-            <a onClick={() => setPage("home")}>Portfolio</a>
+          <li className={`${page.toLowerCase() === "d" ? "active" : ""}`}>
+            <a onClick={() => setPageStore("page", "home")}>Portfolio</a>
           </li>
-          <li>
-            <a onClick={() => setPage("home")}>Contact</a>
+          <li className={`${page.toLowerCase() === "d" ? "active" : ""}`}>
+            <a onClick={() => setPageStore("page", "home")}>Contact</a>
           </li>
         </ul>
       </nav>
