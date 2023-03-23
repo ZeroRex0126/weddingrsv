@@ -5,6 +5,10 @@ const SideNavbar = styled.div`
   position: fixed;
   min-height: 100vh;
 
+  li {
+    cursor: pointer;
+  }
+
   a,
   a:hover,
   a:focus {
@@ -135,7 +139,7 @@ const SideNavbar = styled.div`
   }
 `;
 
-const SideNav = () => {
+const SideNav = ({ setPage, page }) => {
   const [active, setActive] = useState(false);
   return (
     <SideNavbar>
@@ -147,16 +151,16 @@ const SideNav = () => {
         <ul className="list-unstyled components">
           <p>Dummy Heading</p>
           <li>
-            <a href="#">Home</a>
+            <a onClick={() => setPage("home")}>Home</a>
           </li>
           <li>
-            <a href="#">About</a>
+            <a onClick={() => setPage("break")}>About</a>
           </li>
           <li>
-            <a href="#">Portfolio</a>
+            <a onClick={() => setPage("home")}>Portfolio</a>
           </li>
           <li>
-            <a href="#">Contact</a>
+            <a onClick={() => setPage("home")}>Contact</a>
           </li>
         </ul>
       </nav>
