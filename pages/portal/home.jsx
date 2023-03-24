@@ -1,12 +1,26 @@
 import { useState } from "react";
 import { Input } from "../../components";
+import styled from "styled-components";
+
+const Home = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+  min-height: 100vh;
+  width: 100%;
+  .inputContainer {
+    grid-column: 1 / 4;
+    grid-row: 2 / 5;
+  }
+`;
 
 const PortalHome = ({ webSiteSetting }) => {
   const [date, setDate] = useState(
     `${webSiteSetting.year}-${webSiteSetting.month}-${webSiteSetting.day}`
   );
   return (
-    <div>
+    <Home>
       <div className="inputContainer">
         <span>Web Settings</span>
         <Input title="Title" value={webSiteSetting.title} type="text"></Input>
@@ -69,7 +83,7 @@ const PortalHome = ({ webSiteSetting }) => {
             }}
           />
         </div> */}
-    </div>
+    </Home>
   );
 };
 
