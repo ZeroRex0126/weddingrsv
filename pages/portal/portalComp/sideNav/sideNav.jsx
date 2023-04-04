@@ -152,16 +152,44 @@ const SideNav = ({ page, setPageStore }) => {
         <ul className="list-unstyled components">
           <p>Dummy Heading</p>
           <li className={`${page.toLowerCase() === "home" ? "active" : ""}`}>
-            <a onClick={() => setPageStore("page", "home")}>Home</a>
+            <a
+              onClick={() => {
+                setPageStore("page", "home");
+                setActive(false);
+              }}
+            >
+              Home
+            </a>
           </li>
           <li className={`${page.toLowerCase() === "break" ? "active" : ""}`}>
-            <a onClick={() => setPageStore("page", "break")}>About</a>
+            <a
+              onClick={() => {
+                setPageStore("page", "break");
+                setActive(false);
+              }}
+            >
+              About
+            </a>
           </li>
           <li className={`${page.toLowerCase() === "d" ? "active" : ""}`}>
-            <a onClick={() => setPageStore("page", "home")}>Portfolio</a>
+            <a
+              onClick={() => {
+                setPageStore("page", "home");
+                setActive(false);
+              }}
+            >
+              Portfolio
+            </a>
           </li>
           <li className={`${page.toLowerCase() === "d" ? "active" : ""}`}>
-            <a onClick={() => setPageStore("page", "home")}>Contact</a>
+            <a
+              onClick={() => {
+                setPageStore("page", "home");
+                setActive(false);
+              }}
+            >
+              Contact
+            </a>
           </li>
         </ul>
       </nav>
