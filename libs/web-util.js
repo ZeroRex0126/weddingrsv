@@ -15,6 +15,23 @@ export async function getWebSettingData() {
   return data;
 }
 
+export async function getReservationData() {
+  const response = await fetch("/api/reservation", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || "Something went wrong!");
+  }
+
+  return data;
+}
+
 export function getRemainingDate(data) {
   if (data && data !== {}) {
     let currentDate = new Date();

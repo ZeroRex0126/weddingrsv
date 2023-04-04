@@ -5,6 +5,7 @@ import { Component, useEffect, useState } from "react";
 import Home from "../index";
 import PortalHome from "./home";
 import SideNav from "./portalComp/sideNav/sideNav";
+import { getReservationData } from "../../libs/web-util";
 
 function useLocalStorageForPageKey(key, fallbackValue) {
   const [value, setValue] = useState(fallbackValue);
@@ -18,9 +19,20 @@ function useLocalStorageForPageKey(key, fallbackValue) {
 
 const portal = ({ webSiteSetting }) => {
   const [page, setPage] = useLocalStorageForPageKey("page", "home");
+  const [reservation, setReservation] = useState();
+
+  async function GetData() {
+    let reservation = await getReservationData();
+    setReservation(reservation);
+  }
+
+  useEffect(() => {
+    GetData();
+  }, []);
+  
+
   function LogData() {
-    console.log(date);
-    console.log(webSiteSetting);
+    console.log(reservation)
   }
 
   function setPageStore(key, value) {
@@ -46,6 +58,7 @@ const portal = ({ webSiteSetting }) => {
         <meta name="description" content="Setting Page for the Site" />
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
+      <button onClick={LogData}>test</button>
       <SideNav page={page} setPageStore={setPageStore} />
       <div className="settingContainer">{show()}</div>
     </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Input } from "../../components";
 import styled from "styled-components";
 
@@ -19,6 +19,8 @@ const PortalHome = ({ webSiteSetting }) => {
   const [date, setDate] = useState(
     `${webSiteSetting.year}-${webSiteSetting.month}-${webSiteSetting.day}`
   );
+
+  
   return (
     <Home>
       <div className="inputContainer">
