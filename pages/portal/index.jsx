@@ -18,21 +18,22 @@ function useLocalStorageForPageKey(key, fallbackValue) {
 }
 
 const portal = ({ webSiteSetting }) => {
+  const [loading, setLoading] = useState(true);
   const [page, setPage] = useLocalStorageForPageKey("page", "home");
   const [reservation, setReservation] = useState();
 
   async function GetData() {
     let reservation = await getReservationData();
     setReservation(reservation);
+    setLoading(false);
   }
 
   useEffect(() => {
     GetData();
   }, []);
-  
 
   function LogData() {
-    console.log(reservation)
+    console.log(reservation);
   }
 
   function setPageStore(key, value) {
@@ -43,25 +44,26 @@ const portal = ({ webSiteSetting }) => {
   function show() {
     switch (page.toLowerCase()) {
       case "home":
-        return <PortalHome webSiteSetting={webSiteSetting} />;
+        return <PortalHome reservation={reservation} />;
       case "break":
         return <>break</>;
       default:
-        return <PortalHome webSiteSetting={webSiteSetting} />;
+        return <PortalHome reservation={reservation} />;
     }
   }
 
-  return (
+  return !loading ? (
     <div>
       <Head>
         <title>{webSiteSetting.title} - Portal</title>
         <meta name="description" content="Setting Page for the Site" />
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
-      <button onClick={LogData}>test</button>
       <SideNav page={page} setPageStore={setPageStore} />
       <div className="settingContainer">{show()}</div>
     </div>
+  ) : (
+    <div>loading</div>
   );
 };
 

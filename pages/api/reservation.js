@@ -17,7 +17,7 @@ async function handler(req, res) {
       const db = client.db();
 
       try {
-        const result = await db.collection("wedsettings").find({}).toArray();
+        const result = await db.collection("reservation").find({}).toArray();
         console.log(result);
         if (result) {
           res.json(result);
@@ -32,7 +32,7 @@ async function handler(req, res) {
         client.close();
       }
 
-    //   res.json(getMockData());
+      //   res.json(getMockData());
       break;
 
     default:

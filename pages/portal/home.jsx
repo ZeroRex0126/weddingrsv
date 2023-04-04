@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { Input } from "../../components";
+import { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
+import DataTable from "react-data-table-component";
 
 const Home = styled.div`
   display: grid;
@@ -9,82 +9,126 @@ const Home = styled.div`
   grid-auto-rows: minmax(100px, auto);
   min-height: 100vh;
   width: 100%;
-  .inputContainer {
+  padding: 30px 30px;
+  .dataTableContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     grid-column: 1 / 4;
     grid-row: 2 / 5;
+    width: 100%;
+    .dt {
+      height: 100%;
+      max-width: 100%;
+      width: 100%;
+    }
   }
 `;
 
-const PortalHome = ({ webSiteSetting }) => {
-  const [date, setDate] = useState(
-    `${webSiteSetting.year}-${webSiteSetting.month}-${webSiteSetting.day}`
-  );
+const PortalHome = ({ reservation }) => {
+  const [columns, setColumns] = useState([]);
 
-  
+  function generateColumns(keys) {
+    var columns = [];
+    for (let i = 0; i < keys.length; i++) {
+      const key = keys[i];
+      if (key !== "_id" && key !== "comment") {
+        columns.push({
+          name: key.charAt(0).toUpperCase() + key.slice(1),
+          selector: (row) => row[key],
+          sortable: true,
+        });
+      }
+    }
+    return columns;
+  }
+
+  useEffect(() => {
+    var keys = Object.keys(reservation[0]);
+    setColumns(generateColumns(keys));
+  }, []);
+
+  function onClick() {
+    console.log(reservation);
+  }
+
+  //Filtering
+  const [filterText, setFilterText] = useState("");
+  const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
+
+  const subHeaderComponentMemo = useMemo(() => {
+    const handleClear = () => {
+      if (filterText) {
+        setResetPaginationToggle(!resetPaginationToggle);
+        setFilterText("");
+      }
+    };
+
+    return (
+      // <FilterComponent
+      //   onFilter={(e) => setFilterText(e.target.value)}
+      //   onClear={handleClear}
+      //   filterText={filterText}
+      // />
+      <div>
+        <input
+          type="text"
+          value={filterText}
+          onChange={(v) => {
+            setFilterText(v.target.value);
+          }}
+        />
+      </div>
+    );
+  }, [filterText, resetPaginationToggle]);
+
+  //Filtering end
+
+  //selecting table item
+  const [selectedRow, setSelectedRow] = useState({});
+  const handleRowClick = (row) => {
+    setSelectedRow(row);
+  };
+  //end of selecting table item
+
+  //custom styles
+
+  const conditionalRowStyles = [
+    {
+      when: (row) => row._id === selectedRow._id,
+      style: {
+        backgroundColor: "#EEE",
+        "&:hover": {
+          cursor: "pointer",
+        },
+      },
+    },
+  ];
+  //end custom styles
+
   return (
     <Home>
-      <div className="inputContainer">
-        <span>Web Settings</span>
-        <Input title="Title" value={webSiteSetting.title} type="text"></Input>
-        <Input title="Date" value={date} type="date"></Input>
-        <span>image input here</span>
-        <Input
-          title="Invitation Pin"
-          value={webSiteSetting.pin}
-          type="password"
-        ></Input>
-        <span>Location</span>
-        <Input
-          title="Venue"
-          value={webSiteSetting.location.venue}
-          type="text"
-        ></Input>
-        <Input
-          title="Street"
-          value={webSiteSetting.location.street}
-          type="text"
-        ></Input>
-        <Input
-          title="Suburb"
-          value={webSiteSetting.location.suburb}
-          type="text"
-        ></Input>
-        <Input
-          title="City"
-          value={webSiteSetting.location.city}
-          type="text"
-        ></Input>
-        <Input
-          title="Province"
-          value={webSiteSetting.location.province}
-          type="text"
-        ></Input>
-        <Input
-          title="Postal/Zip Code"
-          value={webSiteSetting.location.zip}
-          type="text"
-        ></Input>
-        {/* <Link href="/">Back to home</Link> */}
-        {/* <button onClick={LogData}>click</button> */}
+      <div>Count</div>
+      <div>Attending</div>
+      <div>Count</div>
+      <div className="dataTableContainer">
+        <div className="dt">
+          <DataTable
+            title="Reservation List"
+            columns={columns}
+            data={reservation}
+            highlightOnHover
+            pointerOnHover
+            pagination
+            paginationResetDefaultPage={resetPaginationToggle}
+            subHeader
+            subHeaderComponent={subHeaderComponentMemo}
+            persistTableHead
+            onRowClicked={handleRowClick}
+            conditionalRowStyles={conditionalRowStyles}
+          />
+        </div>
       </div>
-
-      {/* <div className="previewContainer">
-          <Image
-            src={`data:image/jpeg;base64,${webSiteSetting.heroimg}`}
-            alt="Picture of the author"
-            width={800}
-            height={500}
-          />
-          <div className="overlay"></div>
-          <Home
-            calRemaining={calRemaining}
-            webSiteSetting={webSiteSetting}
-            remainingTime={remainingTime}
-            style={{
-              width: "800px",
-            }}
-          />
-        </div> */}
     </Home>
   );
 };

@@ -81,8 +81,8 @@ const SideNavbar = styled.div`
   #sidebar ul li.active > a {
     color: #7386d5;
     background: #fff;
-    border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px;
+    // border-top-left-radius: 25px;
+    // border-bottom-left-radius: 25px;
   }
 
   a[data-toggle="collapse"] {
