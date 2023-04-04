@@ -29,6 +29,7 @@ const Home = styled.div`
 
 const PortalHome = ({ reservation }) => {
   const [columns, setColumns] = useState([]);
+  const [tableData, setTableData] = useState(reservation);
 
   function generateColumns(keys) {
     var columns = [];
@@ -46,12 +47,12 @@ const PortalHome = ({ reservation }) => {
   }
 
   useEffect(() => {
-    var keys = Object.keys(reservation[0]);
+    var keys = Object.keys(tableData[0]);
     setColumns(generateColumns(keys));
   }, []);
 
   function onClick() {
-    console.log(reservation);
+    console.log(tableData);
   }
 
   //Filtering
@@ -146,7 +147,7 @@ const PortalHome = ({ reservation }) => {
           <DataTable
             title="Reservation List"
             columns={columns}
-            data={reservation}
+            data={tableData}
             highlightOnHover
             pointerOnHover
             pagination

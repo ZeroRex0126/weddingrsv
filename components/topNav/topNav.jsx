@@ -142,9 +142,9 @@ const TopNav = () => {
           >
             Contact
           </a>
-          {/* <a className="nav-item music-item">
+          <a className="nav-item music-item">
             <MusicWave />
-          </a> */}
+          </a>
         </div>
       </div>
     </NavBarComp>

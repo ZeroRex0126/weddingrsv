@@ -160,7 +160,7 @@ const SideNav = ({ page, setPageStore }) => {
     <SideNavbar>
       <nav id="sidebar" className={active ? "active" : ""}>
         <div className="sidebar-header">
-          <h3>Bootstrap Sidebar</h3>
+          <h3>Reservation Portal</h3>
         </div>
         <ul className="list-unstyled components">
           {/* <p>Dummy Heading</p> */}
