@@ -205,8 +205,8 @@ const SideNav = ({ page, setPageStore }) => {
             </a>
           </li> */}
         </ul>
-        <div className="text">More Coming Options Soon!</div>
-        <div className="text footer">Design & Created by x-i-ting Sites</div>
+        <div className="text">More Options Coming Soon!</div>
+        <div className="text footer">Design & Created by X-I-Ting Sites</div>
       </nav>
 
       <button

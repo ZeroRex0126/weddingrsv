@@ -12,6 +12,14 @@ const Home = styled.div`
   min-height: 100vh;
   width: 100%;
   padding: 30px 30px;
+  .filterBox {
+    p {
+      position: absolute;
+      top: 13px;
+      right: 25px;
+      cursor: pointer;
+    }
+  }
   .dataTableContainer {
     display: flex;
     align-items: center;
@@ -56,31 +64,36 @@ const PortalHome = ({ reservation }) => {
   }
 
   //Filtering
-  const [filterText, setFilterText] = useState("");
   const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
+  const [filterText, setFilterText] = useState("");
 
   const subHeaderComponentMemo = useMemo(() => {
     const handleClear = () => {
       if (filterText) {
         setResetPaginationToggle(!resetPaginationToggle);
+        setTableData(reservation);
         setFilterText("");
       }
     };
 
     return (
-      // <FilterComponent
-      //   onFilter={(e) => setFilterText(e.target.value)}
-      //   onClear={handleClear}
-      //   filterText={filterText}
-      // />
       <div>
-        <input
-          type="text"
-          value={filterText}
-          onChange={(v) => {
-            setFilterText(v.target.value);
-          }}
-        />
+        <div className="filterBox">
+          <input
+            placeholder="Filter by Name"
+            type="text"
+            value={filterText}
+            onChange={(v) => {
+              setFilterText(v.target.value);
+              setTableData(
+                reservation.filter((data) =>
+                  data.name.toUpperCase().includes(v.target.value.toUpperCase())
+                )
+              );
+            }}
+          />
+          <p onClick={handleClear}>X</p>
+        </div>
       </div>
     );
   }, [filterText, resetPaginationToggle]);
@@ -114,11 +127,11 @@ const PortalHome = ({ reservation }) => {
     return reservation.length;
   }
   function getTotalAttending() {
-    return reservation.filter((res) => res.attending === "yes").length;
+    return reservation.filter((res) => res.attending.toUpperCase().includes("YES")).length;
   }
   function getTotalAttendingHeadCounts() {
     let count = 0;
-    let comingHeads = reservation.filter((res) => res.attending === "yes");
+    let comingHeads = reservation.filter((res) =>  res.attending.toUpperCase().includes("YES"));
     for (let i = 0; i < comingHeads.length; i++) {
       const comingHead = comingHeads[i];
 

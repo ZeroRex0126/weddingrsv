@@ -24,9 +24,10 @@ const Comment = ({ reservation }) => {
   return (
     <CommentComp>
       <h1 className="heading">Let's see what people say</h1>
-      {reservation.map((resv) => {
+      {reservation.map((resv, index) => {
         return (
           <CommentCard
+            key={index}
             name={resv.name}
             surname={resv.surname}
             comment={resv.comment}
