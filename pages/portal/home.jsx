@@ -1,12 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import DataTable from "react-data-table-component";
+import InfoCard from "./portalComp/infoCard/infoCard";
 
 const Home = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   grid-auto-rows: minmax(100px, auto);
+  grid-template-rows: 100px 1fr 1fr;
   min-height: 100vh;
   width: 100%;
   padding: 30px 30px;
@@ -106,11 +108,39 @@ const PortalHome = ({ reservation }) => {
   ];
   //end custom styles
 
+  //custom methods
+  function getTotalReservaion() {
+    return reservation.length;
+  }
+  function getTotalAttending() {
+    return reservation.filter((res) => res.attending === "yes").length;
+  }
+  function getTotalAttendingHeadCounts() {
+    let count = 0;
+    let comingHeads = reservation.filter((res) => res.attending === "yes");
+    for (let i = 0; i < comingHeads.length; i++) {
+      const comingHead = comingHeads[i];
+
+      count = count + comingHead.amount;
+    }
+    return count;
+  }
+  //end of custom methods
+
   return (
     <Home>
-      <div>Count</div>
-      <div>Attending</div>
-      <div>Count</div>
+      {/* <div>total {getTotalReservaion()}</div>
+      <div>attending {getTotalAttending()}</div>
+      <div>total head counts {getTotalAttendingHeadCounts()}</div> */}
+      <div>
+        <InfoCard title={"Total"} count={getTotalReservaion()} />
+      </div>
+      <div>
+        <InfoCard title={"Attending"} count={getTotalAttending()} />
+      </div>
+      <div>
+        <InfoCard title={"Head Counts"} count={getTotalAttendingHeadCounts()} />
+      </div>
       <div className="dataTableContainer">
         <div className="dt">
           <DataTable
