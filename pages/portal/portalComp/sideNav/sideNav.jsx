@@ -115,6 +115,20 @@ const SideNavbar = styled.div`
     margin-bottom: 5px;
   }
 
+  .text {
+    display: flex;
+
+    font-size: 0.8rem;
+    width: 250px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  .footer {
+    position: fixed;
+    bottom: 10px;
+  }
+
   @media (max-width: 768px) {
     #sidebar {
       margin-left: -250px;
@@ -148,7 +162,6 @@ const SideNav = ({ page, setPageStore }) => {
         <div className="sidebar-header">
           <h3>Bootstrap Sidebar</h3>
         </div>
-
         <ul className="list-unstyled components">
           {/* <p>Dummy Heading</p> */}
           <li className={`${page.toLowerCase() === "home" ? "active" : ""}`}>
@@ -171,7 +184,7 @@ const SideNav = ({ page, setPageStore }) => {
               What People Say?
             </a>
           </li>
-          <li className={`${page.toLowerCase() === "d" ? "active" : ""}`}>
+          {/* <li className={`${page.toLowerCase() === "d" ? "active" : ""}`}>
             <a
               onClick={() => {
                 setPageStore("page", "home");
@@ -190,9 +203,12 @@ const SideNav = ({ page, setPageStore }) => {
             >
               Contact
             </a>
-          </li>
+          </li> */}
         </ul>
+        <div className="text">More Coming Options Soon!</div>
+        <div className="text footer">Design & Created by x-i-ting Sites</div>
       </nav>
+
       <button
         type="button"
         id="sidebarCollapse"
