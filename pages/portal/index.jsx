@@ -6,6 +6,7 @@ import Home from "../index";
 import PortalHome from "./home";
 import SideNav from "./portalComp/sideNav/sideNav";
 import { getReservationData } from "../../libs/web-util";
+import Comment from "./comment";
 
 function useLocalStorageForPageKey(key, fallbackValue) {
   const [value, setValue] = useState(fallbackValue);
@@ -45,8 +46,8 @@ const portal = ({ webSiteSetting }) => {
     switch (page.toLowerCase()) {
       case "home":
         return <PortalHome reservation={reservation} />;
-      case "break":
-        return <>break</>;
+      case "comment":
+        return <Comment reservation={reservation} />;
       default:
         return <PortalHome reservation={reservation} />;
     }

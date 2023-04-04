@@ -150,7 +150,7 @@ const SideNav = ({ page, setPageStore }) => {
         </div>
 
         <ul className="list-unstyled components">
-          <p>Dummy Heading</p>
+          {/* <p>Dummy Heading</p> */}
           <li className={`${page.toLowerCase() === "home" ? "active" : ""}`}>
             <a
               onClick={() => {
@@ -158,17 +158,17 @@ const SideNav = ({ page, setPageStore }) => {
                 setActive(false);
               }}
             >
-              Home
+              Dashboard
             </a>
           </li>
-          <li className={`${page.toLowerCase() === "break" ? "active" : ""}`}>
+          <li className={`${page.toLowerCase() === "comment" ? "active" : ""}`}>
             <a
               onClick={() => {
-                setPageStore("page", "break");
+                setPageStore("page", "comment");
                 setActive(false);
               }}
             >
-              About
+              What People Say?
             </a>
           </li>
           <li className={`${page.toLowerCase() === "d" ? "active" : ""}`}>
