@@ -2,6 +2,11 @@ import { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import DataTable from "react-data-table-component";
 import InfoCard from "./portalComp/infoCard/infoCard";
+import {
+  addReservationData,
+  deleteReservationData,
+  updateReservationData,
+} from "../../libs/web-util";
 
 const Home = styled.div`
   display: grid;
@@ -39,12 +44,27 @@ const Home = styled.div`
   }
 `;
 
-const PortalHome = ({ reservation }) => {
+const PortalHome = ({ GetData, reservation }) => {
   const [columns, setColumns] = useState([]);
   const [tableData, setTableData] = useState(reservation);
   const [selectedRow, setSelectedRow] = useState({});
   const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
   const [filterText, setFilterText] = useState("");
+
+  async function deleteSelectedData(data) {
+    await deleteReservationData(data);
+    await GetData();
+  }
+
+  async function updateSelectedData(data) {
+    await updateReservationData(data);
+    await GetData();
+  }
+
+  async function addData(data) {
+    await addReservationData("");
+    await GetData();
+  }
 
   function generateColumns(keys) {
     var columns = [];
@@ -66,6 +86,11 @@ const PortalHome = ({ reservation }) => {
     setColumns(generateColumns(keys));
   }, []);
 
+  useEffect(() => {
+    setTableData(reservation);
+    setSelectedRow({});
+  }, [reservation]);
+
   function onClick() {
     console.log(tableData);
   }
@@ -85,9 +110,8 @@ const PortalHome = ({ reservation }) => {
       <div className="dbFunc">
         <button
           className="btn btn-primary"
-          disabled={!selectedRow._id}
           onClick={() => {
-            console.log(selectedRow);
+            addData("");
           }}
         >
           Add
@@ -96,7 +120,7 @@ const PortalHome = ({ reservation }) => {
           className="btn btn-primary"
           disabled={!selectedRow._id}
           onClick={() => {
-            console.log(selectedRow);
+            updateSelectedData(selectedRow);
           }}
         >
           Edit
@@ -105,7 +129,7 @@ const PortalHome = ({ reservation }) => {
           className="btn btn-danger"
           disabled={!selectedRow._id}
           onClick={() => {
-            console.log(selectedRow);
+            deleteSelectedData(selectedRow);
           }}
         >
           Delete

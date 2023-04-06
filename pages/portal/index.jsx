@@ -5,7 +5,7 @@ import { Component, useEffect, useState } from "react";
 import Home from "../index";
 import PortalHome from "./home";
 import SideNav from "./portalComp/sideNav/sideNav";
-import { getReservationData } from "../../libs/web-util";
+import { getReservationDatas } from "../../libs/web-util";
 import Comment from "./comment";
 
 function useLocalStorageForPageKey(key, fallbackValue) {
@@ -24,9 +24,11 @@ const portal = ({ webSiteSetting }) => {
   const [reservation, setReservation] = useState();
 
   async function GetData() {
-    let reservation = await getReservationData();
+    let reservation = await getReservationDatas();
     setReservation(reservation);
-    setLoading(false);
+    if (loading) {
+      setLoading(false);
+    }
   }
 
   useEffect(() => {
@@ -45,7 +47,7 @@ const portal = ({ webSiteSetting }) => {
   function show() {
     switch (page.toLowerCase()) {
       case "home":
-        return <PortalHome reservation={reservation} />;
+        return <PortalHome GetData={GetData} reservation={reservation} />;
       case "comment":
         return <Comment reservation={reservation} />;
       default:

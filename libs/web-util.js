@@ -14,13 +14,81 @@ export async function getWebSettingData() {
 
   return data;
 }
-
-export async function getReservationData() {
+export async function getReservationDatas() {
   const response = await fetch("/api/reservation", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || "Something went wrong!");
+  }
+
+  return data;
+}
+
+export async function deleteReservationData(reservationData) {
+  const response = await fetch("/api/reservation", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ type: "delete", context: reservationData }),
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || "Something went wrong!");
+  }
+
+  return data;
+}
+
+export async function addReservationData(reservationData) {
+  const response = await fetch("/api/reservation", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      type: "add",
+      context: {
+        name: "John",
+        surname: "Doe",
+        phoneNr: "0123456789",
+        email: "test@gmail.com",
+        attending: "yes!!",
+        amount: 3,
+        comment: "so happy for you guys",
+      },
+    }),
+  });
+}
+
+export async function updateReservationData(reservationData) {
+  const response = await fetch("/api/reservation", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      type: "update",
+      context: {
+        _id: reservationData._id,
+        name: "Pot",
+        surname: "Flame",
+        phoneNr: "0123456789",
+        email: "test@gmail.com",
+        attending: "yes!!",
+        amount: 3,
+        comment: "so happy for you guys",
+      },
+    }),
   });
 
   const data = await response.json();
