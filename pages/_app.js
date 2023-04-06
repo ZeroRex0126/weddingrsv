@@ -1,11 +1,7 @@
 import Head from "next/head";
 import Layout from "../components/layout.jsx";
 import { useState, useEffect } from "react";
-import {
-  getRemainingDate,
-  getWebSettingData,
-  findReservationDataByEmail,
-} from "../libs/web-util";
+import { getRemainingDate, getWebSettingData } from "../libs/web-util";
 import "../styles/globals.css";
 import "../styles/index.scss";
 import "../styles/settings.scss";
@@ -49,7 +45,6 @@ function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(true);
   const [webSiteSetting, setWebSiteSetting] = useState({});
   const [remainingTime, setRemainingTime] = useState({});
-  const [hasPin, setHasPin] = useState(false);
 
   async function getWebData() {
     let webSettings = await getWebSettingData();
@@ -57,17 +52,6 @@ function MyApp({ Component, pageProps }) {
     let date = getRemainingDate(webSettings[0]);
     setRemainingTime(date);
     setLoading(false);
-  }
-
-  async function findReservationData(email) {
-    let resData = await findReservationDataByEmail(email);
-    return resData;
-  }
-
-  async function validatePin(pin, email) {
-    let data = await findReservationData(email);
-    console.log(data);
-    // setHasPin(true);
   }
 
   function calRemaining() {
@@ -94,8 +78,6 @@ function MyApp({ Component, pageProps }) {
           webSiteSetting={webSiteSetting}
           remainingTime={remainingTime}
           calRemaining={calRemaining}
-          hasPin={hasPin}
-          validatePin={validatePin}
         />
       </Layout>
     </>

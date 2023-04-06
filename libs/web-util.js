@@ -107,7 +107,7 @@ export async function updateReservationData(reservationData) {
         surname: "Flame",
         phoneNr: "0123456789",
         email: "test@gmail.com",
-        attending: "yes!!",
+        attending: "Yes",
         amount: 3,
         comment: "so happy for you guys",
       },

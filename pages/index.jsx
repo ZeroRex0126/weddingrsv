@@ -14,13 +14,7 @@ import {
   TopNav,
 } from "../components";
 
-export default function Home({
-  calRemaining,
-  webSiteSetting,
-  remainingTime,
-  hasPin,
-  validatePin,
-}) {
+export default function Home({ calRemaining, webSiteSetting, remainingTime }) {
   useEffect(() => {
     const interval = setInterval(() => {
       calRemaining();
@@ -45,11 +39,7 @@ export default function Home({
       {/* <Gallery webSiteSetting={webSiteSetting} /> */}
       {/* <Family webSiteSetting={webSiteSetting} /> */}
       <EventsComp webSiteSetting={webSiteSetting} />
-      <RSVP
-        webSiteSetting={webSiteSetting}
-        hasPin={hasPin}
-        validatePin={validatePin}
-      />
+      <RSVP webSiteSetting={webSiteSetting} />
       <Contact webSiteSetting={webSiteSetting} />
     </div>
   );

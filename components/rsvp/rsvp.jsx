@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Input from "../input/input";
 import { Fade } from "react-awesome-reveal";
 import CusButton from "../cusButton/cusButton";
+import { findReservationDataByEmail } from "../../libs/web-util";
 
 const RsvpComp = styled.div`
   overflow: hidden;
@@ -47,8 +48,9 @@ const RsvpComp = styled.div`
   }
 `;
 
-const RSVP = ({ hasPin, validatePin }) => {
+const RSVP = ({ webSiteSetting }) => {
   const [pin, setPin] = useState("");
+  const [dataID, setDataID] = useState("");
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [amount, setAmount] = useState("");
@@ -56,19 +58,47 @@ const RSVP = ({ hasPin, validatePin }) => {
   const [email, setEmail] = useState("");
   const [attendance, setAttendance] = useState("");
   const [message, setMessage] = useState("");
+  const [hasPin, setHasPin] = useState(false);
+
+  async function findReservationData(email) {
+    let resData = await findReservationDataByEmail(email);
+    return resData;
+  }
+
+  async function validatePin(pin, email) {
+    if (pin === webSiteSetting.pin && email) {
+      let data = await findReservationData(email);
+      if (data._id) {
+        setDataID(data._id);
+        setName(data.name);
+        setSurname(data.surname);
+        setAmount(data.amount);
+        setContactNo(data.phoneNr);
+        setEmail(data.email);
+        setAttendance(data.attending);
+        setMessage(data.comment);
+      }
+      setHasPin(true);
+    }
+  }
 
   function setEmpty() {
     setName("");
     setSurname("");
     setAmount("");
     setContactNo("");
-    setEmail("");
     setAttendance("");
     setMessage("");
   }
 
+  function testClick() {
+    // console.log(attendance);
+    setHasPin(!hasPin);
+  }
+
   return (
     <RsvpComp id="rsvp">
+      <button onClick={() => testClick()}>click me </button>
       <h1>RSVP</h1>
       <div className={`rsvp ${hasPin ? "hide" : "show"}`}>
         <Fade direction="up" duration={2000} triggerOnce={true}>
@@ -82,7 +112,7 @@ const RSVP = ({ hasPin, validatePin }) => {
           />
           <Input
             title="Pin"
-            type="text"
+            type="password"
             value={pin}
             onKeyPress={(e) => {
               if (e.key.toUpperCase() === "ENTER") {
@@ -171,7 +201,7 @@ const RSVP = ({ hasPin, validatePin }) => {
                   title="Attendance"
                   value={attendance}
                   type="select"
-                  options={["Yes!!!", "No :("]}
+                  options={["Yes", "No"]}
                   onValueChange={(e) => {
                     setAttendance(e.target.value);
                   }}
