@@ -16,7 +16,7 @@ async function handler(req, res) {
   switch (req.method) {
     case "GET":
       try {
-        const result = await db.collection("reservation").find({}).toArray();
+        let result = await db.collection("reservation").find({}).toArray();
         if (result) {
           res.json(result);
         } else {
@@ -34,6 +34,19 @@ async function handler(req, res) {
       try {
         let result = undefined;
         switch (req.body.type.toLowerCase()) {
+          case "find":
+            result = await db
+              .collection("reservation")
+              .find({ email: req.body.email })
+              .toArray();
+
+            if (result.length > 0) {
+              res.json(result[0]);
+            } else {
+              res.status(200).json({ message: "No data Found" });
+              return;
+            }
+            break;
           case "add":
             result = await db
               .collection("reservation")

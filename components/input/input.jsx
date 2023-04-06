@@ -12,6 +12,7 @@ const Input = ({
   options,
   onValueChange,
   onKeyPress,
+  disabled = false,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   function showPasswordFunc() {
@@ -95,6 +96,7 @@ const Input = ({
             onChange={(v) => {
               onValueChange(v);
             }}
+            disabled={disabled}
           />
           <span>{title}</span>
           <FontAwesomeIcon

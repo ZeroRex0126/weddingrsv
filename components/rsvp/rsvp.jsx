@@ -47,7 +47,7 @@ const RsvpComp = styled.div`
   }
 `;
 
-const RSVP = ({ hasPin, setHasPin }) => {
+const RSVP = ({ hasPin, validatePin, findReservationData }) => {
   const [pin, setPin] = useState("");
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
@@ -70,15 +70,24 @@ const RSVP = ({ hasPin, setHasPin }) => {
   return (
     <RsvpComp id="rsvp">
       <h1>RSVP</h1>
+      <button onClick={() => findReservationData(email)}>click</button>
       <div className={`rsvp ${hasPin ? "hide" : "show"}`}>
         <Fade direction="up" duration={2000} triggerOnce={true}>
+          <Input
+            title="Email"
+            value={email}
+            type="text"
+            onValueChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
           <Input
             title="Pin"
             type="text"
             value={pin}
             onKeyPress={(e) => {
               if (e.key.toUpperCase() === "ENTER") {
-                setHasPin(pin);
+                validatePin(pin);
               }
             }}
             onValueChange={(e) => {
@@ -88,7 +97,7 @@ const RSVP = ({ hasPin, setHasPin }) => {
           <CusButton
             title={"ok"}
             clicked={() => {
-              setHasPin(pin);
+              validatePin(pin);
             }}
           />
         </Fade>
@@ -150,6 +159,7 @@ const RSVP = ({ hasPin, setHasPin }) => {
                   title="Email"
                   value={email}
                   type="text"
+                  disabled={true}
                   onValueChange={(e) => {
                     setEmail(e.target.value);
                   }}

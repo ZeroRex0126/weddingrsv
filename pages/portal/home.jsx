@@ -82,9 +82,11 @@ const PortalHome = ({ GetData, reservation }) => {
   }
 
   useEffect(() => {
-    var keys = Object.keys(tableData[0]);
-    setColumns(generateColumns(keys));
-  }, []);
+    if (tableData.length > 0) {
+      var keys = Object.keys(tableData[0]);
+      setColumns(generateColumns(keys));
+    }
+  }, [tableData]);
 
   useEffect(() => {
     setTableData(reservation);

@@ -19,7 +19,8 @@ export default function Home({
   webSiteSetting,
   remainingTime,
   hasPin,
-  setHasPin,
+  validatePin,
+  findReservationData,
 }) {
   useEffect(() => {
     const interval = setInterval(() => {
@@ -48,7 +49,8 @@ export default function Home({
       <RSVP
         webSiteSetting={webSiteSetting}
         hasPin={hasPin}
-        setHasPin={setHasPin}
+        validatePin={validatePin}
+        findReservationData={findReservationData}
       />
       <Contact webSiteSetting={webSiteSetting} />
     </div>

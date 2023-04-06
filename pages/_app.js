@@ -1,7 +1,11 @@
 import Head from "next/head";
 import Layout from "../components/layout.jsx";
 import { useState, useEffect } from "react";
-import { getRemainingDate, getWebSettingData } from "../libs/web-util";
+import {
+  getRemainingDate,
+  getWebSettingData,
+  findReservationDataByEmail,
+} from "../libs/web-util";
 import "../styles/globals.css";
 import "../styles/index.scss";
 import "../styles/settings.scss";
@@ -55,6 +59,12 @@ function MyApp({ Component, pageProps }) {
     setLoading(false);
   }
 
+  async function findReservationData(email) {
+    "test2@gmail.com";
+    let resData = await findReservationDataByEmail(email);
+    console.log(resData);
+  }
+
   function validatePin(pin) {
     setHasPin(true);
   }
@@ -84,7 +94,8 @@ function MyApp({ Component, pageProps }) {
           remainingTime={remainingTime}
           calRemaining={calRemaining}
           hasPin={hasPin}
-          setHasPin={validatePin}
+          validatePin={validatePin}
+          findReservationData={findReservationData}
         />
       </Layout>
     </>

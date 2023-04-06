@@ -14,6 +14,7 @@ export async function getWebSettingData() {
 
   return data;
 }
+//Reserve data
 export async function getReservationDatas() {
   const response = await fetch("/api/reservation", {
     method: "GET",
@@ -31,15 +32,21 @@ export async function getReservationDatas() {
   return data;
 }
 
-export async function findReservationData(email) {
+export async function findReservationDataByEmail(email) {
   const response = await fetch("/api/reservation", {
-    method: "GET",
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
+    body: JSON.stringify({ type: "find", email: email }),
   });
 
-  const data = await response.json();
+  let data;
+
+  console.log(response);
+  if (response.json) {
+    data = response.json();
+  }
 
   if (!response.ok) {
     throw new Error(data.message || "Something went wrong!");
@@ -116,6 +123,8 @@ export async function updateReservationData(reservationData) {
 
   return data;
 }
+
+//End Reserve data
 
 export function getRemainingDate(data) {
   if (data && data !== {}) {
