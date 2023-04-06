@@ -60,13 +60,14 @@ function MyApp({ Component, pageProps }) {
   }
 
   async function findReservationData(email) {
-    "test2@gmail.com";
     let resData = await findReservationDataByEmail(email);
-    console.log(resData);
+    return resData;
   }
 
-  function validatePin(pin) {
-    setHasPin(true);
+  async function validatePin(pin, email) {
+    let data = await findReservationData(email);
+    console.log(data);
+    // setHasPin(true);
   }
 
   function calRemaining() {
@@ -95,7 +96,6 @@ function MyApp({ Component, pageProps }) {
           calRemaining={calRemaining}
           hasPin={hasPin}
           validatePin={validatePin}
-          findReservationData={findReservationData}
         />
       </Layout>
     </>

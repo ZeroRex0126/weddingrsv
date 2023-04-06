@@ -43,7 +43,6 @@ export async function findReservationDataByEmail(email) {
 
   let data;
 
-  console.log(response);
   if (response.json) {
     data = response.json();
   }
