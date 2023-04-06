@@ -18,22 +18,45 @@ const CommentComp = styled.div`
   align-items: flex-start;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+
+    .commentGrid {
+      column-count: 3;
+      column-gap: 1em;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 1128px) {
+    .commentGrid {
+      column-count: 2;
+    }
+  }
+
+  @media (max-width: 875px) {
+    .commentGrid {
+      column-count: 1;
+    }
+  }
+  }
 `;
 
 const Comment = ({ reservation }) => {
   return (
     <CommentComp>
       <h1 className="heading">Let's see what people say</h1>
-      {reservation.map((resv, index) => {
-        return (
-          <CommentCard
-            key={index}
-            name={resv.name}
-            surname={resv.surname}
-            comment={resv.comment}
-          />
-        );
-      })}
+      <div className="commentGrid">
+        {reservation.map((resv, index) => {
+          return (
+            <CommentCard
+              key={index}
+              name={resv.name}
+              surname={resv.surname}
+              comment={resv.comment}
+            />
+          );
+        })}
+      </div>
     </CommentComp>
   );
 };

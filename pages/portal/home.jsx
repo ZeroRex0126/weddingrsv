@@ -12,12 +12,16 @@ const Home = styled.div`
   min-height: 100vh;
   width: 100%;
   padding: 30px 30px;
-  .filterBox {
-    p {
-      position: absolute;
-      top: 13px;
-      right: 25px;
-      cursor: pointer;
+  .dbFunc {
+    gap: 2px;
+    display: inline-flex;
+    .filterBox {
+      input {
+        width: 8.3em;
+      }
+      .input-group-append button {
+        position: absolute;
+      }
     }
   }
   .dataTableContainer {
@@ -38,6 +42,9 @@ const Home = styled.div`
 const PortalHome = ({ reservation }) => {
   const [columns, setColumns] = useState([]);
   const [tableData, setTableData] = useState(reservation);
+  const [selectedRow, setSelectedRow] = useState({});
+  const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
+  const [filterText, setFilterText] = useState("");
 
   function generateColumns(keys) {
     var columns = [];
@@ -64,8 +71,6 @@ const PortalHome = ({ reservation }) => {
   }
 
   //Filtering
-  const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
-  const [filterText, setFilterText] = useState("");
 
   const subHeaderComponentMemo = useMemo(() => {
     const handleClear = () => {
@@ -77,32 +82,74 @@ const PortalHome = ({ reservation }) => {
     };
 
     return (
-      <div>
+      <div className="dbFunc">
+        <button
+          className="btn btn-primary"
+          disabled={!selectedRow._id}
+          onClick={() => {
+            console.log(selectedRow);
+          }}
+        >
+          Add
+        </button>
+        <button
+          className="btn btn-primary"
+          disabled={!selectedRow._id}
+          onClick={() => {
+            console.log(selectedRow);
+          }}
+        >
+          Edit
+        </button>
+        <button
+          className="btn btn-danger"
+          disabled={!selectedRow._id}
+          onClick={() => {
+            console.log(selectedRow);
+          }}
+        >
+          Delete
+        </button>
         <div className="filterBox">
-          <input
-            placeholder="Filter by Name"
-            type="text"
-            value={filterText}
-            onChange={(v) => {
-              setFilterText(v.target.value);
-              setTableData(
-                reservation.filter((data) =>
-                  data.name.toUpperCase().includes(v.target.value.toUpperCase())
-                )
-              );
-            }}
-          />
-          <p onClick={handleClear}>X</p>
+          <div className="input-group">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Filter by Name"
+              value={filterText}
+              onChange={(v) => {
+                setFilterText(v.target.value);
+                setTableData(
+                  reservation.filter((data) =>
+                    data.name
+                      .toUpperCase()
+                      .includes(v.target.value.toUpperCase())
+                  )
+                );
+              }}
+              aria-label="Recipient's username"
+              aria-describedby="basic-addon2"
+            />
+            <div className="input-group-append">
+              <button
+                className="btn btn-outline-secondary"
+                type="button"
+                onClick={handleClear}
+              >
+                X
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     );
-  }, [filterText, resetPaginationToggle]);
+  }, [selectedRow, filterText, resetPaginationToggle]);
 
   //Filtering end
 
   //selecting table item
-  const [selectedRow, setSelectedRow] = useState({});
-  const handleRowClick = (row) => {
+
+  const handleRowClick = async (row) => {
     setSelectedRow(row);
   };
   //end of selecting table item
@@ -127,11 +174,15 @@ const PortalHome = ({ reservation }) => {
     return reservation.length;
   }
   function getTotalAttending() {
-    return reservation.filter((res) => res.attending.toUpperCase().includes("YES")).length;
+    return reservation.filter((res) =>
+      res.attending.toUpperCase().includes("YES")
+    ).length;
   }
   function getTotalAttendingHeadCounts() {
     let count = 0;
-    let comingHeads = reservation.filter((res) =>  res.attending.toUpperCase().includes("YES"));
+    let comingHeads = reservation.filter((res) =>
+      res.attending.toUpperCase().includes("YES")
+    );
     for (let i = 0; i < comingHeads.length; i++) {
       const comingHead = comingHeads[i];
 
