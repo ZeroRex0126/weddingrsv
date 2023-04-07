@@ -6,6 +6,8 @@ import CusButton from "../cusButton/cusButton";
 import { findReservationDataByEmail } from "../../libs/web-util";
 import Modal from "../modal/modal";
 import { createRoot } from "react-dom/client";
+import { updateReservationData } from "../../libs/web-util";
+import { data } from "jquery";
 
 const RsvpComp = styled.div`
   overflow: hidden;
@@ -108,7 +110,44 @@ const RSVP = ({ webSiteSetting }) => {
     btn.replaceChild(temp, btn.childNodes[0]);
   }
 
+  async function submitClicked() {
+    if (
+      name !== "" &&
+      surname !== "" &&
+      amount !== "" &&
+      contactNo !== "" &&
+      email !== "" &&
+      attendance !== "" &&
+      message !== ""
+    ) {
+      if (dataID !== "") {
+        console.log("existing");
+        let res = await updateReservationData({
+          _id: dataID,
+          name: name,
+          surname: surname,
+          phoneNr: contactNo,
+          email: email,
+          attending: attendance,
+          amount: amount,
+          comment: message,
+        });
+        console.log(res)
+      } else {
+        console.log("nonee");
+        
+      }
+    } else {
+      console.log("sad no data");
+    }
+  }
+
+  function backButton() {
+    setHasPin(false);
+  }
+
   function setEmpty() {
+    setDataID("");
     setName("");
     setSurname("");
     setAmount("");
@@ -119,7 +158,8 @@ const RSVP = ({ webSiteSetting }) => {
 
   function testClick() {
     // console.log(attendance);
-    setHasPin(!hasPin);
+    setHasPin(false);
+    setDataID("");
     setName("");
     setSurname("");
     setAmount("");
@@ -147,7 +187,7 @@ const RSVP = ({ webSiteSetting }) => {
   return (
     <RsvpComp id="rsvp">
       {/* modal */}
-      <button
+      {/* <button
         type="button"
         class="btn btn-primary"
         data-bs-toggle="modal"
@@ -161,7 +201,8 @@ const RSVP = ({ webSiteSetting }) => {
         label={"Test Modal"}
         hasFooter={true}
         modalBody={modalBody}
-      />
+        center={true}
+      /> */}
 
       <Modal
         modalID={"dataMessage"}
@@ -302,13 +343,18 @@ const RSVP = ({ webSiteSetting }) => {
           </div>
         </div>
         <div className="button-container">
-          {/* <CusButton
-            title={"Clear"}
+          <CusButton
+            title={"Back"}
             clicked={() => {
-              setEmpty();
+              backButton();
             }}
-          /> */}
-          <CusButton title={"Submit"} clicked={() => {}} />
+          />
+          <CusButton
+            title={"Submit"}
+            clicked={() => {
+              submitClicked();
+            }}
+          />
         </div>
       </div>
     </RsvpComp>

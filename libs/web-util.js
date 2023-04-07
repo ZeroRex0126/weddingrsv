@@ -47,10 +47,6 @@ export async function findReservationDataByEmail(email) {
     data = response.json();
   }
 
-  if (!response.ok) {
-    throw new Error(data.message || "Something went wrong!");
-  }
-
   return data;
 }
 
@@ -91,6 +87,10 @@ export async function addReservationData(reservationData) {
       },
     }),
   });
+
+  const data = await response.json();
+
+  return data;
 }
 
 export async function updateReservationData(reservationData) {
@@ -101,24 +101,11 @@ export async function updateReservationData(reservationData) {
     },
     body: JSON.stringify({
       type: "update",
-      context: {
-        _id: reservationData._id,
-        name: "Pot",
-        surname: "Flame",
-        phoneNr: "0123456789",
-        email: "test@gmail.com",
-        attending: "Yes",
-        amount: 3,
-        comment: "so happy for you guys",
-      },
+      context: reservationData,
     }),
   });
 
   const data = await response.json();
-
-  if (!response.ok) {
-    throw new Error(data.message || "Something went wrong!");
-  }
 
   return data;
 }
