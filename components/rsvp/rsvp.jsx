@@ -4,6 +4,8 @@ import Input from "../input/input";
 import { Fade } from "react-awesome-reveal";
 import CusButton from "../cusButton/cusButton";
 import { findReservationDataByEmail } from "../../libs/web-util";
+import Modal from "../modal/modal";
+import { createRoot } from "react-dom/client";
 
 const RsvpComp = styled.div`
   overflow: hidden;
@@ -46,6 +48,11 @@ const RsvpComp = styled.div`
   .button-container {
     display: flex;
   }
+
+  .spinner-grow {
+    --bs-spinner-width: 1em;
+    --bs-spinner-height: 1em;
+  }
 `;
 
 const RSVP = ({ webSiteSetting }) => {
@@ -66,6 +73,18 @@ const RSVP = ({ webSiteSetting }) => {
   }
 
   async function validatePin(pin, email) {
+    const btn = document.getElementById("pinOkBtn");
+    var temp = document.createElement("div");
+    createRoot(temp).render("ok");
+
+    var spinner = document.createElement("div");
+    createRoot(spinner).render(
+      <div class="spinner-grow" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    );
+
+    btn.replaceChild(spinner, btn.childNodes[0]);
     if (pin === webSiteSetting.pin && email) {
       let data = await findReservationData(email);
       if (data._id) {
@@ -77,9 +96,16 @@ const RSVP = ({ webSiteSetting }) => {
         setEmail(data.email);
         setAttendance(data.attending);
         setMessage(data.comment);
+        const { Modal } = require("bootstrap");
+        const myModal = new Modal("#dataMessage");
+
+        myModal.show();
       }
+
       setHasPin(true);
     }
+
+    btn.replaceChild(temp, btn.childNodes[0]);
   }
 
   function setEmpty() {
@@ -94,10 +120,56 @@ const RSVP = ({ webSiteSetting }) => {
   function testClick() {
     // console.log(attendance);
     setHasPin(!hasPin);
+    setName("");
+    setSurname("");
+    setAmount("");
+    setContactNo("");
+    setAttendance("");
+    setMessage("");
+  }
+
+  function modalBody() {
+    return (
+      <>
+        <p>This is a modal message</p>
+      </>
+    );
+  }
+
+  function modalDataMessageBody() {
+    return (
+      <>
+        <p>Reservation Data Found, you can edit your datas here.</p>
+      </>
+    );
   }
 
   return (
     <RsvpComp id="rsvp">
+      {/* modal */}
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#myModal"
+      >
+        Launch demo modal
+      </button>
+      <Modal
+        modalID={"myModal"}
+        labelID={"test"}
+        label={"Test Modal"}
+        hasFooter={true}
+        modalBody={modalBody}
+      />
+
+      <Modal
+        modalID={"dataMessage"}
+        labelID={"dataMessageLabel"}
+        label={"Reservation"}
+        hasFooter={true}
+        modalBody={modalDataMessageBody}
+      />
       <button onClick={() => testClick()}>click me </button>
       <h1>RSVP</h1>
       <div className={`rsvp ${hasPin ? "hide" : "show"}`}>
@@ -106,6 +178,11 @@ const RSVP = ({ webSiteSetting }) => {
             title="Email"
             value={email}
             type="text"
+            onKeyPress={(e) => {
+              if (e.key.toUpperCase() === "ENTER") {
+                validatePin(pin, email);
+              }
+            }}
             onValueChange={(e) => {
               setEmail(e.target.value);
             }}
@@ -124,6 +201,7 @@ const RSVP = ({ webSiteSetting }) => {
             }}
           />
           <CusButton
+            id="pinOkBtn"
             title={"ok"}
             clicked={() => {
               validatePin(pin, email);
@@ -224,12 +302,12 @@ const RSVP = ({ webSiteSetting }) => {
           </div>
         </div>
         <div className="button-container">
-          <CusButton
+          {/* <CusButton
             title={"Clear"}
             clicked={() => {
               setEmpty();
             }}
-          />
+          /> */}
           <CusButton title={"Submit"} clicked={() => {}} />
         </div>
       </div>

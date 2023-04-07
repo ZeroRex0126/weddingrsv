@@ -55,6 +55,7 @@ const Input = ({
           }}
         >
           <select
+            value={value ? value : ""}
             onChange={(v) => {
               onValueChange(v);
             }}

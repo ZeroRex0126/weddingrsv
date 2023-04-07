@@ -14,9 +14,10 @@ const CustomButton = styled.div`
   margin: 5px;
 `;
 
-const CusButton = ({ title, clicked }) => {
+const CusButton = ({ id, title, clicked }) => {
   return (
     <CustomButton
+      id={id ? id : ""}
       onClick={() => {
         clicked();
       }}
