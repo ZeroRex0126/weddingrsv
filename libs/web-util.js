@@ -76,15 +76,7 @@ export async function addReservationData(reservationData) {
     },
     body: JSON.stringify({
       type: "add",
-      context: {
-        name: "John",
-        surname: "Doe",
-        phoneNr: "0123456789",
-        email: "test2@gmail.com",
-        attending: "Yes",
-        amount: 3,
-        comment: "so happy for you guys",
-      },
+      context: reservationData,
     }),
   });
 

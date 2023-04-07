@@ -3,7 +3,10 @@ import styled from "styled-components";
 import Input from "../input/input";
 import { Fade } from "react-awesome-reveal";
 import CusButton from "../cusButton/cusButton";
-import { findReservationDataByEmail } from "../../libs/web-util";
+import {
+  addReservationData,
+  findReservationDataByEmail,
+} from "../../libs/web-util";
 import Modal from "../modal/modal";
 import { createRoot } from "react-dom/client";
 import { updateReservationData } from "../../libs/web-util";
@@ -132,11 +135,21 @@ const RSVP = ({ webSiteSetting }) => {
           amount: amount,
           comment: message,
         });
-        console.log(res)
+        console.log(res);
       } else {
         console.log("nonee");
-        
+        let res = await addReservationData({
+          name: name,
+          surname: surname,
+          phoneNr: contactNo,
+          email: email,
+          attending: attendance,
+          amount: amount,
+          comment: message,
+        });
+        console.log(res);
       }
+      clearOnSubmit();
     } else {
       console.log("sad no data");
     }
@@ -146,7 +159,9 @@ const RSVP = ({ webSiteSetting }) => {
     setHasPin(false);
   }
 
-  function setEmpty() {
+  function clearOnSubmit() {
+    // console.log(attendance);
+    setHasPin(false);
     setDataID("");
     setName("");
     setSurname("");
@@ -156,10 +171,7 @@ const RSVP = ({ webSiteSetting }) => {
     setMessage("");
   }
 
-  function testClick() {
-    // console.log(attendance);
-    setHasPin(false);
-    setDataID("");
+  function clearData() {
     setName("");
     setSurname("");
     setAmount("");
@@ -211,7 +223,6 @@ const RSVP = ({ webSiteSetting }) => {
         hasFooter={true}
         modalBody={modalDataMessageBody}
       />
-      <button onClick={() => testClick()}>click me </button>
       <h1>RSVP</h1>
       <div className={`rsvp ${hasPin ? "hide" : "show"}`}>
         <Fade direction="up" duration={2000} triggerOnce={true}>
@@ -347,6 +358,12 @@ const RSVP = ({ webSiteSetting }) => {
             title={"Back"}
             clicked={() => {
               backButton();
+            }}
+          />
+          <CusButton
+            title={"Clear"}
+            clicked={() => {
+              clearData();
             }}
           />
           <CusButton
