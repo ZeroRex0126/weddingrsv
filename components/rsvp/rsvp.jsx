@@ -58,6 +58,12 @@ const RsvpComp = styled.div`
     --bs-spinner-width: 1em;
     --bs-spinner-height: 1em;
   }
+
+  .errorValidationMessage{
+    color: red;
+    text-align: center;
+    font-weight: 700;
+  }
 `;
 
 const RSVP = ({ webSiteSetting }) => {
@@ -65,12 +71,15 @@ const RSVP = ({ webSiteSetting }) => {
   const [dataID, setDataID] = useState("");
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
-  const [amount, setAmount] = useState("");
+  const [amount, setAmount] = useState(0);
   const [contactNo, setContactNo] = useState("");
   const [email, setEmail] = useState("");
   const [attendance, setAttendance] = useState("");
   const [message, setMessage] = useState("");
   const [hasPin, setHasPin] = useState(false);
+  const [errorOnField, setErrorOnField] = useState(false);
+  const [errorOnPin, setErrorOnPin] = useState(false);
+  const [completeMessage, setCompleteMessage] = useState("");
 
   async function findReservationData(email) {
     let resData = await findReservationDataByEmail(email);
@@ -105,9 +114,20 @@ const RSVP = ({ webSiteSetting }) => {
         const myModal = new Modal("#dataMessage");
 
         myModal.show();
+      } else {
+        setDataID("");
+        setName("");
+        setSurname("");
+        setAmount("");
+        setContactNo("");
+        setAttendance("");
+        setMessage("");
       }
 
       setHasPin(true);
+      setErrorOnPin(false);
+    } else {
+      setErrorOnPin(true);
     }
 
     btn.replaceChild(temp, btn.childNodes[0]);
@@ -132,10 +152,17 @@ const RSVP = ({ webSiteSetting }) => {
           phoneNr: contactNo,
           email: email,
           attending: attendance,
-          amount: amount,
+          amount: parseInt(amount),
           comment: message,
         });
         console.log(res);
+        if (res.acknowledged) {
+          setCompleteMessage(
+            "Your Details has been updated, you can update it again anytime."
+          );
+        } else {
+          setCompleteMessage("An Error has occured please contact organizer.");
+        }
       } else {
         console.log("nonee");
         let res = await addReservationData({
@@ -144,14 +171,27 @@ const RSVP = ({ webSiteSetting }) => {
           phoneNr: contactNo,
           email: email,
           attending: attendance,
-          amount: amount,
+          amount: parseInt(amount),
           comment: message,
         });
         console.log(res);
+        if (res.acknowledged) {
+          setCompleteMessage(
+            "Your Details has been added, you can update it again anytime. \n Thank You for your reservation!!!"
+          );
+        } else {
+          setCompleteMessage("An Error has occured please contact organizer.");
+        }
       }
       clearOnSubmit();
+      setErrorOnField(false);
+      const { Modal } = require("bootstrap");
+      const myModal = new Modal("#completeMessage");
+
+      myModal.show();
     } else {
       console.log("sad no data");
+      setErrorOnField(true);
     }
   }
 
@@ -169,6 +209,8 @@ const RSVP = ({ webSiteSetting }) => {
     setContactNo("");
     setAttendance("");
     setMessage("");
+    setEmail("");
+    setPin("");
   }
 
   function clearData() {
@@ -180,10 +222,10 @@ const RSVP = ({ webSiteSetting }) => {
     setMessage("");
   }
 
-  function modalBody() {
+  function completeModalBody() {
     return (
       <>
-        <p>This is a modal message</p>
+        <p>{completeMessage}</p>
       </>
     );
   }
@@ -223,6 +265,14 @@ const RSVP = ({ webSiteSetting }) => {
         hasFooter={true}
         modalBody={modalDataMessageBody}
       />
+      <Modal
+        modalID={"completeMessage"}
+        labelID={"completeMessageLabel"}
+        label={"Submitted"}
+        hasFooter={true}
+        modalBody={completeModalBody}
+        center={true}
+      />
       <h1>RSVP</h1>
       <div className={`rsvp ${hasPin ? "hide" : "show"}`}>
         <Fade direction="up" duration={2000} triggerOnce={true}>
@@ -252,6 +302,9 @@ const RSVP = ({ webSiteSetting }) => {
               setPin(e.target.value);
             }}
           />
+          <p className="errorValidationMessage" hidden={!errorOnPin}>
+            *Please ensure that its a valid email and correct pin*
+          </p>
           <CusButton
             id="pinOkBtn"
             title={"ok"}
@@ -351,6 +404,9 @@ const RSVP = ({ webSiteSetting }) => {
                 />
               </div>
             </div>
+            <p className="errorValidationMessage" hidden={!errorOnField}>
+              *Please ensure that all fields are filled up*
+            </p>
           </div>
         </div>
         <div className="button-container">
