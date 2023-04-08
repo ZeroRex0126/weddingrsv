@@ -181,7 +181,6 @@ const PortalHome = ({ GetData, reservation }) => {
                     title="Email"
                     value={email}
                     type="text"
-                    disabled={true}
                     onValueChange={(e) => {
                       setEmail(e.target.value);
                     }}

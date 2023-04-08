@@ -10,7 +10,6 @@ import {
 import Modal from "../modal/modal";
 import { createRoot } from "react-dom/client";
 import { updateReservationData } from "../../libs/web-util";
-import { data } from "jquery";
 
 const RsvpComp = styled.div`
   overflow: hidden;
@@ -143,6 +142,19 @@ const RSVP = ({ webSiteSetting }) => {
       attendance !== "" &&
       message !== ""
     ) {
+      const btn = document.getElementById("reSubmitBtn");
+      var temp = document.createElement("div");
+      createRoot(temp).render("ok");
+
+      var spinner = document.createElement("div");
+      createRoot(spinner).render(
+        <div class="spinner-grow" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      );
+
+      btn.replaceChild(spinner, btn.childNodes[0]);
+
       if (dataID !== "") {
         console.log("existing");
         let res = await updateReservationData({
@@ -185,6 +197,7 @@ const RSVP = ({ webSiteSetting }) => {
       }
       clearOnSubmit();
       setErrorOnField(false);
+      btn.replaceChild(temp, btn.childNodes[0]);
       const { Modal } = require("bootstrap");
       const myModal = new Modal("#completeMessage");
 
@@ -426,6 +439,7 @@ const RSVP = ({ webSiteSetting }) => {
             }}
           />
           <CusButton
+            id="reSubmitBtn"
             title={"Submit"}
             clicked={() => {
               submitClicked();
