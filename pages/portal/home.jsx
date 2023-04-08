@@ -7,6 +7,8 @@ import {
   deleteReservationData,
   updateReservationData,
 } from "../../libs/web-util";
+import Modal from "../../components/modal/modal";
+import Input from "../../components/input/input";
 
 const Home = styled.div`
   display: grid;
@@ -17,6 +19,7 @@ const Home = styled.div`
   min-height: 100vh;
   width: 100%;
   padding: 30px 30px;
+
   .dbFunc {
     gap: 2px;
     display: inline-flex;
@@ -50,6 +53,18 @@ const PortalHome = ({ GetData, reservation }) => {
   const [selectedRow, setSelectedRow] = useState({});
   const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
   const [filterText, setFilterText] = useState("");
+
+  // modal values
+  const [dataID, setDataID] = useState("");
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [amount, setAmount] = useState(0);
+  const [contactNo, setContactNo] = useState("");
+  const [email, setEmail] = useState("");
+  const [attendance, setAttendance] = useState("");
+  const [message, setMessage] = useState("");
+  const [errorOnField, setErrorOnField] = useState(false);
+  // end of modal value
 
   async function deleteSelectedData(data) {
     await deleteReservationData(data);
@@ -99,6 +114,115 @@ const PortalHome = ({ GetData, reservation }) => {
 
   //Filtering
 
+  // modal
+
+  function inputModalBody() {
+    return (
+      <>
+        <p>
+          <div className="container">
+            <div className="row m-0 mb-4 mb-md-0 pb-2 pb-md-0">
+              <div className="col-md-6 p-0">
+                <div className="h-100 d-flex flex-column align-items-center ">
+                  <Input
+                    width="auto"
+                    title="Name"
+                    type="text"
+                    value={name}
+                    onValueChange={(e) => {
+                      setName(e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="col-md-6 p-0">
+                <div className="h-100 d-flex flex-column align-items-center ">
+                  <Input
+                    width="auto"
+                    title="Surname"
+                    value={surname}
+                    type="text"
+                    onValueChange={(e) => {
+                      setSurname(e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="col-md-6 p-0">
+                <div className="h-100 d-flex flex-column align-items-center ">
+                  <Input
+                    width="auto"
+                    title="Amount"
+                    value={amount}
+                    type="number"
+                    onValueChange={(e) => {
+                      setAmount(e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="col-md-6 p-0">
+                <div className="h-100 d-flex flex-column align-items-center ">
+                  <Input
+                    width="auto"
+                    title="Contact Number"
+                    value={contactNo}
+                    type="text"
+                    onValueChange={(e) => {
+                      setContactNo(e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="col-md-6 p-0">
+                <div className="h-100 d-flex flex-column align-items-center ">
+                  <Input
+                    width="auto"
+                    title="Email"
+                    value={email}
+                    type="text"
+                    disabled={true}
+                    onValueChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="col-md-6 p-0">
+                <div className="h-100 d-flex flex-column align-items-center ">
+                  <Input
+                    width="auto"
+                    title="Attendance"
+                    value={attendance}
+                    type="select"
+                    options={["Yes", "No"]}
+                    onValueChange={(e) => {
+                      setAttendance(e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="col-md-12 p-0">
+                <div className="h-100 d-flex flex-column align-items-center ">
+                  <Input
+                    title="Message"
+                    value={message}
+                    type="textarea"
+                    width={"86%"}
+                    onValueChange={(e) => {
+                      setMessage(e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </p>
+      </>
+    );
+  }
+  // end of modal
+
   const subHeaderComponentMemo = useMemo(() => {
     const handleClear = () => {
       if (filterText) {
@@ -111,6 +235,8 @@ const PortalHome = ({ GetData, reservation }) => {
     return (
       <div className="dbFunc">
         <button
+          data-bs-toggle="modal"
+          data-bs-target="#inputModal"
           className="btn btn-primary"
           onClick={() => {
             addData("");
@@ -119,6 +245,8 @@ const PortalHome = ({ GetData, reservation }) => {
           Add
         </button>
         <button
+          data-bs-toggle="modal"
+          data-bs-target="#inputModal"
           className="btn btn-primary"
           disabled={!selectedRow._id}
           onClick={() => {
@@ -223,6 +351,26 @@ const PortalHome = ({ GetData, reservation }) => {
       {/* <div>total {getTotalReservaion()}</div>
       <div>attending {getTotalAttending()}</div>
       <div>total head counts {getTotalAttendingHeadCounts()}</div> */}
+      {/* <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#inputModal"
+        data-bs-backdrop="false"
+      >
+        Launch demo modal
+      </button> */}
+      <Modal
+        modalID={"inputModal"}
+        labelID={"input"}
+        label={"Input"}
+        hasFooter={true}
+        modalBody={inputModalBody}
+        center={true}
+        hasSubmitBtn={true}
+        submitBtnFunc={() => {}}
+        submitBtnLabel={"save"}
+      />
       <div>
         <InfoCard title={"Total"} count={getTotalReservaion()} />
       </div>

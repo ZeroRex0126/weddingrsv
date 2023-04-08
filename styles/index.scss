@@ -1,5 +1,9 @@
 @import "styles/utils";
 
+.modal-backdrop {
+  display: none;
+}
+
 .navContainer {
   position: fixed;
   // width: 100%;

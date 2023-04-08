@@ -241,7 +241,7 @@ const RSVP = ({ webSiteSetting }) => {
   return (
     <RsvpComp id="rsvp">
       {/* modal */}
-      {/* <button
+      <button
         type="button"
         class="btn btn-primary"
         data-bs-toggle="modal"
@@ -254,9 +254,12 @@ const RSVP = ({ webSiteSetting }) => {
         labelID={"test"}
         label={"Test Modal"}
         hasFooter={true}
-        modalBody={modalBody}
+        modalBody={modalDataMessageBody}
         center={true}
-      /> */}
+        hasSubmitBtn={true}
+        submitBtnFunc={() => {}}
+        submitBtnLabel={"save"}
+      />
 
       <Modal
         modalID={"dataMessage"}
@@ -371,7 +374,7 @@ const RSVP = ({ webSiteSetting }) => {
                   title="Email"
                   value={email}
                   type="text"
-                  disabled={true}
+                  disabled={dataID ? false : true}
                   onValueChange={(e) => {
                     setEmail(e.target.value);
                   }}

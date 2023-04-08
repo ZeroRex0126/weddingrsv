@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import styled from "styled-components";
 const ModalComp = styled.div`
-   .show.center{
+  .show.center {
     display: flex !important;
     align-items: center;
     height: 100%;
@@ -9,9 +9,23 @@ const ModalComp = styled.div`
       width: 100%;
     }
   }
+
+  .show {
+    z-index: 9999999;
+  }
 `;
 
-const Modal = ({ modalID, labelID, label, hasFooter, modalBody, center }) => {
+const Modal = ({
+  modalID,
+  labelID,
+  label,
+  hasFooter,
+  modalBody,
+  center,
+  hasSubmitBtn,
+  submitBtnFunc,
+  submitBtnLabel,
+}) => {
   //to show bootstrap modal
   useEffect(() => {
     typeof document !== undefined
@@ -22,7 +36,7 @@ const Modal = ({ modalID, labelID, label, hasFooter, modalBody, center }) => {
   return (
     <ModalComp>
       <div
-        class={`modal fade ${center? 'center':''}`}
+        class={`modal fade ${center ? "center" : ""}`}
         id={modalID}
         tabindex="-1"
         role="dialog"
@@ -47,6 +61,18 @@ const Modal = ({ modalID, labelID, label, hasFooter, modalBody, center }) => {
             <div class="modal-body">{modalBody()}</div>
             {hasFooter ? (
               <div class="modal-footer">
+                {hasSubmitBtn ? (
+                  <button
+                    onClick={submitBtnFunc}
+                    type="button"
+                    class="btn btn-primary"
+                    data-bs-dismiss="modal"
+                  >
+                    {submitBtnLabel}
+                  </button>
+                ) : (
+                  <></>
+                )}
                 <button
                   type="button"
                   class="btn btn-secondary"
@@ -54,9 +80,6 @@ const Modal = ({ modalID, labelID, label, hasFooter, modalBody, center }) => {
                 >
                   Close
                 </button>
-                {/* <button type="button" class="btn btn-primary">
-              Save changes
-            </button> */}
               </div>
             ) : (
               <></>
