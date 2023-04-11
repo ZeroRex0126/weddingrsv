@@ -25,6 +25,7 @@ const Modal = ({
   hasSubmitBtn,
   submitBtnFunc,
   submitBtnLabel,
+  submitBtnID,
 }) => {
   //to show bootstrap modal
   useEffect(() => {
@@ -64,6 +65,7 @@ const Modal = ({
                 {hasSubmitBtn ? (
                   <button
                     onClick={submitBtnFunc}
+                    id={submitBtnID ? submitBtnID : ""}
                     type="button"
                     class="btn btn-primary"
                     data-bs-dismiss="modal"

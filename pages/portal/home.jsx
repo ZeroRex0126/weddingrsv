@@ -64,7 +64,93 @@ const PortalHome = ({ GetData, reservation }) => {
   const [attendance, setAttendance] = useState("");
   const [message, setMessage] = useState("");
   const [errorOnField, setErrorOnField] = useState(false);
+  const [completeMessage, setCompleteMessage] = useState("");
   // end of modal value
+
+  async function submitClicked(
+    dataID,
+    name,
+    surname,
+    amount,
+    contactNo,
+    email,
+    attendance,
+    message
+  ) {
+    if (
+      name !== "" &&
+      surname !== "" &&
+      amount !== "" &&
+      contactNo !== "" &&
+      email !== "" &&
+      attendance !== "" &&
+      message !== ""
+    ) {
+      const btn = document.getElementById("saveBtn");
+      var temp = document.createElement("div");
+      createRoot(temp).render("ok");
+
+      var spinner = document.createElement("div");
+      createRoot(spinner).render(
+        <div class="spinner-grow" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      );
+
+      btn.replaceChild(spinner, btn.childNodes[0]);
+
+      if (dataID !== "") {
+        console.log("existing");
+        let res = await updateReservationData({
+          _id: dataID,
+          name: name,
+          surname: surname,
+          phoneNr: contactNo,
+          email: email,
+          attending: attendance,
+          amount: parseInt(amount),
+          comment: message,
+        });
+        console.log(res);
+        if (res.acknowledged) {
+          setCompleteMessage(
+            "Your Details has been updated, you can update it again anytime."
+          );
+        } else {
+          setCompleteMessage("An Error has occured please contact organizer.");
+        }
+      } else {
+        console.log("nonee");
+        let res = await addReservationData({
+          name: name,
+          surname: surname,
+          phoneNr: contactNo,
+          email: email,
+          attending: attendance,
+          amount: parseInt(amount),
+          comment: message,
+        });
+        console.log(res);
+        if (res.acknowledged) {
+          setCompleteMessage(
+            "Your Details has been added, you can update it again anytime. \n Thank You for your reservation!!!"
+          );
+        } else {
+          setCompleteMessage("An Error has occured please contact organizer.");
+        }
+      }
+      clearOnSubmit();
+      setErrorOnField(false);
+      btn.replaceChild(temp, btn.childNodes[0]);
+      const { Modal } = require("bootstrap");
+      const myModal = new Modal("#completeMessage");
+
+      myModal.show();
+    } else {
+      console.log("sad no data");
+      setErrorOnField(true);
+    }
+  }
 
   async function deleteSelectedData(data) {
     await deleteReservationData(data);
@@ -79,6 +165,36 @@ const PortalHome = ({ GetData, reservation }) => {
   async function addData(data) {
     await addReservationData("");
     await GetData();
+  }
+
+  function setInputModalData(type) {
+    if (type) {
+      switch (type.toLowerCase()) {
+        case "add":
+          setDataID("");
+          setName("");
+          setSurname("");
+          setAmount("");
+          setContactNo("");
+          setEmail("");
+          setAttendance("");
+          setMessage("");
+          break;
+        case "edit":
+          setDataID(selectedRow._id);
+          setName(selectedRow.name);
+          setSurname(selectedRow.surname);
+          setAmount(selectedRow.amount);
+          setContactNo(selectedRow.phoneNr);
+          setEmail(selectedRow.email);
+          setAttendance(selectedRow.attending);
+          setMessage(selectedRow.comment);
+          break;
+
+        default:
+          break;
+      }
+    }
   }
 
   function generateColumns(keys) {
@@ -215,6 +331,9 @@ const PortalHome = ({ GetData, reservation }) => {
                 </div>
               </div>
             </div>
+            <span className="errorValidationMessage" hidden={!errorOnField}>
+              *Please ensure that all fields are filled up*
+            </span>
           </div>
         </p>
       </>
@@ -238,7 +357,7 @@ const PortalHome = ({ GetData, reservation }) => {
           data-bs-target="#inputModal"
           className="btn btn-primary"
           onClick={() => {
-            addData("");
+            setInputModalData("add");
           }}
         >
           Add
@@ -249,7 +368,7 @@ const PortalHome = ({ GetData, reservation }) => {
           className="btn btn-primary"
           disabled={!selectedRow._id}
           onClick={() => {
-            updateSelectedData(selectedRow);
+            setInputModalData("edit");
           }}
         >
           Edit
@@ -346,19 +465,7 @@ const PortalHome = ({ GetData, reservation }) => {
   //end of custom methods
 
   return (
-    <Home>
-      {/* <div>total {getTotalReservaion()}</div>
-      <div>attending {getTotalAttending()}</div>
-      <div>total head counts {getTotalAttendingHeadCounts()}</div> */}
-      {/* <button
-        type="button"
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#inputModal"
-        data-bs-backdrop="false"
-      >
-        Launch demo modal
-      </button> */}
+    <>
       <Modal
         modalID={"inputModal"}
         labelID={"input"}
@@ -368,36 +475,65 @@ const PortalHome = ({ GetData, reservation }) => {
         center={true}
         hasSubmitBtn={true}
         submitBtnFunc={() => {}}
-        submitBtnLabel={"save"}
+        submitBtnLabel={"Save"}
+        submitBtnID={"saveBtn"}
       />
-      <div>
-        <InfoCard title={"Total"} count={getTotalReservaion()} />
-      </div>
-      <div>
-        <InfoCard title={"Attending"} count={getTotalAttending()} />
-      </div>
-      <div>
-        <InfoCard title={"Head Counts"} count={getTotalAttendingHeadCounts()} />
-      </div>
-      <div className="dataTableContainer">
-        <div className="dt">
-          <DataTable
-            title="Reservation List"
-            columns={columns}
-            data={tableData}
-            highlightOnHover
-            pointerOnHover
-            pagination
-            paginationResetDefaultPage={resetPaginationToggle}
-            subHeader
-            subHeaderComponent={subHeaderComponentMemo}
-            persistTableHead
-            onRowClicked={handleRowClick}
-            conditionalRowStyles={conditionalRowStyles}
+      {/* <Modal
+        modalID={"deleteConfirmationPortal"}
+        labelID={"deleteConfirmationPortalLabel"}
+        label={"Delete"}
+        hasFooter={true}
+        modalBody={inputModalBody}
+        center={true}
+        hasSubmitBtn={true}
+        submitBtnFunc={() => {}}
+        submitBtnLabel={"Save"}
+      /> */}
+      <Home>
+        {/* <div>total {getTotalReservaion()}</div>
+      <div>attending {getTotalAttending()}</div>
+      <div>total head counts {getTotalAttendingHeadCounts()}</div> */}
+        {/* <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#inputModal"
+        data-bs-backdrop="false"
+      >
+        Launch demo modal
+      </button> */}
+        <div>
+          <InfoCard title={"Total"} count={getTotalReservaion()} />
+        </div>
+        <div>
+          <InfoCard title={"Attending"} count={getTotalAttending()} />
+        </div>
+        <div>
+          <InfoCard
+            title={"Head Counts"}
+            count={getTotalAttendingHeadCounts()}
           />
         </div>
-      </div>
-    </Home>
+        <div className="dataTableContainer">
+          <div className="dt">
+            <DataTable
+              title="Reservation List"
+              columns={columns}
+              data={tableData}
+              highlightOnHover
+              pointerOnHover
+              pagination
+              paginationResetDefaultPage={resetPaginationToggle}
+              subHeader
+              subHeaderComponent={subHeaderComponentMemo}
+              persistTableHead
+              onRowClicked={handleRowClick}
+              conditionalRowStyles={conditionalRowStyles}
+            />
+          </div>
+        </div>
+      </Home>
+    </>
   );
 };
 
