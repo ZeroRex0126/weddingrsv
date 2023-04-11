@@ -37,38 +37,37 @@ const Modal = ({
   return (
     <ModalComp>
       <div
-        class={`modal fade ${center ? "center" : ""}`}
+        className={`modal fade ${center ? "center" : ""}`}
         id={modalID}
-        tabindex="-1"
+        tabIndex="-1"
         role="dialog"
         aria-labelledby={labelID}
         aria-hidden="true"
       >
-        <div class="modal-dialog " role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id={labelID}>
+        <div className="modal-dialog " role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id={labelID}>
                 {label}
               </h5>
               <button
                 type="button"
-                class="btn close"
+                className="btn close"
                 aria-label="Close"
                 data-bs-dismiss="modal"
               >
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">{modalBody()}</div>
+            <div className="modal-body">{modalBody()}</div>
             {hasFooter ? (
-              <div class="modal-footer">
+              <div className="modal-footer">
                 {hasSubmitBtn ? (
                   <button
                     onClick={submitBtnFunc}
                     id={submitBtnID ? submitBtnID : ""}
                     type="button"
-                    class="btn btn-primary"
-                    data-bs-dismiss="modal"
+                    className="btn btn-primary"
                   >
                     {submitBtnLabel}
                   </button>
@@ -77,7 +76,7 @@ const Modal = ({
                 )}
                 <button
                   type="button"
-                  class="btn btn-secondary"
+                  className="btn btn-secondary"
                   data-bs-dismiss="modal"
                 >
                   Close

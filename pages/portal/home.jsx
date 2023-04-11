@@ -9,6 +9,7 @@ import {
 } from "../../libs/web-util";
 import Modal from "../../components/modal/modal";
 import Input from "../../components/input/input";
+import { createRoot } from "react-dom/client";
 
 const Home = styled.div`
   display: grid;
@@ -86,14 +87,18 @@ const PortalHome = ({ GetData, reservation }) => {
       attendance !== "" &&
       message !== ""
     ) {
+      const { Modal } = require("bootstrap");
+      const inputModal = new Modal("#inputModal");
+
+      inputModal._isShown = true;
       const btn = document.getElementById("saveBtn");
       var temp = document.createElement("div");
       createRoot(temp).render("ok");
 
       var spinner = document.createElement("div");
       createRoot(spinner).render(
-        <div class="spinner-grow" role="status">
-          <span class="sr-only">Loading...</span>
+        <div className="spinner-grow" role="status">
+          <span className="sr-only">Loading...</span>
         </div>
       );
 
@@ -139,10 +144,11 @@ const PortalHome = ({ GetData, reservation }) => {
           setCompleteMessage("An Error has occured please contact organizer.");
         }
       }
+      await GetData();
       clearOnSubmit();
       setErrorOnField(false);
       btn.replaceChild(temp, btn.childNodes[0]);
-      const { Modal } = require("bootstrap");
+      inputModal.hide();
       const myModal = new Modal("#completeMessage");
 
       myModal.show();
@@ -152,9 +158,41 @@ const PortalHome = ({ GetData, reservation }) => {
     }
   }
 
+  function clearOnSubmit() {
+    setDataID("");
+    setName("");
+    setSurname("");
+    setAmount("");
+    setContactNo("");
+    setAttendance("");
+    setMessage("");
+    setEmail("");
+  }
+
   async function deleteSelectedData(data) {
+    const { Modal } = require("bootstrap");
+    const myModal = new Modal("#deleteModal");
+
+    myModal._isShown = true;
+    const btn = document.getElementById("deleteBtn");
+    var temp = document.createElement("div");
+    createRoot(temp).render("ok");
+
+    var spinner = document.createElement("div");
+    createRoot(spinner).render(
+      <div className="spinner-grow" role="status">
+        <span className="sr-only">Loading...</span>
+      </div>
+    );
+
+    btn.replaceChild(spinner, btn.childNodes[0]);
+
     await deleteReservationData(data);
     await GetData();
+
+    btn.replaceChild(temp, btn.childNodes[0]);
+
+    myModal.hide();
   }
 
   async function updateSelectedData(data) {
@@ -235,107 +273,121 @@ const PortalHome = ({ GetData, reservation }) => {
   function inputModalBody() {
     return (
       <>
-        <p>
-          <div className="container">
-            <div className="row m-0 mb-4 mb-md-0 pb-2 pb-md-0">
-              <div className="col-md-6 p-0">
-                <div className="h-100 d-flex flex-column align-items-center ">
-                  <Input
-                    width="auto"
-                    title="Name"
-                    type="text"
-                    value={name}
-                    onValueChange={(e) => {
-                      setName(e.target.value);
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="col-md-6 p-0">
-                <div className="h-100 d-flex flex-column align-items-center ">
-                  <Input
-                    width="auto"
-                    title="Surname"
-                    value={surname}
-                    type="text"
-                    onValueChange={(e) => {
-                      setSurname(e.target.value);
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="col-md-6 p-0">
-                <div className="h-100 d-flex flex-column align-items-center ">
-                  <Input
-                    width="auto"
-                    title="Amount"
-                    value={amount}
-                    type="number"
-                    onValueChange={(e) => {
-                      setAmount(e.target.value);
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="col-md-6 p-0">
-                <div className="h-100 d-flex flex-column align-items-center ">
-                  <Input
-                    width="auto"
-                    title="Contact Number"
-                    value={contactNo}
-                    type="text"
-                    onValueChange={(e) => {
-                      setContactNo(e.target.value);
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="col-md-6 p-0">
-                <div className="h-100 d-flex flex-column align-items-center ">
-                  <Input
-                    width="auto"
-                    title="Email"
-                    value={email}
-                    type="text"
-                    onValueChange={(e) => {
-                      setEmail(e.target.value);
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="col-md-6 p-0">
-                <div className="h-100 d-flex flex-column align-items-center ">
-                  <Input
-                    width="auto"
-                    title="Attendance"
-                    value={attendance}
-                    type="select"
-                    options={["Yes", "No"]}
-                    onValueChange={(e) => {
-                      setAttendance(e.target.value);
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="col-md-12 p-0">
-                <div className="h-100 d-flex flex-column align-items-center ">
-                  <Input
-                    title="Message"
-                    value={message}
-                    type="textarea"
-                    width={"86%"}
-                    onValueChange={(e) => {
-                      setMessage(e.target.value);
-                    }}
-                  />
-                </div>
+        <div className="container">
+          <div className="row m-0 mb-4 mb-md-0 pb-2 pb-md-0">
+            <div className="col-md-6 p-0">
+              <div className="h-100 d-flex flex-column align-items-center ">
+                <Input
+                  width="auto"
+                  title="Name"
+                  type="text"
+                  value={name}
+                  onValueChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                />
               </div>
             </div>
-            <span className="errorValidationMessage" hidden={!errorOnField}>
-              *Please ensure that all fields are filled up*
-            </span>
+            <div className="col-md-6 p-0">
+              <div className="h-100 d-flex flex-column align-items-center ">
+                <Input
+                  width="auto"
+                  title="Surname"
+                  value={surname}
+                  type="text"
+                  onValueChange={(e) => {
+                    setSurname(e.target.value);
+                  }}
+                />
+              </div>
+            </div>
+            <div className="col-md-6 p-0">
+              <div className="h-100 d-flex flex-column align-items-center ">
+                <Input
+                  width="auto"
+                  title="Amount"
+                  value={amount}
+                  type="number"
+                  onValueChange={(e) => {
+                    setAmount(e.target.value);
+                  }}
+                />
+              </div>
+            </div>
+            <div className="col-md-6 p-0">
+              <div className="h-100 d-flex flex-column align-items-center ">
+                <Input
+                  width="auto"
+                  title="Contact Number"
+                  value={contactNo}
+                  type="text"
+                  onValueChange={(e) => {
+                    setContactNo(e.target.value);
+                  }}
+                />
+              </div>
+            </div>
+            <div className="col-md-6 p-0">
+              <div className="h-100 d-flex flex-column align-items-center ">
+                <Input
+                  width="auto"
+                  title="Email"
+                  value={email}
+                  type="text"
+                  onValueChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                />
+              </div>
+            </div>
+            <div className="col-md-6 p-0">
+              <div className="h-100 d-flex flex-column align-items-center ">
+                <Input
+                  width="auto"
+                  title="Attendance"
+                  value={attendance}
+                  type="select"
+                  options={["Yes", "No"]}
+                  onValueChange={(e) => {
+                    setAttendance(e.target.value);
+                  }}
+                />
+              </div>
+            </div>
+            <div className="col-md-12 p-0">
+              <div className="h-100 d-flex flex-column align-items-center ">
+                <Input
+                  title="Message"
+                  value={message}
+                  type="textarea"
+                  width={"86%"}
+                  onValueChange={(e) => {
+                    setMessage(e.target.value);
+                  }}
+                />
+              </div>
+            </div>
           </div>
-        </p>
+          <span className="errorValidationMessage" hidden={!errorOnField}>
+            *Please ensure that all fields are filled up*
+          </span>
+        </div>
+      </>
+    );
+  }
+
+  function deleteModalBody() {
+    return (
+      <>
+        <p>Are you sure you want to delete the selected reservation</p>
+      </>
+    );
+  }
+
+  function completeModalBody() {
+    return (
+      <>
+        <p>{completeMessage}</p>
       </>
     );
   }
@@ -376,9 +428,8 @@ const PortalHome = ({ GetData, reservation }) => {
         <button
           className="btn btn-danger"
           disabled={!selectedRow._id}
-          onClick={() => {
-            deleteSelectedData(selectedRow);
-          }}
+          data-bs-toggle="modal"
+          data-bs-target="#deleteModal"
         >
           Delete
         </button>
@@ -474,9 +525,42 @@ const PortalHome = ({ GetData, reservation }) => {
         modalBody={inputModalBody}
         center={true}
         hasSubmitBtn={true}
-        submitBtnFunc={() => {}}
+        submitBtnFunc={() => {
+          submitClicked(
+            dataID,
+            name,
+            surname,
+            amount,
+            contactNo,
+            email,
+            attendance,
+            message
+          );
+        }}
         submitBtnLabel={"Save"}
         submitBtnID={"saveBtn"}
+      />
+      <Modal
+        modalID={"deleteModal"}
+        labelID={"delete"}
+        label={"Delete"}
+        hasFooter={true}
+        modalBody={deleteModalBody}
+        center={true}
+        hasSubmitBtn={true}
+        submitBtnFunc={() => {
+          deleteSelectedData(selectedRow);
+        }}
+        submitBtnLabel={"Delete"}
+        submitBtnID={"deleteBtn"}
+      />
+      <Modal
+        modalID={"completeMessage"}
+        labelID={"completeMessageLabel"}
+        label={"Submitted"}
+        hasFooter={true}
+        modalBody={completeModalBody}
+        center={true}
       />
       {/* <Modal
         modalID={"deleteConfirmationPortal"}
@@ -495,7 +579,7 @@ const PortalHome = ({ GetData, reservation }) => {
       <div>total head counts {getTotalAttendingHeadCounts()}</div> */}
         {/* <button
         type="button"
-        class="btn btn-primary"
+        className="btn btn-primary"
         data-bs-toggle="modal"
         data-bs-target="#inputModal"
         data-bs-backdrop="false"

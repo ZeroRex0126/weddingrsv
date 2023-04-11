@@ -92,8 +92,8 @@ const RSVP = ({ webSiteSetting }) => {
 
     var spinner = document.createElement("div");
     createRoot(spinner).render(
-      <div class="spinner-grow" role="status">
-        <span class="sr-only">Loading...</span>
+      <div className="spinner-grow" role="status">
+        <span className="sr-only">Loading...</span>
       </div>
     );
 
@@ -148,8 +148,8 @@ const RSVP = ({ webSiteSetting }) => {
 
       var spinner = document.createElement("div");
       createRoot(spinner).render(
-        <div class="spinner-grow" role="status">
-          <span class="sr-only">Loading...</span>
+        <div className="spinner-grow" role="status">
+          <span className="sr-only">Loading...</span>
         </div>
       );
 
@@ -254,9 +254,9 @@ const RSVP = ({ webSiteSetting }) => {
   return (
     <RsvpComp id="rsvp">
       {/* modal */}
-      <button
+      {/* <button
         type="button"
-        class="btn btn-primary"
+        className="btn btn-primary"
         data-bs-toggle="modal"
         data-bs-target="#myModal"
       >
@@ -272,7 +272,7 @@ const RSVP = ({ webSiteSetting }) => {
         hasSubmitBtn={true}
         submitBtnFunc={() => {}}
         submitBtnLabel={"save"}
-      />
+      /> */}
 
       <Modal
         modalID={"dataMessage"}
