@@ -5,6 +5,7 @@ import InfoCard from "./portalComp/infoCard/infoCard";
 import {
   addReservationData,
   deleteReservationData,
+  findReservationDataByEmail,
   updateReservationData,
 } from "../../libs/web-util";
 import Modal from "../../components/modal/modal";
@@ -20,6 +21,11 @@ const Home = styled.div`
   min-height: 100vh;
   width: 100%;
   padding: 30px 30px;
+
+  .spinner-grow {
+    --bs-spinner-width: 1em;
+    --bs-spinner-height: 1em;
+  }
 
   .dbFunc {
     gap: 2px;
@@ -87,6 +93,7 @@ const PortalHome = ({ GetData, reservation }) => {
       attendance !== "" &&
       message !== ""
     ) {
+      let emailInUse = false;
       const { Modal } = require("bootstrap");
       const inputModal = new Modal("#inputModal");
 
@@ -105,53 +112,71 @@ const PortalHome = ({ GetData, reservation }) => {
       btn.replaceChild(spinner, btn.childNodes[0]);
 
       if (dataID !== "") {
-        console.log("existing");
-        let res = await updateReservationData({
-          _id: dataID,
-          name: name,
-          surname: surname,
-          phoneNr: contactNo,
-          email: email,
-          attending: attendance,
-          amount: parseInt(amount),
-          comment: message,
-        });
-        console.log(res);
-        if (res.acknowledged) {
-          setCompleteMessage(
-            "Your Details has been updated, you can update it again anytime."
-          );
+        let resData = await findReservationDataByEmail(email);
+        console.log(resData);
+        if (resData._id && resData._id !== dataID) {
+          setCompleteMessage("Email Already in use");
+          emailInUse = true;
         } else {
-          setCompleteMessage("An Error has occured please contact organizer.");
+          let res = await updateReservationData({
+            _id: dataID,
+            name: name,
+            surname: surname,
+            phoneNr: contactNo,
+            email: email,
+            attending: attendance,
+            amount: parseInt(amount),
+            comment: message,
+          });
+          console.log(res);
+          if (res.acknowledged) {
+            setCompleteMessage(
+              "Your Details has been updated, you can update it again anytime."
+            );
+          } else {
+            setCompleteMessage(
+              "An Error has occured please contact organizer."
+            );
+          }
         }
       } else {
-        console.log("nonee");
-        let res = await addReservationData({
-          name: name,
-          surname: surname,
-          phoneNr: contactNo,
-          email: email,
-          attending: attendance,
-          amount: parseInt(amount),
-          comment: message,
-        });
-        console.log(res);
-        if (res.acknowledged) {
-          setCompleteMessage(
-            "Your Details has been added, you can update it again anytime. \n Thank You for your reservation!!!"
-          );
+        let resData = await findReservationDataByEmail(email);
+        if (resData._id) {
+          setCompleteMessage("Email Already in use");
+          emailInUse = true;
         } else {
-          setCompleteMessage("An Error has occured please contact organizer.");
+          let res = await addReservationData({
+            name: name,
+            surname: surname,
+            phoneNr: contactNo,
+            email: email,
+            attending: attendance,
+            amount: parseInt(amount),
+            comment: message,
+          });
+          if (res.acknowledged) {
+            setCompleteMessage(
+              "Your Details has been added, you can update it again anytime. \n Thank You for your reservation!!!"
+            );
+          } else {
+            setCompleteMessage(
+              "An Error has occured please contact organizer."
+            );
+          }
         }
       }
-      await GetData();
-      clearOnSubmit();
-      setErrorOnField(false);
-      btn.replaceChild(temp, btn.childNodes[0]);
-      inputModal.hide();
+
+      if (!emailInUse) {
+        await GetData();
+        clearOnSubmit();
+        setErrorOnField(false);
+        inputModal.hide();
+      }
+
       const myModal = new Modal("#completeMessage");
 
       myModal.show();
+      btn.replaceChild(temp, btn.childNodes[0]);
     } else {
       console.log("sad no data");
       setErrorOnField(true);

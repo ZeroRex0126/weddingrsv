@@ -82,7 +82,12 @@ const RSVP = ({ webSiteSetting }) => {
 
   async function findReservationData(email) {
     let resData = await findReservationDataByEmail(email);
-    return resData;
+    console.log(resData);
+    if (resData) {
+      return resData;
+    } else {
+      console.log("show error message");
+    }
   }
 
   async function validatePin(pin, email) {
@@ -142,6 +147,7 @@ const RSVP = ({ webSiteSetting }) => {
       attendance !== "" &&
       message !== ""
     ) {
+      let emailInUse = false;
       const btn = document.getElementById("reSubmitBtn");
       var temp = document.createElement("div");
       createRoot(temp).render("ok");
@@ -156,48 +162,67 @@ const RSVP = ({ webSiteSetting }) => {
       btn.replaceChild(spinner, btn.childNodes[0]);
 
       if (dataID !== "") {
-        console.log("existing");
-        let res = await updateReservationData({
-          _id: dataID,
-          name: name,
-          surname: surname,
-          phoneNr: contactNo,
-          email: email,
-          attending: attendance,
-          amount: parseInt(amount),
-          comment: message,
-        });
-        console.log(res);
-        if (res.acknowledged) {
-          setCompleteMessage(
-            "Your Details has been updated, you can update it again anytime."
-          );
+        let resData = await findReservationDataByEmail(email);
+        if (resData._id && resData._id !== dataID) {
+          setCompleteMessage("Email Already in use");
+          emailInUse = true;
         } else {
-          setCompleteMessage("An Error has occured please contact organizer.");
+          let res = await updateReservationData({
+            _id: dataID,
+            name: name,
+            surname: surname,
+            phoneNr: contactNo,
+            email: email,
+            attending: attendance,
+            amount: parseInt(amount),
+            comment: message,
+          });
+          console.log(res);
+          if (res.acknowledged) {
+            setCompleteMessage(
+              "Your Details has been updated, you can update it again anytime."
+            );
+          } else {
+            setCompleteMessage(
+              "An Error has occured please contact organizer."
+            );
+          }
         }
       } else {
-        console.log("nonee");
-        let res = await addReservationData({
-          name: name,
-          surname: surname,
-          phoneNr: contactNo,
-          email: email,
-          attending: attendance,
-          amount: parseInt(amount),
-          comment: message,
-        });
-        console.log(res);
-        if (res.acknowledged) {
-          setCompleteMessage(
-            "Your Details has been added, you can update it again anytime. \n Thank You for your reservation!!!"
-          );
+        let resData = await findReservationDataByEmail(email);
+        console.log(resData);
+        if (resData._id) {
+          console.log("hit");
+          setCompleteMessage("Email Already in use");
+          emailInUse = true;
         } else {
-          setCompleteMessage("An Error has occured please contact organizer.");
+          let res = await addReservationData({
+            name: name,
+            surname: surname,
+            phoneNr: contactNo,
+            email: email,
+            attending: attendance,
+            amount: parseInt(amount),
+            comment: message,
+          });
+          console.log(res);
+          if (res.acknowledged) {
+            setCompleteMessage(
+              "Your Details has been added, you can update it again anytime. \n Thank You for your reservation!!!"
+            );
+          } else {
+            setCompleteMessage(
+              "An Error has occured please contact organizer."
+            );
+          }
         }
       }
-      clearOnSubmit();
+      if (!emailInUse) {
+        clearOnSubmit();
+      }
       setErrorOnField(false);
       btn.replaceChild(temp, btn.childNodes[0]);
+
       const { Modal } = require("bootstrap");
       const myModal = new Modal("#completeMessage");
 

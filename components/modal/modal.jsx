@@ -16,6 +16,11 @@ const ModalComp = styled.div`
   .show {
     z-index: 9999999;
   }
+
+  .spinner-grow {
+    --bs-spinner-width: 1em;
+    --bs-spinner-height: 1em;
+  }
 `;
 
 const Modal = ({
@@ -42,7 +47,6 @@ const Modal = ({
       <div
         className={`modal fade ${center ? "center" : ""}`}
         id={modalID}
-        tabIndex="-1"
         role="dialog"
         aria-labelledby={labelID}
         aria-hidden="true"
