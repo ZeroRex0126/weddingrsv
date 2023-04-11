@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import styled from "styled-components";
 const ModalComp = styled.div`
+  .modal-content {
+    box-shadow: 10px 10px 8px #888888;
+  }
   .show.center {
     display: flex !important;
     align-items: center;
