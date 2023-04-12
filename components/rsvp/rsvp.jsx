@@ -90,6 +90,19 @@ const RSVP = ({ webSiteSetting }) => {
     }
   }
 
+  function validateEmail(email) {
+    let re =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    return re.test(email) ? true : false;
+  }
+
+  function validatePhoneNumber(phoneNr) {
+    let re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+
+    return re.test(phoneNr) ? true : false;
+  }
+
   async function validatePin(pin, email) {
     const btn = document.getElementById("pinOkBtn");
     var temp = document.createElement("div");
@@ -103,7 +116,8 @@ const RSVP = ({ webSiteSetting }) => {
     );
 
     btn.replaceChild(spinner, btn.childNodes[0]);
-    if (pin === webSiteSetting.pin && email) {
+    console.log(validateEmail(email));
+    if (pin === webSiteSetting.pin && email && validateEmail(email)) {
       let data = await findReservationData(email);
       if (data._id) {
         setDataID(data._id);
@@ -143,7 +157,9 @@ const RSVP = ({ webSiteSetting }) => {
       surname !== "" &&
       amount !== "" &&
       contactNo !== "" &&
+      validatePhoneNumber(contactNo) &&
       email !== "" &&
+      validateEmail(email) &&
       attendance !== "" &&
       message !== ""
     ) {
@@ -446,7 +462,7 @@ const RSVP = ({ webSiteSetting }) => {
               </div>
             </div>
             <p className="errorValidationMessage" hidden={!errorOnField}>
-              *Please ensure that all fields are filled up*
+              *Please ensure that all fields are valid and filled up*
             </p>
           </div>
         </div>

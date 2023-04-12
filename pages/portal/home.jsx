@@ -72,7 +72,21 @@ const PortalHome = ({ GetData, reservation }) => {
   const [message, setMessage] = useState("");
   const [errorOnField, setErrorOnField] = useState(false);
   const [completeMessage, setCompleteMessage] = useState("");
+
   // end of modal value
+
+  function validateEmail(email) {
+    let re =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    return re.test(email) ? true : false;
+  }
+
+  function validatePhoneNumber(phoneNr) {
+    let re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+
+    return re.test(phoneNr) ? true : false;
+  }
 
   async function submitClicked(
     dataID,
@@ -89,7 +103,9 @@ const PortalHome = ({ GetData, reservation }) => {
       surname !== "" &&
       amount !== "" &&
       contactNo !== "" &&
+      validatePhoneNumber(contactNo) &&
       email !== "" &&
+      validateEmail(email) &&
       attendance !== "" &&
       message !== ""
     ) {
@@ -394,7 +410,7 @@ const PortalHome = ({ GetData, reservation }) => {
             </div>
           </div>
           <span className="errorValidationMessage" hidden={!errorOnField}>
-            *Please ensure that all fields are filled up*
+            *Please ensure that all fields are valid and filled up*
           </span>
         </div>
       </>
