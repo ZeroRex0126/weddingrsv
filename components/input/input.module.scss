@@ -39,6 +39,14 @@
   cursor: pointer;
 }
 
+.inputbox input::placeholder {
+  opacity: 0;
+}
+
+.inputbox input:focus::placeholder {
+  opacity: 1;
+}
+
 .inputbox input:not(:placeholder-shown) ~ span,
 .inputbox input:focus ~ span,
 .inputbox textarea:not(:placeholder-shown) ~ span,

@@ -98,7 +98,8 @@ const RSVP = ({ webSiteSetting }) => {
   }
 
   function validatePhoneNumber(phoneNr) {
-    let re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+    let re =
+      /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/im;
 
     return re.test(phoneNr) ? true : false;
   }
@@ -417,8 +418,10 @@ const RSVP = ({ webSiteSetting }) => {
                   value={contactNo}
                   type="text"
                   onValueChange={(e) => {
+                    e;
                     setContactNo(e.target.value);
                   }}
+                  placeholder={"e.g. 0213456789"}
                 />
               </div>
             </div>

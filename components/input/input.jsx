@@ -13,6 +13,7 @@ const Input = ({
   onValueChange,
   onKeyPress,
   disabled = false,
+  placeholder,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   function showPasswordFunc() {
@@ -28,7 +29,7 @@ const Input = ({
           }}
         >
           <textarea
-            placeholder=" "
+            placeholder={placeholder ? placeholder : " "}
             value={value ? value : ""}
             cols="30"
             rows="10"
@@ -85,7 +86,7 @@ const Input = ({
             type={
               type === "password" ? (showPassword ? "text" : "password") : type
             }
-            placeholder=" "
+            placeholder={placeholder ? placeholder : " "}
             value={value ? value : ""}
             onKeyDown={
               onKeyPress
