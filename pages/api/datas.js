@@ -1,6 +1,6 @@
 let datas = [
   {
-    title: "Wick + Sam",
+    title: "Clinton & Chanel",
     groom: {
       name: "Clinton",
       description: "Please meet Clinton, A amazing guy",
