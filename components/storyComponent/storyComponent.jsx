@@ -71,90 +71,43 @@ const StoryComponent = ({ webSiteSetting }) => {
             <i className="far fa-heart text-dark"></i>
           </div>
           <div className="container timeline position-relative p-0">
-            <div className="row">
-              <div className="col-md-6 text-center text-md-right storyDate">
-                <Fade direction="left" duration={2000} triggerOnce={true}>
-                  <h1 className="yearDis">2019</h1>
-                </Fade>
-              </div>
-              <div className="col-md-6 text-center text-md-left">
-                <Fade direction="right" duration={2000} triggerOnce={true}>
-                  <div className="h-100 d-flex flex-column justify-content-center p-4 ml-md-3">
-                    <h4 className="mb-2">First Meet</h4>
-                    <p className="text-uppercase mb-2">01 Jan 2050</p>
-                    <p className="m-0">
-                      Lorem elitr magna stet rebum dolores sed. Est stet labore
-                      est lorem lorem at amet sea, eos tempor rebum, labore amet
-                      ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd
-                      stet amet est dolor elitr.
-                    </p>
+            {webSiteSetting.loveStory.map((v, i) => {
+              return i % 2 == 0 ? (
+                <div className="row" key={i}>
+                  <div className="col-md-6 text-center text-md-right storyDate">
+                    <Fade direction="left" duration={2000} triggerOnce={true}>
+                      <h1 className="yearDis">{v.year}</h1>
+                    </Fade>
                   </div>
-                </Fade>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-6 text-center text-md-right">
-                <Fade direction="left" duration={2000} triggerOnce={true}>
-                  <div className="h-100 d-flex flex-column justify-content-center p-4 mr-md-3">
-                    <h4 className="mb-2">First Date</h4>
-                    <p className="text-uppercase mb-2">01 Jan 2050</p>
-                    <p className="m-0">
-                      Lorem elitr magna stet rebum dolores sed. Est stet labore
-                      est lorem lorem at amet sea, eos tempor rebum, labore amet
-                      ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd
-                      stet amet est dolor elitr.
-                    </p>
+                  <div className="col-md-6 text-center text-md-left">
+                    <Fade direction="right" duration={2000} triggerOnce={true}>
+                      <div className="h-100 d-flex flex-column justify-content-center p-4 ml-md-3">
+                        <h4 className="mb-2">{v.title}</h4>
+                        <p className="text-uppercase mb-2">{v.date}</p>
+                        <p className="m-0">{v.story}</p>
+                      </div>
+                    </Fade>
                   </div>
-                </Fade>
-              </div>
-              <div className="col-md-6 text-center text-md-left storyDate">
-                <Fade direction="right" duration={2000} triggerOnce={true}>
-                  <h1 className="yearDis">2021</h1>
-                </Fade>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-6 text-center text-md-right storyDate">
-                <Fade direction="left" duration={2000} triggerOnce={true}>
-                  <h1 className="yearDis">2022</h1>
-                </Fade>
-              </div>
-              <div className="col-md-6 text-center text-md-left">
-                <Fade direction="right" duration={2000} triggerOnce={true}>
-                  <div className="h-100 d-flex flex-column justify-content-center p-4 ml-md-3">
-                    <h4 className="mb-2">Proposal</h4>
-                    <p className="text-uppercase mb-2">01 Jan 2050</p>
-                    <p className="m-0">
-                      Lorem elitr magna stet rebum dolores sed. Est stet labore
-                      est lorem lorem at amet sea, eos tempor rebum, labore amet
-                      ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd
-                      stet amet est dolor elitr.
-                    </p>
+                </div>
+              ) : (
+                <div className="row" key={i}>
+                  <div className="col-md-6 text-center text-md-right">
+                    <Fade direction="left" duration={2000} triggerOnce={true}>
+                      <div className="h-100 d-flex flex-column justify-content-center p-4 mr-md-3">
+                        <h4 className="mb-2">{v.title}</h4>
+                        <p className="text-uppercase mb-2">{v.date}</p>
+                        <p className="m-0">{v.story}</p>
+                      </div>
+                    </Fade>
                   </div>
-                </Fade>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-6 text-center text-md-right">
-                <Fade direction="left" duration={2000} triggerOnce={true}>
-                  <div className="h-100 d-flex flex-column justify-content-center p-4 mr-md-3">
-                    <h4 className="mb-2">Enagagement</h4>
-                    <p className="text-uppercase mb-2">01 Jan 2050</p>
-                    <p className="m-0">
-                      Lorem elitr magna stet rebum dolores sed. Est stet labore
-                      est lorem lorem at amet sea, eos tempor rebum, labore amet
-                      ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd
-                      stet amet est dolor elitr.
-                    </p>
+                  <div className="col-md-6 text-center text-md-left storyDate">
+                    <Fade direction="right" duration={2000} triggerOnce={true}>
+                      <h1 className="yearDis">{v.year}</h1>
+                    </Fade>
                   </div>
-                </Fade>
-              </div>
-              <div className="col-md-6 text-center text-md-left storyDate">
-                <Fade direction="right" duration={2000} triggerOnce={true}>
-                  <h1 className="yearDis">2023</h1>
-                </Fade>
-              </div>
-            </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

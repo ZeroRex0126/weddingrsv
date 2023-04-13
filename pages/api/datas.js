@@ -1,6 +1,67 @@
-let mockData = [
+let datas = [
   {
     title: "Wick + Sam",
+    groom: {
+      name: "Clinton",
+      description: "Please meet Clinton, A amazing guy",
+    },
+    bride: {
+      name: "Chanel",
+      description: "Please meet Chanel, A amazing women",
+    },
+    loveStory: [
+      {
+        year: "2019",
+        date: "01 Jan 2050",
+        title: "First Meet",
+        story:
+          "Lorem elitr magna stet rebum dolores sed. Est stet labore est lorem lorem at amet sea, eos tempor rebum, labore amet ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd stet amet est dolor elitr.",
+      },
+      {
+        year: "2020",
+        date: "01 Jan 2050",
+        title: "First Date",
+        story:
+          "Lorem elitr magna stet rebum dolores sed. Est stet labore est lorem lorem at amet sea, eos tempor rebum, labore amet ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd stet amet est dolor elitr.",
+      },
+      {
+        year: "2021",
+        date: "01 Jan 2050",
+        title: "Proposal",
+        story:
+          "Lorem elitr magna stet rebum dolores sed. Est stet labore est lorem lorem at amet sea, eos tempor rebum, labore amet ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd stet amet est dolor elitr.",
+      },
+      {
+        year: "2023",
+        date: "01 Jan 2050",
+        title: "Enagagement",
+        story:
+          "Lorem elitr magna stet rebum dolores sed. Est stet labore est lorem lorem at amet sea, eos tempor rebum, labore amet ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd stet amet est dolor elitr.",
+      },
+      {
+        year: "2025",
+        date: "01 Jan 2050",
+        title: "Plus One",
+        story:
+          "Lorem elitr magna stet rebum dolores sed. Est stet labore est lorem lorem at amet sea, eos tempor rebum, labore amet ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd stet amet est dolor elitr.",
+      },
+    ],
+    eventDetails: {
+      description:
+        "Clita ipsum aliquyam dolor diam dolores elitr nonumy. Rebum sea vero ipsum eirmod tempor kasd. Diam amet lorem erat eos sit lorem elitr justo",
+      events: [
+        {
+          title: "The Reception",
+          place: "123 Street, New York, USA",
+          time: "12:00AM - 13:00PM",
+        },
+        {
+          title: "Wedding Party",
+          place: "123 Street, New York, USA",
+          time: "12:00AM - 13:00PM",
+        },
+      ],
+    },
     pin: "1234",
     location: {
       street: "demo street",
@@ -18,8 +79,8 @@ let mockData = [
   },
 ];
 
-function getMockData() {
-  return mockData;
+function getDatas() {
+  return datas;
 }
 
-export default getMockData;
+export default getDatas;

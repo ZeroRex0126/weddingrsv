@@ -58,43 +58,38 @@ const Events = ({ webSiteSetting }) => {
         <div className="row justify-content-center">
           <div className="col-md-6 text-center">
             <h5 className="font-weight-normal text-muted mb-3 pb-3">
-              Clita ipsum aliquyam dolor diam dolores elitr nonumy. Rebum sea
-              vero ipsum eirmod tempor kasd. Diam amet lorem erat eos sit lorem
-              elitr justo
+              {webSiteSetting.eventDetails.description}
             </h5>
           </div>
         </div>
         <div className="row">
-          <div className="col-md-6 border-right border-primary">
-            <Fade direction="up" duration={2000} triggerOnce={true}>
-              <div className="text-center text-md-right mr-md-3 mb-4 mb-md-0">
-                <div
-                  className="col-md-6 p-0 pic"
-                  style={{
-                    backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
-                  }}
-                />
-                <h2 className="mb-3">The Reception</h2>
-                <p className="mb-2">123 Street, New York, USA</p>
-                <p className="mb-0">12:00AM - 13:00PM</p>
+          {}
+          {webSiteSetting.eventDetails.events.map((v, i) => {
+            return (
+              <div
+                className={`col-md-6 ${
+                  i !== webSiteSetting.eventDetails.events.length - 1
+                    ? "border-right border-primary"
+                    : ""
+                }`}
+                key={i}
+              >
+                <Fade direction="up" duration={2000} triggerOnce={true}>
+                  <div className="text-center text-md-right mr-md-3 mb-4 mb-md-0">
+                    <div
+                      className="col-md-6 p-0 pic"
+                      style={{
+                        backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
+                      }}
+                    />
+                    <h2 className="mb-3">{v.title}</h2>
+                    <p className="mb-2">{v.place}</p>
+                    <p className="mb-0">{v.time}</p>
+                  </div>
+                </Fade>
               </div>
-            </Fade>
-          </div>
-          <div className="col-md-6">
-            <Fade direction="up" duration={2000} triggerOnce={true}>
-              <div className="text-center text-md-left ml-md-3">
-                <div
-                  className="col-md-6 p-0 pic"
-                  style={{
-                    backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
-                  }}
-                />
-                <h2 className="mb-3">Wedding Party</h2>
-                <p className="mb-2">123 Street, New York, USA</p>
-                <p className="mb-0">12:00AM - 13:00PM</p>
-              </div>
-            </Fade>
-          </div>
+            );
+          })}
         </div>
       </div>
     </EventsComp>

@@ -14,6 +14,7 @@ const Input = ({
   onKeyPress,
   disabled = false,
   placeholder,
+  maxValue,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   function showPasswordFunc() {
@@ -87,6 +88,8 @@ const Input = ({
               type === "password" ? (showPassword ? "text" : "password") : type
             }
             placeholder={placeholder ? placeholder : " "}
+            max={maxValue ? maxValue : ""}
+            min={0}
             value={value ? value : ""}
             onKeyDown={
               onKeyPress

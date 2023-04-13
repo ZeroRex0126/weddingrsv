@@ -405,6 +405,7 @@ const RSVP = ({ webSiteSetting }) => {
                   title="Amount"
                   value={amount}
                   type="number"
+                  maxValue={6}
                   onValueChange={(e) => {
                     setAmount(e.target.value);
                   }}
