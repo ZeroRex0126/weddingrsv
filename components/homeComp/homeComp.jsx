@@ -1,3 +1,4 @@
+import { fontColor, primaryColor } from "../../libs/color";
 import TimerCard from "../timerCard/timerCard";
 
 import styled from "styled-components";
@@ -12,17 +13,18 @@ const HomeCom = styled.div`
     justify-content: center;
     align-items: center;
     text-align: center;
+    background-color: ${primaryColor};
+    color: ${fontColor};
 
     .timer {
       max-width: 100vw;
       display: flex;
     }
-    
+
     @media (min-width: 768px) {
-      .homeContent{
-        position:absolute;
+      .homeContent {
+        position: absolute;
         left: 0;
-        
       }
     }
   }
@@ -50,7 +52,6 @@ const HomeComp = ({ webSiteSetting, remainingTime }) => {
             } */}
               date here
             </h2>
-            
           </div>
           <div className="timer">
             {remainingTime.years > 0 ? (

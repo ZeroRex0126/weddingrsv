@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Fade } from "react-awesome-reveal";
+import { fontColor, lineColor, primaryColor } from "../../libs/color";
 
 const Story = styled.div`
   overflow: hidden;
@@ -9,6 +10,8 @@ const Story = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: ${primaryColor};
+  color: ${fontColor};
   .yearDis {
     display: none;
   }
@@ -31,7 +34,7 @@ const Story = styled.div`
       bottom: 0;
       left: 50%;
       margin-left: -1px;
-      background: rgb(252, 230, 213);
+      background: ${lineColor};
     }
 
     .timeline .row::before {
@@ -41,8 +44,8 @@ const Story = styled.div`
       height: 30px;
       margin-top: 8%;
       left: calc(50% - 15px);
-      background: white;
-      border: 2px solid rgb(252, 230, 213);
+      background: ${primaryColor};
+      border: 2px solid ${lineColor};
       transform: rotate(45deg);
       z-index: 1;
     }
@@ -54,7 +57,7 @@ const Story = styled.div`
       position: absolute;
       margin-top: 8.2%;
       left: calc(50% - 11px);
-      color: rgb(252, 230, 213);
+      color: ${lineColor};
       z-index: 2;
       transform: translate(25%, 0);
     }

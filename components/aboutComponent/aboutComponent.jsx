@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { BsInstagram } from "react-icons/bs";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { Fade } from "react-awesome-reveal";
+import { fontColor, primaryColor } from "../../libs/color";
 
 const About = styled.div`
   overflow: hidden;
@@ -12,6 +13,8 @@ const About = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: ${primaryColor};
+  color: ${fontColor};
 
   .container {
     .aboutPic {

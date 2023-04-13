@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { BsInstagram } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
 import { Fade } from "react-awesome-reveal";
+import { fontColor, lineColor, primaryColor } from "../../libs/color";
 
 const ContactComp = styled.div`
   overflow: hidden;
@@ -10,6 +11,8 @@ const ContactComp = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: ${primaryColor};
+  color: ${fontColor};
   .section-title::after {
     position: absolute;
     content: "";
@@ -17,7 +20,7 @@ const ContactComp = styled.div`
     height: 2px;
     bottom: 11px;
     right: calc(50% - 80px);
-    background: #e47a2e;
+    background: ${lineColor};
   }
 
   .section-title::before {
@@ -27,7 +30,7 @@ const ContactComp = styled.div`
     height: 2px;
     bottom: 11px;
     left: calc(50% - 80px);
-    background: #e47a2e;
+    background: ${lineColor};
   }
 `;
 

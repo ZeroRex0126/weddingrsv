@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Fade } from "react-awesome-reveal";
+import { fontColor, lineColor, primaryColor } from "../../libs/color";
 
 const EventsComp = styled.div`
   overflow: hidden;
@@ -9,6 +10,8 @@ const EventsComp = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: ${primaryColor};
+  color: ${fontColor};
 
   .pic {
     position: relative;
@@ -26,7 +29,7 @@ const EventsComp = styled.div`
     height: 2px;
     bottom: 11px;
     right: calc(50% - 80px);
-    background: #e47a2e;
+    background: ${lineColor};
   }
 
   .section-title::before {
@@ -36,12 +39,12 @@ const EventsComp = styled.div`
     height: 2px;
     bottom: 11px;
     left: calc(50% - 80px);
-    background: #e47a2e;
+    background: ${lineColor};
   }
 
   @media (min-width: 768px) {
     .border-right {
-      border-right: 2px solid red !important;
+      border-right: 2px solid ${lineColor} !important;
     }
   }
 `;

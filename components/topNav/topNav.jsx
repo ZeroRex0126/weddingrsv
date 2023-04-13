@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import MusicWave from "../musicWave/musicWave";
+import { fontColor, primaryColor } from "../../libs/color";
 
 // const NavBarComp = styled.nav`
 //   display: ${(props) =>
@@ -12,6 +13,13 @@ const NavBarComp = styled.nav`
   //  position:fixed;
   //  top:0;
   // bottom: 0;
+  background-color: ${primaryColor};
+  color: ${fontColor};
+
+  .nav-link,
+  .font-secondary {
+    color: ${fontColor} !important;
+  }
   @media (min-width: 991px) {
     .music-item {
       position: fixed;

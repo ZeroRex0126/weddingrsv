@@ -18,17 +18,12 @@
   height: 3vh;
   z-index: 3;
 
-  .navbar {
-    background-color: white;
-  }
-
   .navbar .navbar-nav .nav-link {
     padding: 25px 10px;
     letter-spacing: 1px;
     text-transform: uppercase;
     font-weight: 600;
     outline: none;
-    color: black;
   }
 
   @include media(">tablet") {

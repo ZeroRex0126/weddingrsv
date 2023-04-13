@@ -10,6 +10,7 @@ import {
 import Modal from "../modal/modal";
 import { createRoot } from "react-dom/client";
 import { updateReservationData } from "../../libs/web-util";
+import { fontColor, primaryColor } from "../../libs/color";
 
 const RsvpComp = styled.div`
   overflow: hidden;
@@ -19,6 +20,8 @@ const RsvpComp = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: ${primaryColor};
+  color: ${fontColor};
 
   h1 {
     height 10vh;
