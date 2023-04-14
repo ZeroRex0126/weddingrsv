@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { fontColor, lineColor, primaryColor } from "../../../../libs/color";
 
 const CommentCardComp = styled.div`
   max-width: 400px;
@@ -18,16 +19,19 @@ const CommentCardComp = styled.div`
   .ag-courses-item_link {
     display: block;
     padding: 30px 20px;
-    background-color: gray;
+    background-color: ${primaryColor};
+    color: ${fontColor};
 
     overflow: hidden;
 
     position: relative;
   }
   .ag-courses-item_link:hover,
-  .ag-courses-item_link:hover .ag-courses-item_date {
+  .ag-courses-item_link:hover .ag-courses-item_date,
+  .ag-courses-item_link:hover .ag-courses-item_title,
+  .ag-courses-item_link:hover .ag-courses-item_date-box {
     text-decoration: none;
-    color: #fff;
+    color: ${primaryColor};
   }
   .ag-courses-item_link:hover .ag-courses-item_bg {
     -webkit-transform: scale(10);
@@ -43,21 +47,21 @@ const CommentCardComp = styled.div`
 
     font-weight: bold;
     font-size: 30px;
-    color: #fff;
+    color: ${fontColor};
 
     z-index: 2;
     position: relative;
   }
   .ag-courses-item_date-box {
     font-size: 18px;
-    color: #fff;
+    color: ${fontColor};
 
     z-index: 2;
     position: relative;
   }
   .ag-courses-item_date {
     font-weight: bold;
-    color: #f9b234;
+    color: ${fontColor};
 
     -webkit-transition: color 0.5s ease;
     -o-transition: color 0.5s ease;
@@ -66,7 +70,7 @@ const CommentCardComp = styled.div`
   .ag-courses-item_bg {
     height: 128px;
     width: 128px;
-    background-color: #f9b234;
+    background-color: ${lineColor};
 
     z-index: 1;
     position: absolute;

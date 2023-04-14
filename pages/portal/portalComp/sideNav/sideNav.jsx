@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { fontColor, primaryColor } from "../../../../libs/color";
 
 const SideNavbar = styled.div`
   position: fixed;
@@ -12,7 +13,6 @@ const SideNavbar = styled.div`
   a,
   a:hover,
   a:focus {
-    color: inherit;
     text-decoration: none;
     transition: all 0.3s;
   }
@@ -43,8 +43,8 @@ const SideNavbar = styled.div`
     min-height: 100vh;
     min-width: 250px;
     max-width: 250px;
-    background: #7386d5;
-    color: #fff;
+    background-color: ${primaryColor};
+    color: ${fontColor};
     transition: all 0.3s;
   }
 
@@ -54,16 +54,17 @@ const SideNavbar = styled.div`
 
   #sidebar .sidebar-header {
     padding: 20px;
-    background: #6d7fcc;
+    background-color: ${primaryColor};
+    color: ${fontColor};
   }
 
   #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #47748b;
+    border-bottom: 1px solid ${fontColor};
   }
 
   #sidebar ul p {
-    color: #fff;
+    color: ${fontColor};
     padding: 10px;
   }
 
@@ -74,13 +75,13 @@ const SideNavbar = styled.div`
   }
 
   #sidebar ul li a:hover {
-    color: #7386d5;
-    background: #fff;
+    background-color: ${fontColor};
+    color: ${primaryColor};
   }
 
   #sidebar ul li.active > a {
-    color: #7386d5;
-    background: #fff;
+    background-color: ${fontColor};
+    color: ${primaryColor};
     // border-top-left-radius: 25px;
     // border-bottom-left-radius: 25px;
   }
@@ -150,6 +151,7 @@ const SideNavbar = styled.div`
     }
     #sidebarCollapse.active {
       left: 210px;
+      color: ${fontColor};
     }
   }
 `;
