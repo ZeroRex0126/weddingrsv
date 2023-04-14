@@ -1,7 +1,15 @@
 import { useEffect } from "react";
 import styled from "styled-components";
+import { fontColor, primaryColor } from "../../libs/color";
 const ModalComp = styled.div`
+  .modal-body,
+  .modal-header,
+  .modal-footer {
+    color: ${fontColor};
+    background-color: ${primaryColor};
+  }
   .modal-content {
+    border: solid ${fontColor};
     box-shadow: 10px 10px 8px #888888;
   }
   .show.center {

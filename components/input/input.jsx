@@ -21,7 +21,7 @@ let CustomInput = styled.div`
     background-color: ${primaryColor};
     border-radius: 5px;
     outline: none;
-    //   color: white;
+    color: ${fontColor};
     font-size: 1em;
     transition: 0.5s;
   }

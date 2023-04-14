@@ -1,5 +1,15 @@
 @import "styles/utils";
 
+.btn-primary {
+  background-color: black !important;
+  border: white !important;
+}
+
+.btn-primary:hover {
+  background-color: gray !important;
+  border: gray !important;
+}
+
 .modal-backdrop {
   display: none;
 }
