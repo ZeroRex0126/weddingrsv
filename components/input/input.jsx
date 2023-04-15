@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { fontColor, lineColor, primaryColor } from "../../libs/color";
 
 let CustomInput = styled.div`
-  background-color: ${primaryColor};
+  background-color: transparent;
   color: ${fontColor};
   .inputbox {
     position: relative;
@@ -18,7 +18,7 @@ let CustomInput = styled.div`
     width: 100%;
     padding: 10px;
     border: 1px solid grey;
-    background-color: ${primaryColor};
+    background-color: transparent;
     border-radius: 5px;
     outline: none;
     color: ${fontColor};
