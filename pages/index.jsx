@@ -13,6 +13,7 @@ import {
   TimerCard,
   TopNav,
 } from "../components";
+import Image from "next/image";
 
 export default function Home({ calRemaining, webSiteSetting, remainingTime }) {
   useEffect(() => {
@@ -34,6 +35,18 @@ export default function Home({ calRemaining, webSiteSetting, remainingTime }) {
         <TopNav />
       </div>
       <HomeComp webSiteSetting={webSiteSetting} remainingTime={remainingTime} />
+      <Image
+        className="btRight"
+        width={350}
+        height={350}
+        src={"/webContent/bottomRight.png"}
+      />
+      <Image
+        className="tpLeft"
+        width={350}
+        height={350}
+        src={"/webContent/topLeft.png"}
+      />
       <AboutComponent webSiteSetting={webSiteSetting} />
       <StoryComponent webSiteSetting={webSiteSetting} />
       {/* <Gallery webSiteSetting={webSiteSetting} /> */}

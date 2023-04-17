@@ -1,28 +1,39 @@
 import styled from "styled-components";
+import { fontColor, primaryColor } from "../../libs/color";
 
 const CustomButton = styled.div`
-  cursor: pointer;
-  position: relative;
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 1.2em;
-  letter-spacing: 0.1em;
-  font-weight: 400;
-  padding: 5px 15px;
-  transition: 0.5s;
-  border: solid black 4px;
-  margin: 5px;
+  .cusButton {
+    background: ${primaryColor};
+    color: ${fontColor};
+    border: solid 4px ${fontColor};
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    padding: 5px 15px;
+    transition: 0.5s;
+    margin: 5px;
+  }
+
+  .cusButton:hover {
+    background: ${fontColor};
+    color: ${primaryColor};
+  }
 `;
 
 const CusButton = ({ id, title, clicked }) => {
   return (
     <CustomButton
-      id={id ? id : ""}
       onClick={() => {
         clicked();
       }}
     >
-      {title}
+      <div className="cusButton" id={id ? id : ""}>
+        {title}
+      </div>
     </CustomButton>
   );
 };

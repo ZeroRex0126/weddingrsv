@@ -402,7 +402,6 @@ const PortalHome = ({ GetData, reservation }) => {
                   title="Message"
                   value={message}
                   type="textarea"
-                  width={"86%"}
                   onValueChange={(e) => {
                     setMessage(e.target.value);
                   }}

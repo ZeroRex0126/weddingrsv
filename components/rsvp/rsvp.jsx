@@ -23,6 +23,10 @@ const RsvpComp = styled.div`
   background-color: ${primaryColor};
   color: ${fontColor};
 
+  .font-secondary {
+    z-index: 1;
+  }
+
   h1 {
     height 10vh;
   }
@@ -334,7 +338,7 @@ const RSVP = ({ webSiteSetting }) => {
         modalBody={completeModalBody}
         center={true}
       />
-      <h1>RSVP</h1>
+      <h1 className="font-secondary display-4">RSVP</h1>
       <div className={`rsvp ${hasPin ? "hide" : "show"}`}>
         <Fade direction="up" duration={2000} triggerOnce={true}>
           <Input
@@ -461,7 +465,6 @@ const RSVP = ({ webSiteSetting }) => {
                   title="Message"
                   value={message}
                   type="textarea"
-                  width={"86%"}
                   onValueChange={(e) => {
                     setMessage(e.target.value);
                   }}

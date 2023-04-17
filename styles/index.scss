@@ -1,5 +1,19 @@
 @import "styles/utils";
 
+.btRight {
+  overflow: hidden;
+  position: fixed;
+  bottom: -100px;
+  right: -100px;
+}
+
+.tpLeft {
+  overflow: hidden;
+  position: fixed;
+  top: -50px;
+  left: -100px;
+}
+
 .btn-primary {
   background-color: black !important;
   border: white !important;

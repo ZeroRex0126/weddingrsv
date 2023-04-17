@@ -20,6 +20,10 @@ const NavBarComp = styled.nav`
   .font-secondary {
     color: ${fontColor} !important;
   }
+
+  .navbar-toggler {
+    background: ${fontColor};
+  }
   @media (min-width: 991px) {
     .music-item {
       position: fixed;
