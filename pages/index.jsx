@@ -14,6 +14,7 @@ import {
   TopNav,
 } from "../components";
 import Image from "next/image";
+import { Fade } from "react-awesome-reveal";
 
 export default function Home({ calRemaining, webSiteSetting, remainingTime }) {
   useEffect(() => {
@@ -35,18 +36,24 @@ export default function Home({ calRemaining, webSiteSetting, remainingTime }) {
         <TopNav />
       </div>
       <HomeComp webSiteSetting={webSiteSetting} remainingTime={remainingTime} />
-      <Image
+      <Fade
         className="btRight"
-        width={350}
-        height={350}
-        src={"/webContent/bottomRight.png"}
-      />
-      <Image
+        direction="right"
+        duration={2000}
+        triggerOnce={true}
+      >
+        <Image width={350} height={350} src={"/webContent/bottomRight.png"} />
+      </Fade>
+
+      <Fade
         className="tpLeft"
-        width={350}
-        height={350}
-        src={"/webContent/topLeft.png"}
-      />
+        direction="left"
+        duration={2000}
+        triggerOnce={true}
+      >
+        <Image width={350} height={350} src={"/webContent/topLeft.png"} />
+      </Fade>
+
       <AboutComponent webSiteSetting={webSiteSetting} />
       <StoryComponent webSiteSetting={webSiteSetting} />
       {/* <Gallery webSiteSetting={webSiteSetting} /> */}
