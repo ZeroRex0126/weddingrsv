@@ -6,6 +6,8 @@ const SideNavbar = styled.div`
   position: fixed;
   min-height: 100vh;
 
+  border-right: solid ${fontColor} 3px;
+
   li {
     cursor: pointer;
   }

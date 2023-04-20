@@ -13,7 +13,7 @@ const CommentCardComp = styled.div`
     margin: 0 15px 30px;
 
     overflow: hidden;
-
+    border: solid ${fontColor} 3px;
     border-radius: 28px;
   }
   .ag-courses-item_link {

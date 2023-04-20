@@ -1,3 +1,3 @@
-export var primaryColor = "black";
-export var fontColor = "white";
+export var primaryColor = "white";
+export var fontColor = "black";
 export var lineColor = "pink";

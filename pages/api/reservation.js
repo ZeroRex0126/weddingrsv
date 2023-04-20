@@ -76,6 +76,16 @@ async function handler(req, res) {
               .collection("reservation")
               .deleteOne({ _id: deleteId });
             break;
+          case "deletemultiple":
+            let deleteIds = [];
+            for (let i = 0; i < req.body.context.length; i++) {
+              deleteIds.push(ObjectId(req.body.context[i]._id));
+            }
+
+            result = await db
+              .collection("reservation")
+              .deleteMany({ _id: { $in: deleteIds } });
+            break;
 
           default:
             break;

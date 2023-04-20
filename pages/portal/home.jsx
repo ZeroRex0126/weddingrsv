@@ -5,6 +5,7 @@ import InfoCard from "./portalComp/infoCard/infoCard";
 import {
   addReservationData,
   deleteReservationData,
+  deleteReservationDatas,
   findReservationDataByEmail,
   updateReservationData,
 } from "../../libs/web-util";
@@ -58,6 +59,7 @@ const PortalHome = ({ GetData, reservation }) => {
   const [columns, setColumns] = useState([]);
   const [tableData, setTableData] = useState(reservation);
   const [selectedRow, setSelectedRow] = useState({});
+  const [selectedRows, setSelectedRows] = useState([]);
   const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
   const [filterText, setFilterText] = useState("");
 
@@ -237,14 +239,31 @@ const PortalHome = ({ GetData, reservation }) => {
     myModal.hide();
   }
 
-  async function updateSelectedData(data) {
-    await updateReservationData(data);
-    await GetData();
-  }
+  async function deleteSelectedDatas(datas) {
+    const { Modal } = require("bootstrap");
+    const myModal = new Modal("#deleteModal");
 
-  async function addData(data) {
-    await addReservationData("");
+    myModal._isShown = true;
+    const btn = document.getElementById("deleteBtn");
+    var temp = document.createElement("div");
+    createRoot(temp).render("ok");
+
+    var spinner = document.createElement("div");
+    createRoot(spinner).render(
+      <div className="spinner-grow" role="status">
+        <span className="sr-only">Loading...</span>
+      </div>
+    );
+
+    btn.replaceChild(spinner, btn.childNodes[0]);
+
+    await deleteReservationDatas(datas);
     await GetData();
+    setSelectedRows([]);
+
+    btn.replaceChild(temp, btn.childNodes[0]);
+
+    myModal.hide();
   }
 
   function setInputModalData(type) {
@@ -302,11 +321,8 @@ const PortalHome = ({ GetData, reservation }) => {
   useEffect(() => {
     setTableData(reservation);
     setSelectedRow({});
+    setSelectedRows([]);
   }, [reservation]);
-
-  function onClick() {
-    console.log(tableData);
-  }
 
   //Filtering
 
@@ -420,7 +436,7 @@ const PortalHome = ({ GetData, reservation }) => {
   function deleteModalBody() {
     return (
       <>
-        <p>Are you sure you want to delete the selected reservation</p>
+        <p>Are you sure you want to delete the selected reservation(s)</p>
       </>
     );
   }
@@ -467,9 +483,9 @@ const PortalHome = ({ GetData, reservation }) => {
           Edit
         </button>
         <button
-          className="btn btn-danger"
-          disabled={!selectedRow._id}
+          className="btn btn-danger "
           data-bs-toggle="modal"
+          disabled={!selectedRows.length}
           data-bs-target="#deleteModal"
         >
           Delete
@@ -507,7 +523,7 @@ const PortalHome = ({ GetData, reservation }) => {
         </div>
       </div>
     );
-  }, [selectedRow, filterText, resetPaginationToggle]);
+  }, [selectedRows, selectedRow, filterText, resetPaginationToggle]);
 
   //Filtering end
 
@@ -516,6 +532,14 @@ const PortalHome = ({ GetData, reservation }) => {
   const handleRowClick = async (row) => {
     setSelectedRow(row);
   };
+
+  const handleSelectedRowClick = async (row) => {
+    setSelectedRows(row.selectedRows);
+  };
+
+  function handleResetSelection() {
+    setSelectedRows([]);
+  }
   //end of selecting table item
 
   //custom styles
@@ -556,6 +580,27 @@ const PortalHome = ({ GetData, reservation }) => {
   }
   //end of custom methods
 
+  //table props
+  const tableProps = {
+    key: JSON.stringify(tableData),
+    selectableRows: true,
+    onSelectedRowsChange: handleSelectedRowClick,
+    title: "Reservation List",
+    columns: columns,
+    data: tableData,
+    highlightOnHover: true,
+    pointerOnHover: true,
+    pagination: true,
+    paginationResetDefaultPage: resetPaginationToggle,
+    subHeader: true,
+    subHeaderComponent: subHeaderComponentMemo,
+    persistTableHead: true,
+    onRowClicked: handleRowClick,
+    conditionalRowStyles: conditionalRowStyles,
+  };
+
+  //end of table props
+
   return (
     <>
       <Modal
@@ -590,7 +635,7 @@ const PortalHome = ({ GetData, reservation }) => {
         center={true}
         hasSubmitBtn={true}
         submitBtnFunc={() => {
-          deleteSelectedData(selectedRow);
+          deleteSelectedDatas(selectedRows);
         }}
         submitBtnLabel={"Delete"}
         submitBtnID={"deleteBtn"}
@@ -641,20 +686,7 @@ const PortalHome = ({ GetData, reservation }) => {
         </div>
         <div className="dataTableContainer">
           <div className="dt">
-            <DataTable
-              title="Reservation List"
-              columns={columns}
-              data={tableData}
-              highlightOnHover
-              pointerOnHover
-              pagination
-              paginationResetDefaultPage={resetPaginationToggle}
-              subHeader
-              subHeaderComponent={subHeaderComponentMemo}
-              persistTableHead
-              onRowClicked={handleRowClick}
-              conditionalRowStyles={conditionalRowStyles}
-            />
+            <DataTable {...tableProps} />
           </div>
         </div>
       </Home>
