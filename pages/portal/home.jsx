@@ -583,7 +583,7 @@ const PortalHome = ({ GetData, reservation }) => {
 
   //table props
   const tableProps = {
-    key: JSON.stringify(tableData),
+    key: JSON.stringify(reservation),
     selectableRows: true,
     onSelectedRowsChange: handleSelectedRowClick,
     title: "Reservation List",
