@@ -40,6 +40,7 @@ const Home = styled.div`
       }
     }
   }
+
   .dataTableContainer {
     display: flex;
     align-items: center;
@@ -206,7 +207,7 @@ const PortalHome = ({ GetData, reservation }) => {
     setDataID("");
     setName("");
     setSurname("");
-    setAmount("");
+    setAmount(0);
     setContactNo("");
     setAttendance("");
     setMessage("");
@@ -273,7 +274,7 @@ const PortalHome = ({ GetData, reservation }) => {
           setDataID("");
           setName("");
           setSurname("");
-          setAmount("");
+          setAmount(0);
           setContactNo("");
           setEmail("");
           setAttendance("");
@@ -625,6 +626,7 @@ const PortalHome = ({ GetData, reservation }) => {
         }}
         submitBtnLabel={"Save"}
         submitBtnID={"saveBtn"}
+        containBody={true}
       />
       <Modal
         modalID={"deleteModal"}

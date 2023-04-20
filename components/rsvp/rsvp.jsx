@@ -144,7 +144,7 @@ const RSVP = ({ webSiteSetting }) => {
         setDataID("");
         setName("");
         setSurname("");
-        setAmount("");
+        setAmount(0);
         setContactNo("");
         setAttendance("");
         setMessage("");
@@ -267,7 +267,7 @@ const RSVP = ({ webSiteSetting }) => {
     setDataID("");
     setName("");
     setSurname("");
-    setAmount("");
+    setAmount(0);
     setContactNo("");
     setAttendance("");
     setMessage("");
@@ -278,7 +278,7 @@ const RSVP = ({ webSiteSetting }) => {
   function clearData() {
     setName("");
     setSurname("");
-    setAmount("");
+    setAmount(0);
     setContactNo("");
     setAttendance("");
     setMessage("");

@@ -42,6 +42,7 @@ const Modal = ({
   submitBtnFunc,
   submitBtnLabel,
   submitBtnID,
+  containBody,
 }) => {
   //to show bootstrap modal
   useEffect(() => {
@@ -74,7 +75,12 @@ const Modal = ({
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div className="modal-body">{modalBody()}</div>
+            <div
+              className="modal-body"
+              style={containBody ? { height: "500px", overflow: "auto" } : {}}
+            >
+              {modalBody()}
+            </div>
             {hasFooter ? (
               <div className="modal-footer">
                 {hasSubmitBtn ? (
