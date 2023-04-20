@@ -1,5 +1,55 @@
 @import "styles/utils";
 
+//door
+.openBtn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 101;
+}
+.diableScroll {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.doorContainer {
+  width: 100vw;
+  position: absolute;
+  overflow: hidden;
+  height: 100vh;
+  z-index: 100;
+}
+
+.door {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  z-index: 100;
+  transition: all 3s ease-in-out;
+  overflow: hidden;
+}
+
+.door.left {
+  background-color: red;
+  left: 0;
+}
+
+.door.left.open {
+  left: -50%;
+}
+
+.door.right {
+  background-color: blue;
+  right: 0;
+}
+
+.door.right.open {
+  right: -50%;
+}
+
+//end door
+
 .btRight {
   overflow: hidden;
   position: fixed;

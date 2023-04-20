@@ -6,42 +6,9 @@ import "../styles/globals.css";
 import "../styles/index.scss";
 import "../styles/settings.scss";
 import "bootstrap/dist/css/bootstrap.css";
-// const OwlCarousel = dynamic(import("react-owl-carousel"), { ssr: false });
-// ..Loading Function
-// function Loading() {
-//   const router = useRouter();
-
-//   const [loading, setLoading] = useState(false);
-
-//   useEffect(() => {
-//     const handleStart = (url) => url !== router.asPath && setLoading(true);
-//     const handleComplete = (url) =>
-//       url === router.asPath &&
-//       setTimeout(() => {
-//         setLoading(false);
-//       }, 5000);
-
-//     router.events.on("routeChangeStart", handleStart);
-//     router.events.on("routeChangeComplete", handleComplete);
-//     router.events.on("routeChangeError", handleComplete);
-
-//     return () => {
-//       router.events.off("routeChangeStart", handleStart);
-//       router.events.off("routeChangeComplete", handleComplete);
-//       router.events.off("routeChangeError", handleComplete);
-//     };
-//   });
-
-//   return (
-//     loading && (
-//       <div className="spinner-wrapper">
-//         <div className="spinner">test</div>
-//       </div>
-//     )
-//   );
-// }
 
 function MyApp({ Component, pageProps }) {
+  const [doorOpen, setDoorOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [webSiteSetting, setWebSiteSetting] = useState({});
   const [remainingTime, setRemainingTime] = useState({});
@@ -66,13 +33,24 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   return !loading ? (
-    <>
-      {/* <Loading /> */}
+    <div className={`${!doorOpen ? "diableScroll" : ""}`}>
       <Layout>
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
-
+        <button
+          className={`openBtn ${doorOpen ? "hide" : ""}`}
+          onClick={() => {
+            setDoorOpen(!doorOpen);
+            console.log(doorOpen);
+          }}
+        >
+          open
+        </button>
+        <div className="doorContainer">
+          <div className={`door left ${doorOpen ? "open" : ""}`}></div>
+          <div className={`door right ${doorOpen ? "open" : ""}`}></div>
+        </div>
         <Component
           {...pageProps}
           webSiteSetting={webSiteSetting}
@@ -80,7 +58,7 @@ function MyApp({ Component, pageProps }) {
           calRemaining={calRemaining}
         />
       </Layout>
-    </>
+    </div>
   ) : (
     <div>loading</div>
   );
