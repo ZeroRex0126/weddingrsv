@@ -32,35 +32,45 @@ function MyApp({ Component, pageProps }) {
     getWebData();
   }, []);
 
-  return !loading ? (
+  return (
     <div className={`${!doorOpen ? "diableScroll" : ""}`}>
       <Layout>
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
-        <button
-          className={`openBtn ${doorOpen ? "hide" : ""}`}
+        <a
+          className={`${loading ? "loading" : "completed"} play-btn ${
+            doorOpen ? "hide" : ""
+          }`}
           onClick={() => {
-            setDoorOpen(!doorOpen);
-            console.log(doorOpen);
+            if (!loading) {
+              setDoorOpen(!doorOpen);
+              console.log(doorOpen);
+            }
           }}
         >
-          open
-        </button>
+          {!loading ? (
+            <span className="play"></span>
+          ) : (
+            <div className="spinner-border" role="status"></div>
+          )}
+        </a>
         <div className="doorContainer">
           <div className={`door left ${doorOpen ? "open" : ""}`}></div>
           <div className={`door right ${doorOpen ? "open" : ""}`}></div>
         </div>
-        <Component
-          {...pageProps}
-          webSiteSetting={webSiteSetting}
-          remainingTime={remainingTime}
-          calRemaining={calRemaining}
-        />
+        {!loading ? (
+          <Component
+            {...pageProps}
+            webSiteSetting={webSiteSetting}
+            remainingTime={remainingTime}
+            calRemaining={calRemaining}
+          />
+        ) : (
+          <></>
+        )}
       </Layout>
     </div>
-  ) : (
-    <div>loading</div>
   );
 }
 
