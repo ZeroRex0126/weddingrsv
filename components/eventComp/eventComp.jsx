@@ -41,6 +41,10 @@ const EventsComp = styled.div`
     left: calc(50% - 80px);
     background: ${lineColor};
   }
+  .font-weight-normal {
+    position: relative;
+    z-index: 2;
+  }
 
   @media (min-width: 768px) {
     .border-right {

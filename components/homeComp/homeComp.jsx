@@ -16,6 +16,9 @@ const HomeCom = styled.div`
     text-align: center;
     background-color: ${primaryColor};
     color: ${fontColor};
+    .homeContent {
+      z-index: 2;
+    }
 
     .timer {
       max-width: 100vw;
