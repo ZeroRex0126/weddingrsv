@@ -1,5 +1,20 @@
 @import "styles/utils";
 
+// fonts
+@font-face {
+  font-family: "Quick";
+  src: url("../fonts/Quick.ttf");
+}
+@font-face {
+  font-family: "Script";
+  src: url("../fonts/Script.ttf");
+}
+@font-face {
+  font-family: "Vidaloka";
+  src: url("../fonts/Vidaloka.ttf");
+}
+// end of fonts
+
 //door
 .openBtn {
   position: absolute;
@@ -116,8 +131,26 @@
   overflow: hidden;
 }
 
+.door.left span,
+.door.right span {
+  font-family: "Script";
+  position: absolute;
+  color: pink;
+  font-size: 60px;
+  top: 30%;
+  transform: translateY(-50%);
+}
+
+.door.left span {
+  right: -22px;
+}
+
+.door.right span {
+  left: -14px;
+}
+
 .door.left {
-  background-color: red;
+  background-color: white;
   left: 0;
 }
 
@@ -126,12 +159,40 @@
 }
 
 .door.right {
-  background-color: blue;
+  background-color: white;
   right: 0;
 }
 
 .door.right.open {
   right: -50%;
+}
+
+.doorLeftPic {
+  overflow: hidden;
+  position: absolute;
+  top: -50px;
+  left: -100px;
+  overflow: visible;
+}
+
+.doorRightPic {
+  overflow: hidden;
+  position: absolute;
+  bottom: -100px;
+  right: -100px;
+  overflow: visible;
+}
+
+@media (max-width: 500px) {
+  .doorLeftPic img {
+    width: 280px;
+    height: 280px;
+  }
+
+  .doorRightPic img {
+    width: 280px;
+    height: 280px;
+  }
 }
 
 //end door

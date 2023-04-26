@@ -6,6 +6,8 @@ import "../styles/globals.css";
 import "../styles/index.scss";
 import "../styles/settings.scss";
 import "bootstrap/dist/css/bootstrap.css";
+import Image from "next/image.js";
+import { Fade } from "react-awesome-reveal";
 
 function MyApp({ Component, pageProps }) {
   const [doorOpen, setDoorOpen] = useState(false);
@@ -55,9 +57,52 @@ function MyApp({ Component, pageProps }) {
             <div className="spinner-border" role="status"></div>
           )}
         </a>
+        {/* 
+        <Fade
+          className="btRight"
+          direction="right"
+          duration={2000}
+          triggerOnce={true}
+        >
+          <Image width={350} height={350} src={"/webContent/bottomRight.png"} />
+        </Fade>
+
+        <Fade
+          className="tpLeft"
+          direction="left"
+          duration={2000}
+          triggerOnce={true}
+        >
+          <Image width={350} height={350} src={"/webContent/topLeft.png"} />
+        </Fade> */}
+
         <div className="doorContainer">
-          <div className={`door left ${doorOpen ? "open" : ""}`}></div>
-          <div className={`door right ${doorOpen ? "open" : ""}`}></div>
+          <div className={`door left ${doorOpen ? "open" : ""}`}>
+            <Fade
+              className="doorLeftPic"
+              direction="left"
+              duration={2000}
+              triggerOnce={true}
+            >
+              <Image width={350} height={350} src={"/webContent/topLeft.png"} />
+            </Fade>
+            <span>Clinton &</span>
+          </div>
+          <div className={`door right ${doorOpen ? "open" : ""}`}>
+            <Fade
+              className="doorRightPic"
+              direction="right"
+              duration={2000}
+              triggerOnce={true}
+            >
+              <Image
+                width={350}
+                height={350}
+                src={"/webContent/bottomRight.png"}
+              />
+            </Fade>
+            <span>& Chanel</span>
+          </div>
         </div>
         {!loading ? (
           <Component
