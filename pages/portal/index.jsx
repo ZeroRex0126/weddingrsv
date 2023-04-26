@@ -18,7 +18,7 @@ function useLocalStorageForPageKey(key, fallbackValue) {
   return [value, setValue];
 }
 
-const portal = ({ webSiteSetting }) => {
+const portal = () => {
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useLocalStorageForPageKey("page", "home");
   const [reservation, setReservation] = useState();
@@ -58,7 +58,7 @@ const portal = ({ webSiteSetting }) => {
   return !loading ? (
     <div>
       <Head>
-        <title>{webSiteSetting.title} - Portal</title>
+        <title>Portal Management Screen</title>
         <meta name="description" content="Setting Page for the Site" />
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>

@@ -20,7 +20,6 @@ async function handler(req, res) {
       // break;
       try {
         let result = await db.collection("websiteData").find({}).toArray();
-        console.log("here", result);
         if (result) {
           res.json(result);
         } else {

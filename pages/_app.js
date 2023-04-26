@@ -34,7 +34,11 @@ function MyApp({ Component, pageProps }) {
   }
 
   useEffect(() => {
-    getWebData();
+    if (router.pathname != "/portal") {
+      getWebData();
+    } else {
+      setLoading(false);
+    }
   }, []);
 
   return (

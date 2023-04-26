@@ -45,6 +45,7 @@ const RsvpComp = styled.div`
   }
 
   .rsvp {
+    z-index: 2;
     display: flex;
     flex-direction: column;
     justify-content: center;
