@@ -21,6 +21,10 @@ const NavBarComp = styled.nav`
     color: ${fontColor} !important;
   }
 
+  .font-secondary {
+    font-family: "Script";
+  }
+
   .navbar-toggler {
     background: ${primaryColor};
   }
@@ -33,7 +37,7 @@ const NavBarComp = styled.nav`
   }
 `;
 
-const TopNav = () => {
+const TopNav = ({ webSiteSetting }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [fixed, setFixed] = useState(false);
   const lastScrollY = useRef(0);
@@ -66,7 +70,7 @@ const TopNav = () => {
       fixed={fixed}
     >
       <a href="index.html" className="navbar-brand d-block d-lg-none">
-        <h1 className="font-secondary mb-n2">Clinton & Chanel</h1>
+        <h1 className="font-secondary mb-n2">{webSiteSetting.title}</h1>
       </a>
       <button type="button" className="navbar-toggler" onClick={showMenuFunc}>
         <span className="navbar-toggler-icon"></span>
@@ -115,7 +119,7 @@ const TopNav = () => {
           </a> */}
         </div>
         <a href="#home" className="navbar-brand mx-5 d-none d-lg-block">
-          <h1 className="font-secondary mb-n2">Clinton & Chanel</h1>
+          <h1 className="font-secondary mb-n2">{webSiteSetting.title}</h1>
         </a>
         <div className="navbar-nav mr-auto py-0">
           {/* <a

@@ -1,6 +1,6 @@
 import { MongoClient, ObjectId } from "mongodb";
 
-const connectionString = `mongodb+srv://sa:FOnND72kohjKqpKm@cluster0.fsqssdi.mongodb.net/Wedding?retryWrites=true&w=majority`;
+const connectionString = process.env.DB_STRING;
 let client;
 
 async function handler(req, res) {

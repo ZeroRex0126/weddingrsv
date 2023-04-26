@@ -1,3 +1,4 @@
+import { monthsLargeName } from "../../arrays/arrays";
 import { fontColor, primaryColor } from "../../libs/color";
 import TimerCard from "../timerCard/timerCard";
 
@@ -30,6 +31,11 @@ const HomeCom = styled.div`
   }
 `;
 const HomeComp = ({ webSiteSetting, remainingTime }) => {
+  const date = new Date(
+    webSiteSetting.year,
+    webSiteSetting.month,
+    webSiteSetting.day
+  );
   return (
     <HomeCom>
       <div
@@ -43,14 +49,9 @@ const HomeComp = ({ webSiteSetting, remainingTime }) => {
           <div>
             <h1>{webSiteSetting.title}</h1>
             <h2>
-              {/* {
-              new Date(
-                webSiteSetting.year,
-                webSiteSetting.month,
-                webSiteSetting.day
-              )
-            } */}
-              date here
+              {`${date.getDate()} ${
+                monthsLargeName[date.getMonth()]
+              } ${date.getFullYear()}`}
             </h2>
           </div>
           <div className="timer">

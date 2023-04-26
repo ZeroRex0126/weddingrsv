@@ -84,7 +84,7 @@ const AboutComponent = ({ webSiteSetting }) => {
               <div className="text-center">
                 <div className="h-100 d-flex flex-column justify-content-cente p-5 groom">
                   <h3 className="mb-3">The Groom</h3>
-                  <p>{webSiteSetting.bride.description}</p>
+                  <p>{webSiteSetting.groom.description}</p>
                   <h3 className="font-secondary font-weight-normal text-muted mb-3">
                     <i className="fa fa-male text-primary pr-3"></i>
                     {webSiteSetting.groom.name}

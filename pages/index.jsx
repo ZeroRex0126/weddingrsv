@@ -36,7 +36,7 @@ export default function Home({ calRemaining, webSiteSetting, remainingTime }) {
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
       <div className="navContainer">
-        <TopNav />
+        <TopNav webSiteSetting={webSiteSetting} />
       </div>
       <HomeComp webSiteSetting={webSiteSetting} remainingTime={remainingTime} />
       <Fade

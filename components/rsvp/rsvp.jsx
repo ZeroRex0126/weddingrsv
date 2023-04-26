@@ -124,8 +124,7 @@ const RSVP = ({ webSiteSetting }) => {
     );
 
     btn.replaceChild(spinner, btn.childNodes[0]);
-    console.log(validateEmail(email));
-    if (pin === webSiteSetting.pin && email && validateEmail(email)) {
+    if (btoa(pin) === webSiteSetting.pin && email && validateEmail(email)) {
       let data = await findReservationData(email);
       if (data._id) {
         setDataID(data._id);
@@ -302,27 +301,6 @@ const RSVP = ({ webSiteSetting }) => {
 
   return (
     <RsvpComp id="rsvp">
-      {/* modal */}
-      {/* <button
-        type="button"
-        className="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#myModal"
-      >
-        Launch demo modal
-      </button>
-      <Modal
-        modalID={"myModal"}
-        labelID={"test"}
-        label={"Test Modal"}
-        hasFooter={true}
-        modalBody={modalDataMessageBody}
-        center={true}
-        hasSubmitBtn={true}
-        submitBtnFunc={() => {}}
-        submitBtnLabel={"save"}
-      /> */}
-
       <Modal
         modalID={"dataMessage"}
         labelID={"dataMessageLabel"}
