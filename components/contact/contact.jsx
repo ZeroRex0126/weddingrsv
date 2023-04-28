@@ -85,7 +85,9 @@ const Contact = () => {
                 <BsInstagram />
               </a>
             </div>
-            <p>Interested in having a site like this for your event?</p>
+            <p>
+              Interested in having a site like this for your event? Contact us.
+            </p>
             <div className="d-flex justify-content-center py-2">
               <p href="#">info@example.com</p>
               <span className="px-3">|</span>
