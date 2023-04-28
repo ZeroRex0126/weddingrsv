@@ -13,6 +13,21 @@ const ContactComp = styled.div`
   align-items: center;
   background-color: ${primaryColor};
   color: ${fontColor};
+
+  .socialBtn {
+    background: ${primaryColor};
+    color: ${fontColor};
+    border: ${fontColor} solid 2px;
+    margin: 5px;
+  }
+
+  .socialBtn:hover {
+    background: ${fontColor};
+    color: ${primaryColor};
+    border: ${fontColor} solid 2px;
+    margin: 5px;
+  }
+
   .section-title::after {
     position: absolute;
     content: "";
@@ -52,7 +67,7 @@ const Contact = () => {
               <i className="fab fa-twitter"></i>
             </a> */}
               <a
-                className="btn btn-lg btn-outline-light btn-lg-square mr-2"
+                className="socialBtn btn btn-lg btn-outline-light btn-lg-square mr-2"
                 href="#"
               >
                 <FaFacebookF />
@@ -64,20 +79,17 @@ const Contact = () => {
               <i className="fab fa-linkedin-in"></i>
             </a> */}
               <a
-                className="btn btn-lg btn-outline-light btn-lg-square"
+                className="socialBtn btn btn-lg btn-outline-light btn-lg-square"
                 href="#"
               >
                 <BsInstagram />
               </a>
             </div>
+            <p>Interested in having a site like this for your event?</p>
             <div className="d-flex justify-content-center py-2">
-              <p className="" href="#">
-                info@example.com
-              </p>
+              <p href="#">info@example.com</p>
               <span className="px-3">|</span>
-              <p className="" href="#">
-                +012 345 6789
-              </p>
+              <p href="#">+012 345 6789</p>
             </div>
             <p className="m-0">
               &copy; <a className="text-primary">Domain Name</a>. Designed by{" "}

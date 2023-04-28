@@ -3,62 +3,62 @@ let datas = [
     title: "Clinton & Chanel",
     groom: {
       name: "Clinton",
-      description: "Please meet Clinton, A amazing guy",
+      description:
+        "Hi , I'm Clinton, I really love rum and raisin ice cream, I like to work in the garden on weekends and love to do my exercises.",
     },
     bride: {
       name: "Chanel",
-      description: "Please meet Chanel, A amazing women",
+      description:
+        "Hi , I'm Chanell. I really love to spend time with my pets, friends and family. I love to challenge people next to me when I'm in my Megane RS 😎.",
     },
     loveStory: [
       {
-        year: "2019",
-        date: "01 Jan 2050",
+        year: "2018",
+        date: "September 2018",
         title: "First Meet",
         story:
-          "Lorem elitr magna stet rebum dolores sed. Est stet labore est lorem lorem at amet sea, eos tempor rebum, labore amet ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd stet amet est dolor elitr.",
+          "We met each other on Facebook and not long after that we had our first date at Cappuccinos. ❤️",
       },
       {
-        year: "2020",
-        date: "01 Jan 2050",
+        year: "2018",
+        date: "October 2018",
         title: "First Date",
-        story:
-          "Lorem elitr magna stet rebum dolores sed. Est stet labore est lorem lorem at amet sea, eos tempor rebum, labore amet ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd stet amet est dolor elitr.",
+        story: "We officially started dating each other one month later. 👩‍❤️‍👨",
       },
       {
         year: "2021",
-        date: "01 Jan 2050",
+        date: "December 2021",
         title: "Proposal",
-        story:
-          "Lorem elitr magna stet rebum dolores sed. Est stet labore est lorem lorem at amet sea, eos tempor rebum, labore amet ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd stet amet est dolor elitr.",
+        story: "Clenton popped the question to Chanel, and she said YES!!!💍",
       },
       {
-        year: "2023",
-        date: "01 Jan 2050",
-        title: "Enagagement",
+        year: "2024",
+        date: "14 May 2021",
+        title: "Wedding",
         story:
-          "Lorem elitr magna stet rebum dolores sed. Est stet labore est lorem lorem at amet sea, eos tempor rebum, labore amet ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd stet amet est dolor elitr.",
-      },
-      {
-        year: "2025",
-        date: "01 Jan 2050",
-        title: "Plus One",
-        story:
-          "Lorem elitr magna stet rebum dolores sed. Est stet labore est lorem lorem at amet sea, eos tempor rebum, labore amet ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd stet amet est dolor elitr.",
+          "We are finally celebrating our wedding and will officially become husband and wife!!! 💒",
       },
     ],
     eventDetails: {
-      description:
-        "Clita ipsum aliquyam dolor diam dolores elitr nonumy. Rebum sea vero ipsum eirmod tempor kasd. Diam amet lorem erat eos sit lorem elitr justo",
+      description: "The Events for our wedding are as follow",
       events: [
         {
-          title: "The Reception",
-          place: "123 Street, New York, USA",
-          time: "12:00AM - 13:00PM",
+          title: "The Reception/Ceremony",
+          place:
+            "Kuungana Bush Lodge chapel, Plataan road, Farm Rietfontein Donkerhoek, Pretoria, 1001",
+          time: "10:00AM",
+        },
+        {
+          title: "Photo Session",
+          place:
+            "Kuungana Bush Lodge chapel, Plataan road, Farm Rietfontein Donkerhoek, Pretoria, 1001",
+          time: "11:00AM",
         },
         {
           title: "Wedding Party",
-          place: "123 Street, New York, USA",
-          time: "12:00AM - 13:00PM",
+          place:
+            "Kuungana Bush Lodge chapel, Plataan road, Farm Rietfontein Donkerhoek, Pretoria, 1001",
+          time: "+-12:30PM",
         },
       ],
     },

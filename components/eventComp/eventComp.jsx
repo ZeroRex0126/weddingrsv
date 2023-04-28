@@ -13,6 +13,10 @@ const EventsComp = styled.div`
   background-color: ${primaryColor};
   color: ${fontColor};
 
+  .eventCard {
+    padding: 20px;
+  }
+
   .pic {
     position: relative;
     left: 50%;
@@ -70,19 +74,20 @@ const Events = ({ webSiteSetting }) => {
           </div>
         </div>
         <div className="row">
-          {}
           {webSiteSetting.eventDetails.events.map((v, i) => {
             return (
               <div
-                className={`col-md-6 ${
+                className={`${
                   i !== webSiteSetting.eventDetails.events.length - 1
-                    ? "border-right border-primary"
-                    : ""
+                    ? `col-md-6 ${
+                        i % 2 === 0 ? "border-right border-primary" : ""
+                      }`
+                    : "col-md-12"
                 }`}
                 key={i}
               >
                 <Fade direction="up" duration={2000} triggerOnce={true}>
-                  <div className="text-center text-md-right mr-md-3 mb-4 mb-md-0">
+                  <div className="eventCard text-center text-md-right mr-md-3 mb-4 mb-md-0">
                     <div
                       className="col-md-6 p-0 pic"
                       style={{
