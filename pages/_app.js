@@ -43,15 +43,15 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <div
-      className={`${
-        !doorOpen && router.pathname != "/portal" ? "diableScroll" : ""
-      }`}
+    // className={`${
+    //   !doorOpen && router.pathname != "/portal" ? "diableScroll" : ""
+    // }`}
     >
       <Layout>
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
-        {router.pathname != "/portal" ? (
+        {/* {router.pathname != "/portal" ? (
           <>
             <a
               className={`${loading ? "loading" : "completed"} play-btn ${
@@ -112,7 +112,7 @@ function MyApp({ Component, pageProps }) {
           </>
         ) : (
           <></>
-        )}
+        )} */}
         {!loading ? (
           <Component
             {...pageProps}
@@ -121,7 +121,7 @@ function MyApp({ Component, pageProps }) {
             calRemaining={calRemaining}
           />
         ) : (
-          <></>
+          <>loading</>
         )}
       </Layout>
     </div>

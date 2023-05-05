@@ -29,7 +29,7 @@ let datas = [
         year: "2021",
         date: "December 2021",
         title: "Proposal",
-        story: "Clenton popped the question to Chanel, and she said YES!!!💍",
+        story: "Clinton popped the question to Chanel, and she said YES!!!💍",
       },
       {
         year: "2024",
@@ -43,18 +43,21 @@ let datas = [
       description: "The Events for our wedding are as follow",
       events: [
         {
+          imageName: "",
           title: "The Reception/Ceremony",
           place:
             "Kuungana Bush Lodge chapel, Plataan road, Farm Rietfontein Donkerhoek, Pretoria, 1001",
           time: "10:00AM",
         },
         {
+          imageName: "",
           title: "Photo Session",
           place:
             "Kuungana Bush Lodge chapel, Plataan road, Farm Rietfontein Donkerhoek, Pretoria, 1001",
           time: "11:00AM",
         },
         {
+          imageName: "",
           title: "Wedding Party",
           place:
             "Kuungana Bush Lodge chapel, Plataan road, Farm Rietfontein Donkerhoek, Pretoria, 1001",
