@@ -5,6 +5,7 @@ import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { Fade } from "react-awesome-reveal";
 import { fontColor, primaryColor } from "../../libs/color";
 import Image from "next/image";
+import { lineColor } from "../../libs/color";
 
 const About = styled.div`
   overflow: hidden;
@@ -23,6 +24,9 @@ const About = styled.div`
       height: 20rem;
       width: 20rem;
       background-size: cover;
+    }
+    .font-secondary {
+      color: ${lineColor};
     }
 
     .row {
@@ -86,7 +90,7 @@ const AboutComponent = ({ webSiteSetting }) => {
                 <div className="h-100 d-flex flex-column justify-content-cente p-5 groom">
                   <h3 className="mb-3">The Groom</h3>
                   <p>{webSiteSetting.groom.description}</p>
-                  <h3 className="font-secondary font-weight-normal text-muted mb-3">
+                  <h3 className="font-secondary font-weight-normal mb-3">
                     <i className="fa fa-male text-primary pr-3"></i>
                     {webSiteSetting.groom.name}
                   </h3>
@@ -129,7 +133,7 @@ const AboutComponent = ({ webSiteSetting }) => {
                 <div className="h-100 d-flex flex-column justify-content-cente p-5 bride">
                   <h3 className="mb-3">The Bride</h3>
                   <p>{webSiteSetting.bride.description}</p>
-                  <h3 className="font-secondary font-weight-normal text-muted mb-3">
+                  <h3 className="font-secondary font-weight-normal mb-3">
                     <i className="fa fa-female text-primary pr-3"></i>
                     {webSiteSetting.bride.name}
                   </h3>

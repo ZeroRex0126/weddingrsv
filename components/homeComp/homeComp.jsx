@@ -28,7 +28,8 @@ const HomeCom = styled.div`
     @media (min-width: 768px) {
       .homeContent {
         position: absolute;
-        left: 0;
+        // left: 0;
+        //enable for left timer
       }
     }
   }
