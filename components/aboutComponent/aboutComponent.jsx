@@ -4,6 +4,7 @@ import { BsInstagram } from "react-icons/bs";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { Fade } from "react-awesome-reveal";
 import { fontColor, primaryColor } from "../../libs/color";
+import Image from "next/image";
 
 const About = styled.div`
   overflow: hidden;
@@ -75,12 +76,12 @@ const AboutComponent = ({ webSiteSetting }) => {
         <div className="row m-0">
           <div className="col-md-6 p-4">
             <Fade direction="left" duration={2000} triggerOnce={true}>
-              <div
+              <Image
+                width={300}
+                height={250}
                 className="aboutPic"
-                style={{
-                  backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
-                }}
-              ></div>
+                src={`/webContent/groom.png`}
+              />
               <div className="text-center">
                 <div className="h-100 d-flex flex-column justify-content-cente p-5 groom">
                   <h3 className="mb-3">The Groom</h3>
@@ -118,12 +119,12 @@ const AboutComponent = ({ webSiteSetting }) => {
           </div>
           <div className="col-md-6 p-4">
             <Fade direction="right" duration={2000} triggerOnce={true}>
-              <div
+              <Image
+                width={300}
+                height={250}
                 className="aboutPic"
-                style={{
-                  backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
-                }}
-              ></div>
+                src={`/webContent/bride.png`}
+              />
               <div className="text-center">
                 <div className="h-100 d-flex flex-column justify-content-cente p-5 bride">
                   <h3 className="mb-3">The Bride</h3>
