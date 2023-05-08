@@ -12,3 +12,4 @@ export { default as HomeComp } from "./homeComp/homeComp";
 export { default as CusButton } from "./cusButton/cusButton";
 export { default as MusicWave } from "./musicWave/musicWave";
 export { default as Modal } from "./modal/modal";
+export { default as Loading } from "./loading/loading";

@@ -9,6 +9,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import Image from "next/image.js";
 import { Fade } from "react-awesome-reveal";
 import { useRouter } from "next/router";
+import { Loading } from "../components/index.js";
 
 function MyApp({ Component, pageProps }) {
   const [doorOpen, setDoorOpen] = useState(false);
@@ -121,7 +122,7 @@ function MyApp({ Component, pageProps }) {
             calRemaining={calRemaining}
           />
         ) : (
-          <>loading</>
+          <Loading />
         )}
       </Layout>
     </div>

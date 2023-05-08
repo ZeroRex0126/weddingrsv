@@ -7,6 +7,7 @@ import PortalHome from "./home";
 import SideNav from "./portalComp/sideNav/sideNav";
 import { getReservationDatas } from "../../libs/web-util";
 import Comment from "./comment";
+import { Loading } from "../../components";
 
 function useLocalStorageForPageKey(key, fallbackValue) {
   const [value, setValue] = useState(fallbackValue);
@@ -66,7 +67,7 @@ const portal = () => {
       <div className="settingContainer">{show()}</div>
     </div>
   ) : (
-    <div>loading</div>
+    <Loading />
   );
 };
 
