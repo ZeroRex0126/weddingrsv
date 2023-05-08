@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Fade } from "react-awesome-reveal";
 import { fontColor, lineColor, primaryColor } from "../../libs/color";
+import Image from "next/image";
 
 const EventsComp = styled.div`
   overflow: hidden;
@@ -93,7 +94,9 @@ const Events = ({ webSiteSetting }) => {
                       style={{
                         backgroundImage: `url(data:image/jpeg;base64,${webSiteSetting.heroimg})`,
                       }}
-                    />
+                    >
+                      <Image width={300} height={250} src={v.imageName} />
+                    </div>
                     <h2 className="mb-3">{v.title}</h2>
                     <p className="mb-2">{v.place}</p>
                     <p className="mb-0">{v.time}</p>

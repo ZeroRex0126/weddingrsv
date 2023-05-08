@@ -43,21 +43,21 @@ let datas = [
       description: "The Events for our wedding are as follow",
       events: [
         {
-          imageName: "",
+          imageName: "/webContent/ceremony.jpg",
           title: "The Reception/Ceremony",
           place:
             "Kuungana Bush Lodge chapel, Plataan road, Farm Rietfontein Donkerhoek, Pretoria, 1001",
           time: "10:00AM",
         },
         {
-          imageName: "",
+          imageName: "/webContent/photography.jpg",
           title: "Photo Session",
           place:
             "Kuungana Bush Lodge chapel, Plataan road, Farm Rietfontein Donkerhoek, Pretoria, 1001",
           time: "11:00AM",
         },
         {
-          imageName: "",
+          imageName: "/webContent/party.jpg",
           title: "Wedding Party",
           place:
             "Kuungana Bush Lodge chapel, Plataan road, Farm Rietfontein Donkerhoek, Pretoria, 1001",
