@@ -6,14 +6,6 @@ const connectionString = process.env.DB_STRING;
 let client;
 
 async function handler(req, res) {
-  try {
-    client = await MongoClient.connect(connectionString);
-  } catch (error) {
-    res.status(500).json({ message: "Could not connect to database." });
-    return;
-  }
-
-  const db = client.db();
   switch (req.method) {
     case "GET":
       res.json(getDatas());

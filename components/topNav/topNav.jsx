@@ -26,7 +26,7 @@ const NavBarComp = styled.nav`
   }
 
   .navbar-toggler {
-    background: ${primaryColor};
+    background: ${fontColor};
   }
   @media (min-width: 991px) {
     .music-item {
