@@ -201,7 +201,6 @@ const RSVP = ({ webSiteSetting }) => {
             amount: parseInt(amount),
             comment: message,
           });
-          console.log(res);
           if (res.acknowledged) {
             setCompleteMessage(
               "Your Details has been updated, you can update it again anytime."
@@ -214,9 +213,7 @@ const RSVP = ({ webSiteSetting }) => {
         }
       } else {
         let resData = await findReservationDataByEmail(email);
-        console.log(resData);
         if (resData._id) {
-          console.log("hit");
           setCompleteMessage("Email Already in use");
           emailInUse = true;
         } else {
@@ -229,7 +226,6 @@ const RSVP = ({ webSiteSetting }) => {
             amount: parseInt(amount),
             comment: message,
           });
-          console.log(res);
           if (res.acknowledged) {
             setCompleteMessage(
               "Your Details has been added, you can update it again anytime. \n Thank You for your reservation!!!"

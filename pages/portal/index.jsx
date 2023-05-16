@@ -8,6 +8,7 @@ import SideNav from "./portalComp/sideNav/sideNav";
 import { getReservationDatas } from "../../libs/web-util";
 import Comment from "./comment";
 import { Loading } from "../../components";
+import Login from "./login";
 
 function useLocalStorageForPageKey(key, fallbackValue) {
   const [value, setValue] = useState(fallbackValue);
@@ -20,6 +21,7 @@ function useLocalStorageForPageKey(key, fallbackValue) {
 }
 
 const portal = () => {
+  const [login, setLogin] = useState(false);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useLocalStorageForPageKey("page", "home");
   const [reservation, setReservation] = useState();
@@ -40,6 +42,10 @@ const portal = () => {
     console.log(reservation);
   }
 
+  function loginFunc() {
+    setLogin(true);
+  }
+
   function setPageStore(key, value) {
     localStorage.setItem(key, value);
     setPage(value);
@@ -57,15 +63,19 @@ const portal = () => {
   }
 
   return !loading ? (
-    <div>
-      <Head>
-        <title>Portal Management Screen</title>
-        <meta name="description" content="Setting Page for the Site" />
-        {/* <link rel="icon" href="/favicon.ico" /> */}
-      </Head>
-      <SideNav page={page} setPageStore={setPageStore} />
-      <div className="settingContainer">{show()}</div>
-    </div>
+    login ? (
+      <div>
+        <Head>
+          <title>Portal Management Screen</title>
+          <meta name="description" content="Setting Page for the Site" />
+          {/* <link rel="icon" href="/favicon.ico" /> */}
+        </Head>
+        <SideNav page={page} setPageStore={setPageStore} />
+        <div className="settingContainer">{show()}</div>
+      </div>
+    ) : (
+      <Login loginFunc={loginFunc}></Login>
+    )
   ) : (
     <Loading />
   );
