@@ -17,9 +17,14 @@ const LoginComp = styled.div`
   .logoPortal {
     border-radius: 50%;
   }
+  .errorMessage {
+    color: red;
+    text-align: center;
+    font-weight: 700;
+  }
 `;
 
-const Login = ({ loginFunc }) => {
+const Login = ({ loginFunc, loginError }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   return (
@@ -27,6 +32,7 @@ const Login = ({ loginFunc }) => {
       <LoginComp>
         <div className="loginComp">
           <Image
+            alt="loginLogo"
             className="logoPortal"
             width={200}
             height={200}
@@ -46,17 +52,24 @@ const Login = ({ loginFunc }) => {
             name={"Password"}
             title={"Password"}
             value={password}
-            type={"text"}
+            type={"password"}
             width="auto"
             onValueChange={(e) => {
               setPassword(e.target.value);
             }}
           ></Input>
+          {loginError ? (
+            <span className="errorMessage">
+              Username or Password is incorrect.
+            </span>
+          ) : (
+            <></>
+          )}
           <CusButton
             id="loginBtn"
             title={"Login"}
             clicked={() => {
-              loginFunc();
+              loginFunc(username, password);
             }}
           />
         </div>

@@ -50,9 +50,9 @@ let LoadingComp = styled.div`
 const Loading = () => {
   return (
     <LoadingComp>
-      <section class="sec-loading">
-        <div class="one"></div>
-      </section>
+      <div className="sec-loading">
+        <div className="one"></div>
+      </div>
     </LoadingComp>
   );
 };
