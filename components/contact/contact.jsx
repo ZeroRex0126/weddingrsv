@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { BsInstagram } from "react-icons/bs";
+import { BsInstagram, BsWhatsapp } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
+import { GoMail } from "react-icons/go";
 import { Fade } from "react-awesome-reveal";
 import { fontColor, lineColor, primaryColor } from "../../libs/color";
 
@@ -13,6 +14,11 @@ const ContactComp = styled.div`
   align-items: center;
   background-color: ${primaryColor};
   color: ${fontColor};
+
+  .divider {
+    border-left: solid;
+    margin: 5px;
+  }
 
   .socialBtn {
     background: ${primaryColor};
@@ -68,7 +74,8 @@ const Contact = () => {
             </a> */}
               <a
                 className="socialBtn btn btn-lg btn-outline-light btn-lg-square mr-2"
-                href="#"
+                href="https://www.facebook.com/profile.php?id=100092525387923"
+                target="_blank"
               >
                 <FaFacebookF />
               </a>
@@ -80,7 +87,8 @@ const Contact = () => {
             </a> */}
               <a
                 className="socialBtn btn btn-lg btn-outline-light btn-lg-square"
-                href="#"
+                href="https://www.instagram.com/x_i_ting_sites/"
+                target="_blank"
               >
                 <BsInstagram />
               </a>
@@ -89,13 +97,31 @@ const Contact = () => {
               Interested in having a site like this for your event? Contact us.
             </p>
             <div className="d-flex justify-content-center py-2">
-              <p href="#">info@example.com</p>
-              <span className="px-3">|</span>
-              <p href="#">+012 345 6789</p>
+              <a
+                className="socialBtn btn btn-lg btn-outline-light btn-lg-square"
+                href="mailto: x.i.ting.sites@gmail.com"
+              >
+                <GoMail />
+              </a>
+              <span className=" divider"></span>
+              <a
+                className="socialBtn btn btn-lg btn-outline-light btn-lg-square"
+                href="https://api.whatsapp.com/send?phone=27823233880&text=Hello%20%F0%9F%91%8B%0A%0AI%20am%20interested%20in%20a%20RSVP%2Fany%20website%F0%9F%98%84"
+                target="_blank"
+              >
+                <BsWhatsapp />
+              </a>
             </div>
             <p className="m-0">
-              &copy; <a className="text-primary">Domain Name</a>. Designed by{" "}
-              <a className="text-primary">KSites</a>
+              {/* &copy; <a className="text-primary">Domain Name</a>. Designed by{" "} */}
+              &copy; Designed by{" "}
+              <a
+                className="text-primary"
+                href="https://www.instagram.com/x_i_ting_sites/"
+                target="_blank"
+              >
+                X-I-Ting Sites
+              </a>
             </p>
           </Fade>
         </div>

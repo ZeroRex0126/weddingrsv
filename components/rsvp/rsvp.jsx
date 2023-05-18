@@ -126,7 +126,7 @@ const RSVP = ({ webSiteSetting }) => {
 
     btn.replaceChild(spinner, btn.childNodes[0]);
     if (btoa(pin) === webSiteSetting.pin && email && validateEmail(email)) {
-      let data = await findReservationData(email);
+      let data = await findReservationData(email.toLowerCase());
       if (data._id) {
         setDataID(data._id);
         setName(data.name);
@@ -186,7 +186,7 @@ const RSVP = ({ webSiteSetting }) => {
       btn.replaceChild(spinner, btn.childNodes[0]);
 
       if (dataID !== "") {
-        let resData = await findReservationDataByEmail(email);
+        let resData = await findReservationDataByEmail(email.toLowerCase());
         if (resData._id && resData._id !== dataID) {
           setCompleteMessage("Email Already in use");
           emailInUse = true;
@@ -196,7 +196,7 @@ const RSVP = ({ webSiteSetting }) => {
             name: name,
             surname: surname,
             phoneNr: contactNo,
-            email: email,
+            email: email.toLowerCase(),
             attending: attendance,
             amount: parseInt(amount),
             comment: message,
@@ -212,7 +212,7 @@ const RSVP = ({ webSiteSetting }) => {
           }
         }
       } else {
-        let resData = await findReservationDataByEmail(email);
+        let resData = await findReservationDataByEmail(email.toLowerCase());
         if (resData._id) {
           setCompleteMessage("Email Already in use");
           emailInUse = true;
@@ -221,7 +221,7 @@ const RSVP = ({ webSiteSetting }) => {
             name: name,
             surname: surname,
             phoneNr: contactNo,
-            email: email,
+            email: email.toLowerCase(),
             attending: attendance,
             amount: parseInt(amount),
             comment: message,

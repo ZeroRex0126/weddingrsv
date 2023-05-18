@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { fontColor, primaryColor } from "../../../../libs/color";
+import { CusButton } from "../../../../components";
 
 const SideNavbar = styled.div`
   position: fixed;
@@ -39,6 +40,14 @@ const SideNavbar = styled.div`
     display: flex;
     width: 100%;
     align-items: stretch;
+  }
+
+  .btn-logout {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   #sidebar {
@@ -210,6 +219,16 @@ const SideNav = ({ page, setPageStore }) => {
           </li> */}
         </ul>
         <div className="text">More Options Coming Soon!</div>
+
+        <div className="btn-logout">
+          <button
+            className="btn btn-danger  "
+            data-bs-toggle="modal"
+            data-bs-target="#logoutModal"
+          >
+            Logout
+          </button>
+        </div>
         <div className="text footer">Design & Created by X-I-Ting Sites</div>
       </nav>
 

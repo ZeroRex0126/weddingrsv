@@ -7,7 +7,7 @@ import PortalHome from "./home";
 import SideNav from "./portalComp/sideNav/sideNav";
 import { getReservationDatas } from "../../libs/web-util";
 import Comment from "./comment";
-import { Loading } from "../../components";
+import { Loading, Modal } from "../../components";
 import Login from "./login";
 
 function useLocalStorageForPageKey(key, fallbackValue) {
@@ -24,7 +24,7 @@ const theUser = "Y2xpbnRvbiZjaGFuZWw=";
 const pw = "MTIzNDU=";
 
 const portal = () => {
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState(localStorage.getItem("login"));
   const [loginError, setLoginError] = useState(false);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useLocalStorageForPageKey("page", "home");
@@ -37,6 +37,7 @@ const portal = () => {
       if (expireTime < Date.now()) {
         console.log("Token Expire, loggin out");
         setLogin(false);
+        localStorage.setItem("login", false);
       }
     }
   }
@@ -55,7 +56,8 @@ const portal = () => {
   }, [login]);
 
   useEffect(() => {
-    updateExpireTime();
+    checkForInactivity();
+    // updateExpireTime();
     window.addEventListener("click", updateExpireTime);
     window.addEventListener("keypress", updateExpireTime);
     window.addEventListener("scroll", updateExpireTime);
@@ -91,10 +93,16 @@ const portal = () => {
       console.log("is valid");
       setLoginError(false);
       setLogin(true);
+      localStorage.setItem("login", true);
     } else {
       setLoginError(true);
       console.log("invalid password");
     }
+  }
+
+  function logout() {
+    setLogin(false);
+    localStorage.setItem("login", false);
   }
 
   function setPageStore(key, value) {
@@ -113,8 +121,16 @@ const portal = () => {
     }
   }
 
+  function logoutModalBody() {
+    return (
+      <>
+        <p>Are you sure you want to logout?</p>
+      </>
+    );
+  }
+
   return !loading ? (
-    login ? (
+    login && login != "false" ? (
       <div>
         <Head>
           <title>Portal Management Screen</title>
@@ -123,6 +139,20 @@ const portal = () => {
         </Head>
         <SideNav page={page} setPageStore={setPageStore} />
         <div className="settingContainer">{show()}</div>
+        <Modal
+          modalID={"logoutModal"}
+          labelID={"logout"}
+          label={"Logout Confirmation"}
+          hasFooter={true}
+          modalBody={logoutModalBody}
+          center={true}
+          hasSubmitBtn={true}
+          submitBtnFunc={() => {
+            logout();
+          }}
+          submitBtnLabel={"Logout"}
+          submitBtnID={"logoutBtn"}
+        />
       </div>
     ) : (
       <Login loginFunc={loginFunc} loginError={loginError}></Login>

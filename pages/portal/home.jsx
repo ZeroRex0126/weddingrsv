@@ -619,7 +619,7 @@ const PortalHome = ({ GetData, reservation }) => {
             surname,
             amount,
             contactNo,
-            email,
+            email.toLowerCase(),
             attendance,
             message
           );
