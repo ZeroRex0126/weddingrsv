@@ -5,6 +5,10 @@ import TimerCard from "../timerCard/timerCard";
 import styled from "styled-components";
 
 const HomeCom = styled.div`
+  .mainTitle {
+    font-family: "Script";
+    font-size: 50px;
+  }
   .main {
     background-size: cover;
     min-height: 100vh;
@@ -26,6 +30,9 @@ const HomeCom = styled.div`
     }
 
     @media (min-width: 768px) {
+      .mainTitle {
+        font-size: 70px;
+      }
       .homeContent {
         position: absolute;
         // left: 0;
@@ -51,7 +58,7 @@ const HomeComp = ({ webSiteSetting, remainingTime }) => {
       >
         <div className="homeContent">
           <div>
-            <h1>{webSiteSetting.title}</h1>
+            <h1 className="mainTitle">{webSiteSetting.title}</h1>
             <h2>
               {`${date.getDate()} ${
                 monthsLargeName[date.getMonth()]
