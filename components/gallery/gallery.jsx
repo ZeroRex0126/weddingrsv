@@ -92,7 +92,7 @@ const Gallery = (props) => {
           <div className="embla__container">
             {array.map((i) => {
               return (
-                <div className="embla__slide">
+                <div className="embla__slide" key={i}>
                   <div
                     className="img-fluid mr-md-3 slideImg"
                     style={{
