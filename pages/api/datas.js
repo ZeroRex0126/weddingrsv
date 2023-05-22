@@ -1,13 +1,13 @@
 let datas = [
   {
-    title: "Clinton & Chanel",
+    title: "Clinton & Chanell",
     groom: {
       name: "Clinton",
       description:
         "Hi , I'm Clinton, I really love rum and raisin ice cream, I like to work in the garden on weekends and love to do my exercises.",
     },
     bride: {
-      name: "Chanel",
+      name: "Chanell",
       description:
         "Hi , I'm Chanell. I really love to spend time with my pets, friends and family. I love to challenge people next to me when I'm in my Megane RS 😎.",
     },
@@ -29,7 +29,7 @@ let datas = [
         year: "2021",
         date: "December 2021",
         title: "Proposal",
-        story: "Clinton popped the question to Chanel, and she said YES!!!💍",
+        story: "Clinton popped the question to Chanell, and she said YES!!!💍",
       },
       {
         year: "2024",
