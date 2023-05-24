@@ -33,7 +33,7 @@ let datas = [
       },
       {
         year: "2024",
-        date: "14 May 2021",
+        date: "14 June 2024",
         title: "Wedding",
         story:
           "We are finally celebrating our wedding and will officially become husband and wife!!! 💒",
