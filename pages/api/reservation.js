@@ -33,6 +33,7 @@ async function handler(req, res) {
     case "POST":
       try {
         let result = undefined;
+        let message = "Storing message failed!";
         switch (req.body.type.toLowerCase()) {
           case "find":
             result = await db
@@ -41,9 +42,10 @@ async function handler(req, res) {
               .toArray();
 
             if (result.length > 0) {
-              res.json(result[0]);
+              result = result[0];
             } else {
-              res.status(200).json({ message: "No data Found" });
+              result = undefined;
+              message = "No data Found";
               return;
             }
             break;
@@ -93,11 +95,11 @@ async function handler(req, res) {
         if (result) {
           res.json(result);
         } else {
-          res.status(500).json({ message: "Storing message failed!" });
+          res.status(500).json({ message: message });
           return;
         }
       } catch (error) {
-        res.status(500).json({ message: "Storing message failed!" });
+        res.status(500).json({ message: message });
         return;
       } finally {
         client.close();
