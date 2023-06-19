@@ -6,10 +6,7 @@ import "../styles/globals.css";
 import "../styles/index.scss";
 import "../styles/settings.scss";
 import "bootstrap/dist/css/bootstrap.css";
-import Image from "next/image.js";
-import { Fade } from "react-awesome-reveal";
 import { useRouter } from "next/router";
-import { Loading } from "../components/index.js";
 
 function MyApp({ Component, pageProps }) {
   const [doorOpen, setDoorOpen] = useState(false);
@@ -122,7 +119,11 @@ function MyApp({ Component, pageProps }) {
             calRemaining={calRemaining}
           />
         ) : (
-          <Loading />
+          <div className="loadingMain">
+            <div className="sec-loading">
+              <div className="one"></div>
+            </div>
+          </div>
         )}
       </Layout>
     </div>
