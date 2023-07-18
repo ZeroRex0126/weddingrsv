@@ -36,7 +36,7 @@ const Login = ({ loginFunc, loginError }) => {
             className="logoPortal"
             width={200}
             height={200}
-            src={"/webContent/X-I-Ting-logo.png"}
+            src={"/webContent/loginLogo.png"}
           />
           <Input
             name={"Username"}

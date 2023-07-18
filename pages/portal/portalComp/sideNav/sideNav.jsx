@@ -229,7 +229,7 @@ const SideNav = ({ page, setPageStore }) => {
             Logout
           </button>
         </div>
-        <div className="text footer">Design & Created by X-I-Ting Sites</div>
+        <div className="text footer">Design & Created by The Envelope</div>
       </nav>
 
       <button
