@@ -8,7 +8,6 @@ async function handler(req, res) {
     client = await MongoClient.connect(connectionString);
   } catch (error) {
     res.status(500).json({ message: "Could not connect to database." });
-    return;
   }
 
   const db = client.db();
@@ -21,11 +20,9 @@ async function handler(req, res) {
           res.json(result);
         } else {
           res.status(500).json({ message: "Storing message failed!" });
-          return;
         }
       } catch (error) {
         res.status(500).json({ message: "Storing message failed!" });
-        return;
       } finally {
         client.close();
       }
@@ -46,7 +43,6 @@ async function handler(req, res) {
             } else {
               result = undefined;
               message = "No data Found";
-              return;
             }
             break;
           case "add":
@@ -96,11 +92,9 @@ async function handler(req, res) {
           res.json(result);
         } else {
           res.status(500).json({ message: message });
-          return;
         }
       } catch (error) {
         res.status(500).json({ message: message });
-        return;
       } finally {
         client.close();
       }

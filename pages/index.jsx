@@ -40,7 +40,7 @@ export default function Home({ calRemaining, webSiteSetting, remainingTime }) {
       </div>
       <HomeComp webSiteSetting={webSiteSetting} remainingTime={remainingTime} />
       <Fade
-        className="btRight"
+        className="btRight coner-decor"
         direction="right"
         duration={2000}
         triggerOnce={true}
@@ -49,7 +49,7 @@ export default function Home({ calRemaining, webSiteSetting, remainingTime }) {
       </Fade>
 
       <Fade
-        className="tpLeft"
+        className="tpLeft coner-decor"
         direction="left"
         duration={2000}
         triggerOnce={true}

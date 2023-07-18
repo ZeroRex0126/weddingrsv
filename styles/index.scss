@@ -416,6 +416,12 @@
   margin-left: 0.5rem;
 }
 
+@media (max-width: 500px) {
+  .coner-decor {
+    display: none;
+  }
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
